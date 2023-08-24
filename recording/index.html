@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>錄影檔瀏覽</title>
+    <meta name="apple-mobile-web-app-title" content="錄影檔瀏覽">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" sizes="128x128" href="icon.png">
+    <link rel="icon" href="favicon.png">
+    <script src="datafetch.js"></script>
+    <meta name="theme-color" content="#FFF" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="popupPW()">
+    <div style="position: sticky;left: 0;top: 0;text-align: center;z-index: 999;">
+        <div class="title" id="title">錄影檔瀏覽</div>
+    </div>
+    <div style="height: 2vh;"></div>
+    <table width="100%" style="border: none;text-align: center;z-index: 998;">
+        <tbody>
+            <tr>
+                <td style="text-align: center;">
+                    <div id="searchtools" class="searchtools">
+                        <div>
+                            <span style="font-size: 2.7vh;">搜尋工具&nbsp;</span>
+                            <button style="font-size: 25px;background: #FFCCCC;color: red;border-radius: 8px;padding: 2px 10px;display: none;" id="closesearch" onclick="closeaction()">╳</button>
+                            <button class="button" style="display: none;padding: 2px 10px;" id="showsearch" onclick="showaction()">顯示</button>
+
+                            <button class="button" onclick="reloadPage()">重新整理</button>
+
+                        </div>
+                        <div>
+                            <br>
+                            <label style="font-size: 2.7vh;" for="keyword">關鍵字搜尋：</label>
+                            <input type="text" id="keyword" class="keyword" size="8" /> &nbsp;
+                            <button class="button" onclick="search()">搜尋</button>
+                            <br>
+                            <br>
+                            <label style="font-size: 2.7vh;" for="subjectsearchname">依科目搜尋：</label>
+                            <select name="subjectsearchname" id="subjectsearch" style="font-size: 2.7vh;font-family: Segoe UI Variable Small;">
+                                    <option value="國文">國文</option>
+                                    <option value="數學">數學</option>
+                                    <option value="英文">英文</option>
+                                    <option value="物理">物理</option>
+                                    <option value="化學">化學</option>
+                                    <option value="生物">生物</option>
+                                    <option value="地理">地理</option>
+                                    <option value="歷史">歷史</option>
+                                    <option value="公民">公民</option>
+                                    <option value="地科">地科</option>
+                                    <option value="資訊">資訊</option>
+                                    <option value="其他">其他</option>
+                                </select> &nbsp;
+                            <button class="button" onclick="searchsub()">搜尋</button>
+                            <br>
+                            <br>
+                            <button class="button" onclick="loadData()">顯示所有項目</button>
+                        </div>
+                    </div>
+                </td>
+        </tbody>
+    </table>
+    <div style="height: 3vh;"></div>
+    <div id="main" style="width: 90vw;left: 5vw;position: relative;text-align: left;z-index: 998;">
+        <td style="text-align: center;">
+            <table style="width: 100%;border: none;" id="mainTable">
+                <tr>
+                    <td valign="top">
+                        <div id="data">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </div>
+    <br>
+    <button class="button" onclick="logout()">登出</button>
+    <script>
+        function reloadPage() {
+            document.getElementById("title").innerHTML = "Reloading...";
+            setTimeout(function() {
+                window.location.reload();
+            }, 1000);
+        }
+    </script>
+</body>
+
+</html>

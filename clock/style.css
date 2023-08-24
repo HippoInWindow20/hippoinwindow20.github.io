@@ -1,0 +1,81 @@
+@font-face {
+	font-family: 'Segoe UI Variable Display';
+	font-style: normal;
+	font-weight: normal;
+	src: url('../segoe/SegUIVar.woff') format('woff');
+}
+body{
+	/*text-shadow: 0em 0em 0.7em #9b34eb;*/
+	background: #121212;
+	color: #EEE;
+	font-family:'Segoe UI Variable Display','Segoe UI','微軟正黑體';
+	overflow: hidden;
+	text-align: center;
+}
+.clock {
+    vertical-align:middle;
+    font-family:'Segoe UI Variable Display','Segoe UI','微軟正黑體';
+    font-size:440px;
+    font-weight:normal;
+    padding:0 10px;
+	color: #EEE;
+	/*background: -webkit-linear-gradient(#fa514b, #8b4bfa);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	text-shadow: 0em 0em 0.4em #ebd2fc;*/
+	position: relative;
+	top: -30px;
+}
+.change {
+	font-size: 1.5vw;
+	background: #03dac5;
+	color: #000;
+	border-radius: 8px;
+	border: none;
+	font-family: 'Segoe UI Variable Display','Segoe UI','微軟正黑體';
+	cursor: pointer;
+	transition-duration: 0.1s;
+	padding: 6px 15px;
+	
+}
+.change:hover {
+	/* font-size: 1.7vw; */
+	background: #02f2db;
+	/* color: #fff; */
+	/* padding: 4px 13px; */
+}
+.change:active {
+	/* font-size: 1.3vw; */
+	background: #02c7b4;
+	/* color: #aaa; */
+	/* padding: 8px 17px; */
+}
+.hidePanel {
+	font-size: 1.5vw;
+	background: rgb(176,0,0);
+	color: #eee;
+	border-radius: 8px;
+	font-family: 'Segoe UI Variable Display','Segoe UI','微軟正黑體';
+	cursor: pointer;
+	transition-duration: 0.1s;
+	padding: 6px 15px;
+}
+.hidePanel:hover {
+	font-size: 1.7vw;
+	background: rgb(226,50,50);
+	color: #fff;
+	padding: 4px 13px;
+}
+.hidePanel:active {
+	font-size: 1.3vw;
+	background: rgb(126,0,0);
+	color: #aaa;
+	padding: 8px 17px;
+}
+input {
+	font-size: 1.8vw;
+	color: #000;
+	background: #ccc;
+	border-radius: 8px;
+	font-family: 'Segoe UI Variable Display','Segoe UI','微軟正黑體';
+}

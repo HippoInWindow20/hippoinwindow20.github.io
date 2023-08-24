@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            width: 30px;
+            height: 30px;
+        }
+        
+        button {
+            width: 80px;
+            height: 35px;
+            position: absolute;
+            left: 10px;
+            top: 230px;
+        }
+        
+        h3 {
+            position: absolute;
+            left: 500px;
+            top: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>1a2b Mini Game</h1>
+    <hr>
+    <h2 id="result">Guess Four Numbers!!!</h2>
+    <input type="text" id="box1" style="position: absolute; top: 170px; left: 10px;">
+    <input type="text" id="box2" style="position: absolute; top: 170px; left: 60px;">
+    <input type="text" id="box3" style="position: absolute; top: 170px; left: 110px;">
+    <input type="text" id="box4" style="position: absolute; top: 170px; left: 160px;">
+    <button id="start">Start</button>
+    <h3 id="test"></h3>
+    <script>
+        var num1 = Math.floor(Math.random() * 9) + 1;
+        var num2 = Math.floor(Math.random() * 9) + 1;
+        var num3 = Math.floor(Math.random() * 9) + 1;
+        var num4 = Math.floor(Math.random() * 9) + 1;
+        var a = 0;
+        var b = 0;
+
+        function shorten(id) {
+            return document.getElementById(id).value;
+        }
+        document.getElementById('test').innerHTML = num1 + "," + num2 + "," + num3 + "," + num4;
+        var numArr = [num1, num2, num3, num4];
+        document.getElementById('start').addEventListener('click', function() {
+            if (num1 == shorten("box1")) {
+                a++;
+            } else if (num1 == shorten("box2")) {
+                b++
+            } else if (num1 == shorten("box3")) {
+                b++
+            } else if (num1 == shorten("box4")) {
+                b++
+            }
+
+            if (num2 == shorten("box2")) {
+                a++;
+            } else if (num2 == shorten("box1")) {
+                b++
+            } else if (num2 == shorten("box3")) {
+                b++
+            } else if (num2 == shorten("box4")) {
+                b++
+            }
+
+            if (num3 == shorten("box3")) {
+                a++;
+            } else if (num3 == shorten("box2")) {
+                b++
+            } else if (num3 == shorten("box1")) {
+                b++
+            } else if (num3 == shorten("box4")) {
+                b++
+            }
+
+            if (num4 == shorten("box4")) {
+                a++;
+            } else if (num4 == shorten("box2")) {
+                b++
+            } else if (num4 == shorten("box3")) {
+                b++
+            } else if (num4 == shorten("box1")) {
+                b++
+            }
+            if (a == 4) {
+                document.getElementById('result').innerHTML = "You Win!!";
+            } else {
+                document.getElementById('result').innerHTML = a + "a" + b + "b";
+            }
+            a = 0;
+            b = 0;
+        })
+    </script>
+</body>
+
+</html>

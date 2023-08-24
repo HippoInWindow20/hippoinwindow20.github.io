@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+</head>
+
+<body>
+    Redirecting...
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const data = urlParams.get('q');
+        switch (data) {
+            case 'eng0523':
+                let x = confirm("備註: (請自行記錄)\n1. 電腦在錄影時當機，約有3分鐘空檔\n2. 手機錄影遇技術問題，09:09~21:54沒有音訊");
+                if (x)
+                    window.location.href = "https://drive.google.com/file/d/1f1Of6DMIFmvbt3QUZOrFNkw6Au9ABxE0/view?usp=sharing";
+                else
+                    window.close();
+                break;
+            case 'other0524':
+                let y = confirm("備註: (請自行記錄)\n1. 電腦在錄影時當機，約有1分鐘空檔 (05:03)");
+                if (y)
+                    window.location.href = "https://drive.google.com/file/d/1tCTBHxSVVhF_9oslts6b56AoZGUwekDY/view?usp=sharing";
+                else
+                    window.close();
+                break;
+            default:
+                alert("請輸入有效連結，或連結已失效");
+                window.close();
+                break;
+        }
+    </script>
+</body>
+
+</html>

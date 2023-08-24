@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Metro Test</title>
+    <meta name="apple-mobile-web-app-title" content="台北捷運">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#fff">
+    <meta name="theme-color" content="#fff">
+    <link rel="shortcut icon" href="icon.png">
+    <link rel="apple-touch-icon" href="icon.png">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;400;500;700&display=swap" rel="stylesheet">
+</head>
+<style>
+    @font-face {
+        font-family: 'DIN Next Bold';
+        font-style: normal;
+        font-weight: normal;
+        src: url('din.woff') format('woff');
+    }
+    
+    .topbar {
+        background-color: rgba(255, 255, 255, 0.9);
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 200px;
+        left: 0px;
+        box-shadow: 0 3px 20px 3px #666;
+    }
+    
+    .navbar {
+        background-color: rgba(255, 255, 255, 0.9);
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 150px;
+        left: 0px;
+        box-shadow: 0 3px 20px 3px #666;
+    }
+    
+    span.ripple {
+        position: absolute;
+        /* The absolute position we mentioned earlier */
+        border-radius: 50%;
+        transform: scale(0);
+        animation: ripple 200ms linear;
+        background-color: rgba(0, 0, 0, 0.3);
+        z-index: 999;
+    }
+    
+    @keyframes ripple {
+        to {
+            transform: scale(1);
+            opacity: 0;
+        }
+    }
+    
+    .hamburger {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #fff;
+        overflow: hidden;
+        transition: 0.3s;
+        font-weight: 100;
+    }
+    
+    .buttonNav {
+        position: absolute;
+        width: 550px;
+        height: 100px;
+        border: none;
+        overflow: hidden;
+        background: none;
+        font-family: Noto Sans TC;
+        font-size: 50px;
+        color: #333;
+        cursor: pointer;
+        padding: 15px 0;
+        left: 0px;
+    }
+    
+    .main {
+        background: white;
+        font-family: Noto Sans TC;
+        font-size: 30px;
+        color: #444;
+        font-weight: 700;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        overflow: hidden;
+    }
+    /* Remove tap highlight on iOS*/
+    
+    button,
+    textarea,
+    input,
+    select,
+    a {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        -webkit-tap-highlight-color: transparent;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+</style>
+
+<body style="background: black;overflow: hidden;" ontouchstart>
+    <div id="combine" style="transition: 0.3s;">
+        <div id="topbar" class="topbar">
+            <table width="100%">
+                <tr>
+                    <td align="left" width="80%">
+                        <button style="background: none;border: none;cursor: pointer;" onclick="opennav()">
+							<img src="menu.svg" style="height: 60px;padding: 70px 25px;" />
+						</button>
+                        <img src="logo.svg" style="height: 50px;padding: 75px 5px;" />
+                        <img src="title.png" style="height: 45px;padding: 72px 4px;" />
+                    </td>
+                    <td align="right" width="20%">
+                        <button style="position: absolute;background: none;border: none;cursor: pointer;top: 10px;right: 10px;overflow: hidden;" onclick="callNum()">
+							<img src="phone.svg" style="height: 50px;padding: 68px 15px;" />
+						</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div align="center" id="main" class="main">
+            <iframe src="homenav.html" id="iframe" style="border: none;"></iframe>
+        </div>
+        <div id="navbar" class="navbar">
+
+            <table width="100%" style="position: absolute;">
+                <tr>
+                    <td align="center" width="20%">
+                        <button id="routenav" style="width: 95%;background: none;border: none;cursor: pointer;top: 3px;left: 0px;transition: 0.4s;border-radius: 20px;" onclick="gotonav('routenav')">
+							<img id="routesvg" src="svg/outline/train.svg"
+								style="height: 80px;padding: 0px 15px;" />
+							<br>
+							<text id="txtRoute" style="color: #575757;font-size: 3vw;font-weight: 400;">捷運路網</text>
+							<circle></circle>
+						</button>
+                    </td>
+                    <td align="center" width="20%">
+                        <button id="ticketnav" style="width: 95%;background: none;border: none;cursor: pointer;top: 3px;left: 0px;transition: 0.4s;border-radius: 20px;" onclick="gotonav('ticketnav')">
+							<img id="ticketnavsvg" src="svg/outline/ticket.svg"
+								style="height: 80px;padding: 0px 15px;" />
+							<br>
+							<text id="txtTicket2"
+								style="color: #575757;font-size: 3vw;font-weight: 400;">好康活動</text>
+						</button>
+                    </td>
+                    <td align="center" width="20%">
+                        <button id="homenav" style="width: 95%;background: none;border: none;cursor: pointer;top: 3px;left: 0px;transition: 0.4s;border-radius: 20px;" onclick="gotonav('homenav')">
+							<img id="homenavsvg" src="svg/fill/home.svg"
+								style="height: 80px;padding: 0px 15px;" />
+							<br>
+							<text id="txtHome2" style="color: #3700B3;font-size: 3vw;font-weight: 700;">首頁</text>
+						</button>
+                    </td>
+                    <td align="center" width="20%">
+                        <button id="linknav" style="width: 95%;background: none;border: none;cursor: pointer;top: 3px;left: 0px;transition: 0.4s;border-radius: 20px;" onclick="gotonav('linknav')">
+							<img id="linksvg" src="svg/outline/link.svg"
+								style="height: 80px;padding: 0px 15px;" />
+							<br>
+							<text id="txtLink" style="color: #575757;font-size: 3vw;font-weight: 400;">更多連結</text>
+						</button>
+                    </td>
+                    <td align="center" width="20%">
+                        <button id="timenav" style="width: 95%;background: none;border: none;cursor: pointer;top: 3px;left: 0px;transition: 0.4s;border-radius: 20px;" onclick="gotonav('timenav')">
+							<img id="timesvg" src="svg/outline/clock.svg"
+								style="height: 80px;padding: 3px 15px;" />
+							<br>
+							<text id="txtTime" style="color: #575757;font-size: 3vw;font-weight: 400;">到站時刻</text>
+						</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="hamburger" class="hamburger">
+        <div style="position: absolute;overflow: hidden;width: 550px;height: 200px;background: linear-gradient(to right, #41B237, #037CAE);">
+            <div id="info" style="opacity: 0.001;">
+                <button style="overflow: hidden;background: none;border: none;cursor: pointer;width: 100%;height: 120px;" onclick="closenav()">
+					<img src="trtc.png" style="position: absolute;height: 50px;top: 70px;left: 30px;" />
+					<text
+						style="font-family: DIN Next Bold;font-size: 40px;color: white;position: absolute;top: 58px;left: 140px;overflow-x: hidden;">Taipei
+						Metro Go</text>
+					<text
+						style="font-family: Noto Sans TC;font-size: 25px;color: white;position: absolute;top: 102px;left: 140px;">會員帳號：</text>
+					<text
+						style="font-family: DIN Next Bold;font-size: 25px;color: white;position: absolute;top: 108px;left: 270px;">0901075319</text>
+				</button>
+            </div>
+        </div>
+        <button class="buttonNav" style="top: 220px;" onclick="goto('homenav')">
+			<div align="left" style="padding: 0px 30px;">
+				<img id="homesvg" src="svg/fill/home.svg"
+					style="height: 50px;vertical-align: middle;padding: 0 10px;" />
+				<text id="txtHome" style="font-weight: 700;color:#3700B3;">首頁</text>
+			</div>
+		</button>
+        <br>
+        <button class="buttonNav" style="top: 345px;" onclick="goto('password')">
+			<div align="left" style="padding: 0px 30px;">
+				<img id="passwordsvg" src="svg/outline/lock.svg"
+					style="height: 50px;vertical-align: middle;padding: 0 10px;" />
+				<text id="txtPassword" style="font-family: Noto Sans TC;">修改密碼</text>
+			</div>
+		</button>
+        <br>
+        <button class="buttonNav" style="top: 470px;" onclick="goto('pass')">
+			<div align="left" style="padding: 0px 30px;">
+				<img id="passsvg" src="svg/outline/ticker.svg"
+					style="height: 50px;vertical-align: middle;padding: 0 10px;" />
+				<text id="txtPass" style="font-family: Noto Sans TC;">我的票卡</text>
+			</div>
+		</button>
+        <br>
+        <button class="buttonNav" style="top: 595px;" onclick="goto('ticketnav')">
+			<div align="left" style="padding: 0px 30px;">
+				<img id="ticketsvg" src="svg/outline/ticket.svg"
+					style="height: 50px;vertical-align: middle;padding: 0 10px;" />
+				<text id="txtTicket" style="font-family: Noto Sans TC;">我的優惠券</text>
+			</div>
+		</button>
+        <br>
+        <button class="buttonNav" style="top: 720px;" onclick="goto('tos')">
+			<div align="left" style="padding: 0px 30px;">
+				<img id="tossvg" src="svg/outline/tos.svg"
+					style="height: 50px;vertical-align: middle;padding: 0 10px;" />
+				<text id="txtTos" style="font-family: Noto Sans TC;">會員服務條款</text>
+			</div>
+		</button>
+        <br>
+        <button class="buttonNav" style="top: 845px;" onclick="goto('settings')">
+			<div align="left" style="padding: 0px 30px;">
+				<img id="settingssvg" src="svg/outline/settings.svg"
+					style="height: 50px;vertical-align: middle;padding: 0 10px;" />
+				<text id="txtSettings" style="font-family: Noto Sans TC;">設定</text>
+			</div>
+		</button>
+        <br>
+        <button class="buttonNav" style="top: 970px;" onclick="goto('logout')">
+			<div align="left" style="padding: 0px 30px;">
+				<img src="svg/outline/logout.svg"
+					style="height: 50px;vertical-align: middle;padding: 0 10px;" />
+				<text style="font-family: Noto Sans TC; color: #A80000;">登出</text>
+			</div>
+		</button>
+    </div>
+
+    <script>
+        /*
+        		function createRipple(event) {
+        			const button = event.currentTarget;
+        			const circle = document.createElement("span");
+        			const diameter = Math.max(button.clientWidth, button.clientHeight);
+        			const radius = diameter / 2;
+        			circle.style.width = circle.style.height = `${diameter}px`;
+        			circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+        			circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
+        			//circle.style.left = `${event.clientX - radius}px`;
+        			//circle.style.top = `${event.clientY - radius}px`;
+        			circle.classList.add("ripple");
+        			const ripple = button.getElementsByClassName("ripple")[0];
+        			if (ripple) {
+        				ripple.remove();
+        			}
+        			button.appendChild(circle);
+        		}
+        		const buttons = document.getElementsByTagName("button");
+        		for (const button of buttons) {
+        			button.addEventListener("click", createRipple);
+        		}
+        		*/
+
+        function opennav() {
+            document.getElementById("hamburger").style.width = "550px";
+            document.getElementById("combine").style.opacity = "0.6";
+            $("#info").delay(200).fadeTo(500, 1);
+        }
+
+        function closenav() {
+            document.getElementById("hamburger").style.width = "0";
+            document.getElementById("combine").style.opacity = "1";
+            $("#info").fadeTo(500, 0.001);
+        }
+
+        function callNum() {
+            window.location.href = "tel:0221812345";
+        }
+        setInterval(function() {
+            document.getElementById("iframe").style.width = window.innerWidth + "px";
+            document.getElementById("iframe").style.height = window.innerHeight + "px";
+        }, 500);
+
+        function goto(name) {
+            goto2(name);
+            jumpto(name);
+            closenav();
+        }
+
+        function gotonav(name) {
+            gotonav2(name);
+            jumpto(name);
+            document.getElementById(name).style.background = "#cfbaff";
+            document.getElementById(name).style.background = "none";
+            closenav();
+        }
+
+        function goto2(name) {
+            clearhamburger();
+            if (name == "homenav") {
+                document.getElementById("homesvg").src = "svg/fill/home.svg";
+                document.getElementById("txtHome").style.color = "#3700B3";
+                document.getElementById("txtHome").style.fontWeight = "700";
+            } else if (name == "password") {
+                document.getElementById("passwordsvg").src = "svg/fill/lock.svg";
+                document.getElementById("txtPassword").style.color = "#3700B3";
+                document.getElementById("txtPassword").style.fontWeight = "700";
+            } else if (name == "ticketnav") {
+                document.getElementById("ticketsvg").src = "svg/fill/ticket.svg";
+                document.getElementById("txtTicket").style.color = "#3700B3";
+                document.getElementById("txtTicket").style.fontWeight = "700";
+            } else if (name == "pass") {
+                document.getElementById("passsvg").src = "svg/fill/ticker.svg";
+                document.getElementById("txtPass").style.color = "#3700B3";
+                document.getElementById("txtPass").style.fontWeight = "700";
+            } else if (name == "tos") {
+                document.getElementById("tossvg").src = "svg/fill/tos.svg";
+                document.getElementById("txtTos").style.color = "#3700B3";
+                document.getElementById("txtTos").style.fontWeight = "700";
+            } else {
+                document.getElementById("settingssvg").src = "svg/fill/settings.svg";
+                document.getElementById("txtSettings").style.color = "#3700B3";
+                document.getElementById("txtSettings").style.fontWeight = "700";
+            }
+
+        }
+
+        function gotonav2(name) {
+            clearnav();
+            if (name == "homenav") {
+                document.getElementById("homenavsvg").src = "svg/fill/home.svg";
+                document.getElementById("txtHome2").style.color = "#3700B3";
+                document.getElementById("txtHome2").style.fontWeight = "700";
+            } else if (name == "routenav") {
+                document.getElementById("routesvg").src = "svg/fill/train.svg";
+                document.getElementById("txtRoute").style.color = "#3700B3";
+                document.getElementById("txtRoute").style.fontWeight = "700";
+            } else if (name == "ticketnav") {
+                document.getElementById("ticketnavsvg").src = "svg/fill/ticket.svg";
+                document.getElementById("txtTicket2").style.color = "#3700B3";
+                document.getElementById("txtTicket2").style.fontWeight = "700";
+            } else if (name == "linknav") {
+                document.getElementById("linksvg").src = "svg/fill/link.svg";
+                document.getElementById("txtLink").style.color = "#3700B3";
+                document.getElementById("txtLink").style.fontWeight = "700";
+            } else if (name == "timenav") {
+                document.getElementById("timesvg").src = "svg/fill/clock.svg";
+                document.getElementById("txtTime").style.color = "#3700B3";
+                document.getElementById("txtTime").style.fontWeight = "700";
+            }
+
+        }
+
+        function clearnav() {
+            document.getElementById("homenavsvg").src = "svg/outline/home.svg";
+            document.getElementById("routesvg").src = "svg/outline/train.svg";
+            document.getElementById("ticketnavsvg").src = "svg/outline/ticket.svg";
+            document.getElementById("linksvg").src = "svg/outline/link.svg";
+            document.getElementById("timesvg").src = "svg/outline/clock.svg";
+            document.getElementById("txtHome2").style.color = "#575757";
+            document.getElementById("txtHome2").style.fontWeight = "400";
+            document.getElementById("txtRoute").style.color = "#575757";
+            document.getElementById("txtRoute").style.fontWeight = "400";
+            document.getElementById("txtTicket2").style.color = "#575757";
+            document.getElementById("txtTicket2").style.fontWeight = "400";
+            document.getElementById("txtLink").style.color = "#575757";
+            document.getElementById("txtLink").style.fontWeight = "400";
+            document.getElementById("txtTime").style.color = "#575757";
+            document.getElementById("txtTime").style.fontWeight = "400";
+        }
+
+        function clearhamburger() {
+            document.getElementById("homesvg").src = "svg/outline/home.svg";
+            document.getElementById("passwordsvg").src = "svg/outline/lock.svg";
+            document.getElementById("ticketsvg").src = "svg/outline/ticket.svg";
+            document.getElementById("passsvg").src = "svg/outline/ticker.svg";
+            document.getElementById("tossvg").src = "svg/outline/tos.svg";
+            document.getElementById("settingssvg").src = "svg/outline/settings.svg";
+            document.getElementById("txtHome").style.color = "#575757";
+            document.getElementById("txtHome").style.fontWeight = "400";
+            document.getElementById("txtPass").style.color = "#575757";
+            document.getElementById("txtPass").style.fontWeight = "400";
+            document.getElementById("txtPassword").style.color = "#575757";
+            document.getElementById("txtPassword").style.fontWeight = "400";
+            document.getElementById("txtSettings").style.color = "#575757";
+            document.getElementById("txtSettings").style.fontWeight = "400";
+            document.getElementById("txtTicket").style.color = "#575757";
+            document.getElementById("txtTicket").style.fontWeight = "400";
+            document.getElementById("txtTos").style.color = "#575757";
+            document.getElementById("txtTos").style.fontWeight = "400";
+        }
+        setInterval(function() {
+            var source = document.getElementById("iframe").getAttribute("src");
+            if (source == "homenav.html") {
+                goto2("homenav");
+                gotonav2("homenav");
+            } else if (source == "ticketnav.html") {
+                goto2("ticketnav");
+                gotonav2("ticketnav");
+            } else if (source == "routenav.html") {
+                clearhamburger();
+                gotonav2("routenav");
+            } else if (source == "linknav.html") {
+                clearhamburger();
+                gotonav2("linknav");
+            } else if (source == "timenav.html") {
+                clearhamburger();
+                gotonav2("timenav");
+            } else if (source == "password.html") {
+                goto2("password");
+                clearnav();
+            } else if (source == "pass.html") {
+                goto2("pass");
+                clearnav();
+            } else if (source == "tos.html") {
+                goto2("tos");
+                clearnav();
+            } else if (source == "settings.html") {
+                goto2("settings");
+                clearnav();
+            } else {
+                clearhamburger();
+                clearnav();
+            }
+        }, 1000);
+
+
+        function jumpto(name) {
+            document.getElementById("iframe").src = name + ".html";
+            closenav();
+        }
+    </script>
+</body>
+
+</html>

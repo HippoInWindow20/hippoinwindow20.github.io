@@ -1,0 +1,9 @@
+<!ELEMENT doc (notice+)>
+<!ELEMENT notice (title,date,author,authority,desc,link)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT date (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT authority (#PCDATA)>
+<!ELEMENT desc (line+)>
+<!ELEMENT line (#PCDATA)>
+<!ELEMENT link (#PCDATA)>

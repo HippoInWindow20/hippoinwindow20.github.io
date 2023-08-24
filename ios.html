@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iOS Components with CSS</title>
+</head>
+
+
+<body>
+    <style>
+        .ios {
+            background: #006ee6;
+            border: none;
+            color: white;
+            width: 800px;
+            font-size: 40px;
+            border-radius: 20px;
+            padding: 15px;
+            font-family: -apple-system , 'SF Pro Display';
+            font-weight: 500;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            display: block;
+        }
+        
+        .ios:active {
+            background: #cce4ff;
+            transition: 0s;
+        }
+        
+        .menu {
+            width: 450px;
+            border-radius: 20px;
+            font-size: 30px;
+            background: #DDD;
+            overflow: hidden;
+        }
+        
+        .menuItem {
+            width: 100%;
+            border: none;
+            font-size: 30px;
+            padding: 20px;
+            font-family: -apple-system , 'SF Pro Display';
+            color: #1987ff;
+            transition: 0.3s
+        }
+        
+        .menuItem:active {
+            transition: 0s;
+            background: #ccc;
+        }
+        
+        .divi {
+            height: 1px;
+            background: #999;
+        }
+    </style>
+    <button class="ios">iPhone 5</button>
+    <br>
+    <button class="ios">Continue</button>
+    <br>
+    <button class="ios" onclick="alert('The phone you cant afford')">iPhone 13 Pro Max 5G</button>
+    <br>
+
+
+
+    <br>
+    <div>
+        <div class="menu">
+            <button class="menuItem">Restore Defaults</button>
+            <div class="divi"></div>
+            <button class="menuItem">Load From File</button>
+            <div class="divi"></div>
+            <button class="menuItem" style="color: #999">Preferences</button>
+        </div>
+        <br>
+        <div class="menu">
+            <button class="menuItem" style="color: #f24333" onclick="alert('Cancel your life first haha')">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+    </script>
+</body>
+
+</html>

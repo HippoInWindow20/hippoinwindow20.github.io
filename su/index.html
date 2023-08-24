@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Su Ming Hui is no cure.</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+<style>
+    .resolveButton {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: none;
+        color: rgb(0, 119, 229);
+        font-size: 40px;
+        border: none;
+        padding: 5px 0;
+        transition: 0.3s;
+        cursor: pointer;
+        ;
+        width: 600px;
+        padding-left: 10px;
+        border: 2px solid #FFF;
+    }
+
+    .resolveButton:hover {
+        color: rgb(70, 189, 255);
+        border: 2px solid #CCC;
+    }
+
+    .resolveButton:active {
+        color: rgb(0, 79, 189);
+        background: #DDD;
+        border: 2px solid #999;
+    }
+    svg {
+        transition: 0.3s;
+    }
+    svg:hover{
+        filter: brightness(1.2);
+    }
+    svg:active{
+        filter: brightness(0.7);
+    }
+</style>
+
+<body style="background: white;overflow: hidden;">
+    <div id="bg" style="position: absolute;top: 0;left: 0;z-index: 1;" onclick="popUp()">
+        <img src="bg.png" />
+    </div>
+    <div id="al"
+        style="position: absolute;top: calc(50vh - 259px);left: calc(50vw - 377px); width: 754px;height: 518px;background: url(alert.png);box-shadow: 0px 0px 20px #000;border: 1px solid #000;z-index: -1;opacity: 0;">
+        <div class="resolveButton" style="top: 330px;left: 60px" onclick="customreload()">
+            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px"
+                fill="rgb(0,119,229)">
+                <path d="M0 0h24v24H0V0z" fill="none" />
+                <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z" />
+            </svg>
+            重新啟動程式
+        </div>
+        <br />
+        <div class="resolveButton" style="top: 400px;left: 60px;">
+            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px"
+                fill="rgb(0,119,229)">
+                <path d="M0 0h24v24H0V0z" fill="none" />
+                <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z" />
+            </svg>
+
+            等待程式回應
+        </div>
+    </div>
+</body>
+<script>
+    function popUp() {
+        $("#bg").fadeTo(1000, 0.6);
+        document.getElementById("al").style.zIndex = 2;
+        setTimeout(function () {
+            $("#al").fadeTo(200, 1);
+        }, 3000);
+    }
+    /*var x = document.getElementsByTagName("svg");
+    for (var i = 0;i < x.length;i++){
+        x[i].addEventListener("hover",function () {
+            this.fill = "rgb(70, 189, 255)";
+        } );
+        x[i].addEventListener("click",function () {
+            this.fill = "rgb(0, 79, 189)";
+        } );
+    }*/
+    function customreload(){
+        $("#al").hide();
+        setTimeout(function (){
+            window.location.reload();
+        },1000);
+    }
+</script>
+
+</html>

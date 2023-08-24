@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta name="theme-color" content="#8dc222">
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <title>台中捷運廣播選播 - 一般車站</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+
+@font-face {
+    font-family: 'Segoe UI Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: url('http://student.yphs.tp.edu.tw/~za10755143/schedule/files/msjhbd.woff') format('woff');
+    }
+
+</style>
+</head>
+<body style="font-family: Segoe UI Bold;background: linear-gradient(#8dc222, #729c1c);color: white;">
+<div align="center">
+	<a href ="newmain.html">
+	<img src="images/logowhite.png" width="38" height="40" />
+	</a>
+<text align="center"  style="font-size: 40px;">台中捷運 廣播選播 - 一般車站</text>
+<p></p>
+<text align="center" style="font-size: 28px;">轉乘廣播請至</text>
+<a href="transfer.html">
+<img src="images/transfer.png" alt="" width="140" height="28" /></a>
+</div>
+<hr />
+
+<div align="center">
+<audio controls autoplay id="controlitems">
+  <source src="horse.mp3" type="audio/mpeg">
+</audio>
+<p></p>
+<img src="images/left.png" width="180" height="36"  onclick="playdir('left')"/>
+<img src="images/right.png" width="180" height="36"  onclick="playdir('right')"/>
+</div>
+<hr />
+<img src="images/line1.png" width="36" height="36" />
+<text style="font-size: 36px;">烏日文心北屯線 / 綠線 Wuri-Wenxin-Beitun Line / Green Line</text>
+<p></p>
+<img src="images/103a.png" width="180" height="36" onclick="play1(102)" />
+<img src="images/103.png" width="180" height="36"  onclick="play1(103)"/>
+<img src="images/104.png" width="180" height="36"  onclick="play1(104)"/>
+<img src="images/105.png" width="180" height="36"  onclick="play1(105)"/>
+<img src="images/106.png" width="180" height="36"  onclick="play1(106)"/>
+<img src="images/107.png" width="180" height="36"  onclick="play1(107)"/>
+<img src="images/108.png" width="180" height="36"  onclick="play1(108)"/>
+<img src="images/109.png" width="180" height="36"  onclick="play1(109)"/>
+<img src="images/110.png" width="180" height="36"  onclick="play1(110)"/>
+<img src="images/111.png" width="180" height="36"  onclick="play1(111)"/>
+<img src="images/112.png" width="180" height="36"  onclick="play1(112)"/>
+<img src="images/113.png" width="180" height="36"  onclick="play1(113)"/>
+<img src="images/114.png" width="180" height="36"  onclick="play1(114)"/>
+<img src="images/115.png" width="180" height="36"  onclick="play1(115)"/>
+<img src="images/116.png" width="180" height="36"  onclick="play1(116)"/>
+<img src="images/117.png" width="180" height="36"  onclick="play1(117)"/>
+<img src="images/118.png" width="180" height="36"  onclick="play1(118)"/>
+<img src="images/119.png" width="180" height="36"  onclick="play1(119)"/>
+<hr/>
+<img src="images/special.png" width="36" height="36" />
+<text style="font-size: 36px;">特殊廣播</text>
+<p></p>
+<div onclick="playsp1()">
+<text style="background: linear-gradient(180deg, #FFFFFF, #c6c5c6);font-size: 28px;color: #8dc222;">不提供載客</text>
+</div>
+<div onclick="playsp2()">
+<text style="background: linear-gradient(180deg, #FFFFFF, #c6c5c6);font-size: 28px;color: #8dc222;">電扶梯警示</text>
+</div>
+<div onclick="playsp3()">
+<text style="background: linear-gradient(180deg, #FFFFFF, #c6c5c6);font-size: 28px;color: #8dc222;">搭車時緊握扶手</text>
+</div>
+<div onclick="playsp4()">
+<text style="background: linear-gradient(180deg, #FFFFFF, #c6c5c6);font-size: 28px;color: #8dc222;">注意月台間隙</text>
+</div>
+<div onclick="playsp5()">
+<text style="background: linear-gradient(180deg, #FFFFFF, #c6c5c6);font-size: 28px;color: #8dc222;">禁止飲食</text>
+</div>
+<div align="center" style="opacity: 0.001;">
+  <hr/>
+  <hr/>
+  <hr/>
+  </div>
+  <div align="center">
+  <a href="transfer.html"><img src="images/transfer.png" width="200" height="40" /></a>
+  </div>
+
+</body>
+<script>
+function play1(name){
+	  document.getElementById("controlitems").src = "audio/standard/" + name + ".mp3";
+	  }
+
+function playdir(name){
+	  document.getElementById("controlitems").src = "audio/door/" + name + ".mp3";
+	  }
+function playsp1(){
+	  document.getElementById("controlitems").src = "audio/special/outofservice.mp3";
+	  }
+function playsp2(){
+	  document.getElementById("controlitems").src = "audio/special/escalator.mp3";
+	  }
+function playsp3(){
+	  document.getElementById("controlitems").src = "audio/special/holdon.mp3";
+	  }
+function playsp4(){
+	  document.getElementById("controlitems").src = "audio/special/mindthegap.mp3";
+	  }
+function playsp5(){
+	  document.getElementById("controlitems").src = "audio/special/donteat.mp3";
+	  }
+</script>
+</html>

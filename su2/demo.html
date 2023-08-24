@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ineveitable</title>
+    <link rel="icon" type="image/png" href="icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Supports Apple Web App-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="S_U">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#363636">
+    <link rel="apple-touch-icon" href="icon.png">
+</head>
+
+<body style="background: #363636;color: #fff;font-family: monospace;text-align: center;vertical-align: middle;margin: auto;">
+    <div style="display: flex; flex-direction: column; justify-content: center;align-items: center;height: 100vh;">
+        <div id="prompt" style="display: flex; flex-direction: column; justify-content: center;align-items: center;height: 100vh;">
+            <h1>Lorem ipsum</h1>
+            <input type="text" id="question" style="width: min(80vw,400px);height: 50px;border: 1px solid #fff;border-radius: 5px;padding: 5px;background: #363636;color: #fff;text-align: center;font-size: 24px;font-family: monospace;" placeholder="Tell Su anything">
+            <br>
+            <button style="width: min(60vw,700px);border: 1px solid #fff;border-radius: 5px;padding: 5px;background: #363636;color: #fff;font-size: 20px;font-family: monospace;" onclick="getPhoto()">Retrieve your dream Su</button>
+        </div>
+        <img id="myIMG" style="display: none;" onclick="window.location.reload()" />
+        <h2 id="alttext"></h2>
+    </div>
+</body>
+<script src="data.js"></script>
+<script>
+    getPhoto();
+    setInterval(getPhoto, 2500);
+</script>
+
+</html>

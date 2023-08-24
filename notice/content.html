@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48
+        }
+        
+         :root {
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Helvetica Neue', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="text-align:center;">
+        <button onclick="navigate('pre')" id="previous" title="上一則" style="width:49%">
+            <span class="material-symbols-outlined">
+            chevron_left
+            </span>
+        </button>
+        <button onclick="navigate('next')" id="next" title="下一則" style="width:49%">
+            <span class="material-symbols-outlined">
+                chevron_right
+            </span>
+        </button>
+    </div>
+    <h1 id="title"></h1>
+    <h2 id="date"></h2>
+    <h2 id="author"></h2>
+    <h3 id="authority"></h3>
+    <hr />
+    <p id="desc"></p>
+    <a id="link">附件</a>
+    <div id="overlay" style="position:absolute;top:0;left:0;height: 10ovh;width: 100vw;background: white;opacity: 0.5"></div>
+    <script src="content.js"></script>
+</body>
+
+</html>

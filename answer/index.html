@@ -1,0 +1,118 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>詳解瀏覽</title>
+    <meta name="apple-mobile-web-app-title" content="詳解瀏覽">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" sizes="128x128" href="icon.jpg">
+    <link rel="icon" href="favicon.ico">
+    <script src="datafetch.js"></script>
+</head>
+<style>
+    body {
+        font-family: 'Segoe UI Variable Small', 'Segoe UI', '微軟正黑體', 'Arial', sans-serif;
+        color: black;
+        background: #FEFEFE;
+        text-align: center;
+    }
+    
+    .link {
+        text-decoration: none;
+        color: black;
+    }
+    
+    .defaultStyle {
+        color: black;
+        font-size: 2.7vh;
+        text-decoration: none;
+        border: none;
+        background: white;
+        box-shadow: 0px 0px 8px 0px #adadad;
+        border-radius: 0.8vh;
+        padding: 2vh 2vh;
+    }
+    
+    .button {
+        color: black;
+        font-size: 2.7vh;
+        border: none;
+        background: white;
+        box-shadow: 0px 0px 8px 0px #adadad;
+        border-radius: 0.8vh;
+        transition: 0.3s;
+        padding: 0.3vh 2vh;
+        cursor: pointer;
+    }
+    
+    .button:active {
+        background: #adadad;
+        box-shadow: none;
+        color: white;
+    }
+</style>
+
+<body onload="loadData()">
+    <div style="position: sticky;left: 0;top: 0;text-align: center;">
+        <div style="font-size: 4.5vh;font-weight: 600;color: black;background-color: #FFF;width: 100%;position: sticky;top: 0;left: 0;padding: 4vh 0;box-shadow: 0px 2px 13px 0px #adadad;">
+            詳解瀏覽</div>
+    </div>
+    <div style="height: 2vh;"></div>
+    <table width="100%" style="border: none;">
+        <tr>
+            <td align="center">
+                <div id="searchtools" style="box-shadow: 0px 0px 13px 0px #adadad;border-radius: 1vh;width: 90vw;padding:4vh 0;">
+                    <div>
+                        <span style="font-size: 2.7vh;">搜尋工具&nbsp;</span>
+                        <button style="font-size: 25px;background: #FFCCCC;color: red;border-radius: 8px;padding: 2px 10px;display: none;" id="closesearch" onclick="closeaction()">╳</button>
+                        <button class="button" style="display: none;padding: 2px 10px;" id="showsearch" onclick="showaction()">顯示</button>
+
+                        <button class="button" onclick="window.location.reload()">重新整理</button>
+
+                    </div>
+                    <div>
+                        <p></p>
+                        <label style="font-size: 2.7vh;" for="keyword">關鍵字搜尋：</label>
+                        <input type="text" id="keyword" style="font-size: 2.7vh;color: black; border: none; background: white; box-shadow: 0px 0px 8px 0px #adadad; border-radius: 0.7vh;padding: 0.3vh 2vh;" size="8 "></input>
+                        &nbsp;
+                        <button class="button" onclick="search()">搜尋</button>
+                        <p></p>
+                        <label style="font-size: 2.7vh;" for="subjectsearchname">依科目搜尋：</label>
+                        <select name="subjectsearchname" id="subjectsearch" style="font-size: 2.7vh;font-family: Segoe UI Variable Small;">
+								<option value="國文">國文</option>
+								<option value="數學">數學</option>
+								<option value="英文">英文</option>
+								<option value="物理">物理</option>
+								<option value="化學">化學</option>
+								<option value="生物">生物</option>
+								<option value="地理">地理</option>
+								<option value="歷史">歷史</option>
+								<option value="公民">公民</option>
+								<option value="地科">地科</option>
+								<option value="其他">其他</option>
+							</select> &nbsp;
+                        <button class="button" onclick="searchsub()">搜尋</button>
+                        <p></p>
+                        <button class="button" onclick="loadData()">顯示所有項目</button>
+                    </div>
+                </div>
+            </td>
+    </table>
+    <div style="height: 3vh;"></div>
+    <div id="main" style="width: 90vw;left: 4vw;position: relative;text-align: left;">
+        <td align="center">
+            <table width="100%" border="0" id="mainTable">
+                <tr>
+                    <td valign="top">
+                        <div id="data">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </div>
+</body>
+
+</html>

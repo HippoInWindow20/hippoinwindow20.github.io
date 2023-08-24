@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Dialog">
+    <title>Document</title>
+    <style>
+        @keyframes mymove {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            25% {
+                transform: scale(1.5);
+            }
+            50% {
+                transform: scale(0.7);
+            }
+            75% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes fade {
+            0% {
+                opacity: 0
+            }
+            100% {
+                opacity: 1
+            }
+        }
+        
+        @keyframes fadeout {
+            0% {
+                opacity: 1
+            }
+            100% {
+                opacity: 0
+            }
+        }
+        
+        .overlay {
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6));
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            box-shadow: black 0px 5px 5px 0px;
+            overflow: hidden;
+            visibility: hidden;
+        }
+        
+        .prompt {
+            width: clamp(80vw, 300px, 500px);
+            height: auto;
+            background: rgba(3, 10, 38, 0.8);
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 15px;
+            border: 3px solid white;
+            box-shadow: black 0px 5px 5px 0px;
+            overflow: hidden;
+            visibility: hidden;
+        }
+        
+        .btn {
+            position: relative;
+            width: 96%;
+            height: auto;
+            left: 2%;
+            border-radius: 12px;
+            background: linear-gradient(rgb(146 152 174 / 80%) 0%, rgb(82 91 122 / 80%) 50%, rgb(66 76 111 / 80%) 50%, rgb(84 93 124 / 80%) 100%);
+            border: 2px solid black;
+            color: white;
+            font-family: Helvetica;
+            font-weight: 600;
+            text-shadow: 0px -2px 0px black;
+            font-size: 3vh;
+            margin: 3% 0;
+            padding: 4% 0;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+        
+        .btn:active {
+            background: linear-gradient(rgba(113, 118, 134, 0.8) 0%, rgba(53, 58, 78, 0.8) 50%, rgba(37, 42, 61, 0.8) 50%, rgba(45, 49, 66, 0.8) 100%);
+        }
+        
+        .btnCancel {
+            position: relative;
+            width: 96%;
+            height: auto;
+            left: 2%;
+            border-radius: 12px;
+            background: linear-gradient(rgba(113, 118, 134, 0.8) 0%, rgba(53, 58, 78, 0.8) 50%, rgba(37, 42, 61, 0.8) 50%, rgba(45, 49, 66, 0.8) 100%);
+            border: 2px solid black;
+            color: white;
+            font-family: Helvetica;
+            font-weight: 600;
+            text-shadow: 0px -2px 0px black;
+            font-size: 3vh;
+            margin-bottom: 3%;
+            padding: 4% 0;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+        
+        .btnCancel:active {
+            background: linear-gradient(rgba(81, 84, 95, 0.8) 0%, rgba(21, 23, 31, 0.8) 50%, rgba(12, 14, 20, 0.8) 50%, rgba(8, 9, 12, 0.8) 100%);
+        }
+    </style>
+</head>
+
+<body style="overflow: hidden;" ontouchstart="">
+    <button onclick="openPrompt()">trigger prompt</button>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend leo et lacus tempus blandit in sit amet ex. Quisque eget ex diam. Donec et massa turpis. Aliquam eget egestas dolor. Nunc tincidunt ornare nibh, mattis blandit tortor placerat
+        sit amet. Morbi tincidunt nunc eget varius posuere. Aliquam dictum nulla eget tortor dapibus ultricies. Vestibulum in elit vel purus gravida suscipit in eu sapien. Mauris vulputate commodo ligula et condimentum. Curabitur placerat tellus et lorem
+        efficitur consequat. Sed pulvinar sagittis ex eget molestie. Sed id molestie leo, vel ullamcorper sapien. Nam egestas leo sed volutpat condimentum. Duis nisl mi, pretium non scelerisque nec, hendrerit in magna. Sed nibh eros, pellentesque et risus
+        a, eleifend auctor eros. Aliquam sed viverra arcu. Vestibulum faucibus interdum mollis. Nunc ligula metus, porta at placerat quis, molestie sed sapien. Aenean lobortis dui in tristique cursus. Donec fringilla, felis in scelerisque aliquet, nibh
+        lectus lobortis felis, sed commodo enim tortor et sem. Integer nibh nulla, sollicitudin consectetur massa eget, ullamcorper laoreet turpis. Sed mattis nisl quis aliquam pretium. Suspendisse ut tortor urna. Maecenas aliquet blandit tempus. Quisque
+        eu vehicula lectus. Praesent accumsan, ex eget faucibus vestibulum, felis ipsum tempor lacus, vitae imperdiet mauris risus at diam. Proin at diam et sem bibendum sagittis. Ut dignissim turpis nec sapien vestibulum faucibus. In hac habitasse platea
+        dictumst. Vivamus urna eros, sodales ac aliquam sit amet, egestas vitae risus. Etiam urna massa, ornare ut tincidunt in, elementum non sem. Morbi eros dolor, hendrerit non convallis ut, tincidunt ac dolor. Donec ullamcorper ante nunc, at sollicitudin
+        dolor molestie at. Sed sed arcu lorem. Donec pellentesque velit eget ante faucibus, vitae feugiat neque blandit. Mauris volutpat vestibulum lobortis. Duis a erat eu felis accumsan commodo. Phasellus eu lacinia mi. Phasellus sed ante elementum
+        mauris iaculis tempus. Maecenas a porttitor leo, nec porta mi. In ante erat, viverra id enim a, tincidunt fringilla arcu. Suspendisse potenti. In euismod lacus urna, sit amet pretium sem rutrum vel. Sed semper semper ex, et congue orci tempus
+        et. Ut lobortis finibus lectus, vitae placerat felis euismod a. Nulla iaculis lorem mauris, quis faucibus erat ultrices eget. Donec molestie, purus sit amet fermentum ultrices, felis libero malesuada augue, id dictum mauris erat sed urna. Ut tincidunt
+        in risus eget molestie. Vivamus placerat lectus ac erat facilisis, mattis dictum quam tristique. Quisque non fringilla nunc, et condimentum ante. Nulla augue quam, tincidunt id vestibulum vitae, ultrices a lacus. Curabitur facilisis at velit sit
+        amet porta. Donec pretium cursus leo id suscipit. Phasellus maximus erat at cursus condimentum. Curabitur sodales posuere tincidunt. Maecenas placerat sodales est at gravida. Pellentesque mattis pharetra velit, vitae rhoncus orci molestie id.
+        Etiam accumsan nisi et odio varius viverra. Suspendisse risus felis, convallis in dui a, suscipit consequat sapien. Integer rutrum, tellus nec placerat cursus, odio felis volutpat ipsum, sed molestie mauris justo vel risus. Aenean pulvinar in
+        purus in molestie. Vestibulum ultricies diam vitae lorem suscipit vehicula. Pellentesque sagittis orci erat, efficitur bibendum sem hendrerit et. Curabitur risus tellus, venenatis ornare elit sed, ultricies ullamcorper leo. Maecenas venenatis
+        feugiat sapien, sed molestie odio tristique vitae. Mauris a ex tincidunt, cursus lorem in, lobortis metus. Suspendisse non enim vel lacus fermentum congue. Morbi venenatis, mi vitae mattis auctor, est turpis tempus elit, quis bibendum risus ex
+        nec sem. Aliquam efficitur ex ac augue porta, sit amet pretium ex vehicula. Proin et purus tempus, facilisis velit nec, elementum risus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Lorem ipsum dolor
+        sit amet, consectetur adipiscing elit. Sed suscipit eros sit amet sem aliquam, eget accumsan dui molestie. Aliquam erat volutpat. Etiam tincidunt egestas congue. Praesent et sapien diam. Cras id consequat dolor. Maecenas feugiat, mi non tempor
+        tempor, mi libero luctus sapien, et sollicitudin lorem ipsum eu dolor. Praesent eu erat vitae dolor molestie auctor ac sit amet odio. Ut ut nulla sed orci eleifend ullamcorper eu nec elit. Aliquam nec dui sit amet nisl rutrum pretium. In placerat
+        felis eget lobortis lobortis. Suspendisse non placerat ex. Proin eleifend purus non ligula suscipit malesuada. Phasellus nibh est, placerat quis pretium at, fermentum a sapien. Aenean porta est eu sem malesuada, at mollis tellus sodales. Quisque
+        mollis erat nec leo pulvinar, et ullamcorper metus congue. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus bibendum elit eget ligula pretium, id lobortis dui dignissim. Nulla facilisi. Sed et nunc quis lorem sagittis sagittis
+        et nec massa. Sed scelerisque lectus quis tortor vehicula, sed interdum dolor luctus. Donec vehicula tincidunt sapien, eu dapibus ipsum eleifend et. Nulla sit amet eleifend nibh. Vestibulum id est semper magna semper dignissim. Morbi tempor felis
+        est, vitae vestibulum justo ultricies vel. Donec sed varius sem, in sagittis dolor. Donec elementum non metus et condimentum. Mauris ac leo vel odio aliquam lacinia et in dui. Aenean tempus porta ligula id ornare. In nec sem eu nunc ornare finibus
+        in eget felis. Suspendisse ultricies egestas laoreet. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed suscipit dolor blandit lectus pellentesque efficitur. Duis gravida lorem neque, ut hendrerit magna mattis at. Sed facilisis
+        venenatis elit faucibus ultrices. Maecenas suscipit augue ut leo dignissim accumsan. Proin ultricies tellus ut auctor imperdiet. Nulla non nulla tincidunt eros feugiat ultricies a at nunc. Mauris non fringilla nulla. Nullam molestie nisi eu nunc
+        euismod congue. Nullam id suscipit nibh, placerat ultrices metus. Donec eget nisl sed augue bibendum molestie sit amet quis erat. Phasellus sollicitudin turpis non ante hendrerit, vel malesuada quam ultricies. Vivamus vitae lorem sollicitudin,
+        elementum enim ac, tempor mi. Etiam semper faucibus tortor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Quisque sit amet pretium ipsum, ut aliquam enim. Donec lorem ipsum, convallis id ultrices a, luctus
+        id felis. Suspendisse placerat varius faucibus. Donec maximus pellentesque mi, non semper augue. Morbi placerat, lorem vitae auctor convallis, dolor mi ultrices leo, in lacinia felis arcu a sem. Duis condimentum dolor imperdiet, feugiat metus
+        eu, tincidunt nisl. Suspendisse eu faucibus purus, at tincidunt eros. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend leo et lacus tempus blandit in sit amet ex. Quisque eget ex diam. Donec et massa turpis. Aliquam
+        eget egestas dolor. Nunc tincidunt ornare nibh, mattis blandit tortor placerat sit amet. Morbi tincidunt nunc eget varius posuere. Aliquam dictum nulla eget tortor dapibus ultricies. Vestibulum in elit vel purus gravida suscipit in eu sapien.
+        Mauris vulputate commodo ligula et condimentum. Curabitur placerat tellus et lorem efficitur consequat. Sed pulvinar sagittis ex eget molestie. Sed id molestie leo, vel ullamcorper sapien. Nam egestas leo sed volutpat condimentum. Duis nisl mi,
+        pretium non scelerisque nec, hendrerit in magna. Sed nibh eros, pellentesque et risus a, eleifend auctor eros. Aliquam sed viverra arcu. Vestibulum faucibus interdum mollis. Nunc ligula metus, porta at placerat quis, molestie sed sapien. Aenean
+        lobortis dui in tristique cursus. Donec fringilla, felis in scelerisque aliquet, nibh lectus lobortis felis, sed commodo enim tortor et sem. Integer nibh nulla, sollicitudin consectetur massa eget, ullamcorper laoreet turpis. Sed mattis nisl quis
+        aliquam pretium. Suspendisse ut tortor urna. Maecenas aliquet blandit tempus. Quisque eu vehicula lectus. Praesent accumsan, ex eget faucibus vestibulum, felis ipsum tempor lacus, vitae imperdiet mauris risus at diam. Proin at diam et sem bibendum
+        sagittis. Ut dignissim turpis nec sapien vestibulum faucibus. In hac habitasse platea dictumst. Vivamus urna eros, sodales ac aliquam sit amet, egestas vitae risus. Etiam urna massa, ornare ut tincidunt in, elementum non sem. Morbi eros dolor,
+        hendrerit non convallis ut, tincidunt ac dolor. Donec ullamcorper ante nunc, at sollicitudin dolor molestie at. Sed sed arcu lorem. Donec pellentesque velit eget ante faucibus, vitae feugiat neque blandit. Mauris volutpat vestibulum lobortis.
+        Duis a erat eu felis accumsan commodo. Phasellus eu lacinia mi. Phasellus sed ante elementum mauris iaculis tempus. Maecenas a porttitor leo, nec porta mi. In ante erat, viverra id enim a, tincidunt fringilla arcu. Suspendisse potenti. In euismod
+        lacus urna, sit amet pretium sem rutrum vel. Sed semper semper ex, et congue orci tempus et. Ut lobortis finibus lectus, vitae placerat felis euismod a. Nulla iaculis lorem mauris, quis faucibus erat ultrices eget. Donec molestie, purus sit amet
+        fermentum ultrices, felis libero malesuada augue, id dictum mauris erat sed urna. Ut tincidunt in risus eget molestie. Vivamus placerat lectus ac erat facilisis, mattis dictum quam tristique. Quisque non fringilla nunc, et condimentum ante. Nulla
+        augue quam, tincidunt id vestibulum vitae, ultrices a lacus. Curabitur facilisis at velit sit amet porta. Donec pretium cursus leo id suscipit. Phasellus maximus erat at cursus condimentum. Curabitur sodales posuere tincidunt. Maecenas placerat
+        sodales est at gravida. Pellentesque mattis pharetra velit, vitae rhoncus orci molestie id. Etiam accumsan nisi et odio varius viverra. Suspendisse risus felis, convallis in dui a, suscipit consequat sapien. Integer rutrum, tellus nec placerat
+        cursus, odio felis volutpat ipsum, sed molestie mauris justo vel risus. Aenean pulvinar in purus in molestie. Vestibulum ultricies diam vitae lorem suscipit vehicula. Pellentesque sagittis orci erat, efficitur bibendum sem hendrerit et. Curabitur
+        risus tellus, venenatis ornare elit sed, ultricies ullamcorper leo. Maecenas venenatis feugiat sapien, sed molestie odio tristique vitae. Mauris a ex tincidunt, cursus lorem in, lobortis metus. Suspendisse non enim vel lacus fermentum congue.
+        Morbi venenatis, mi vitae mattis auctor, est turpis tempus elit, quis bibendum risus ex nec sem. Aliquam efficitur ex ac augue porta, sit amet pretium ex vehicula. Proin et purus tempus, facilisis velit nec, elementum risus. Class aptent taciti
+        sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed suscipit eros sit amet sem aliquam, eget accumsan dui molestie. Aliquam erat volutpat. Etiam tincidunt egestas
+        congue. Praesent et sapien diam. Cras id consequat dolor. Maecenas feugiat, mi non tempor tempor, mi libero luctus sapien, et sollicitudin lorem ipsum eu dolor. Praesent eu erat vitae dolor molestie auctor ac sit amet odio. Ut ut nulla sed orci
+        eleifend ullamcorper eu nec elit. Aliquam nec dui sit amet nisl rutrum pretium. In placerat felis eget lobortis lobortis. Suspendisse non placerat ex. Proin eleifend purus non ligula suscipit malesuada. Phasellus nibh est, placerat quis pretium
+        at, fermentum a sapien. Aenean porta est eu sem malesuada, at mollis tellus sodales. Quisque mollis erat nec leo pulvinar, et ullamcorper metus congue. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus bibendum elit eget ligula
+        pretium, id lobortis dui dignissim. Nulla facilisi. Sed et nunc quis lorem sagittis sagittis et nec massa. Sed scelerisque lectus quis tortor vehicula, sed interdum dolor luctus. Donec vehicula tincidunt sapien, eu dapibus ipsum eleifend et. Nulla
+        sit amet eleifend nibh. Vestibulum id est semper magna semper dignissim. Morbi tempor felis est, vitae vestibulum justo ultricies vel. Donec sed varius sem, in sagittis dolor. Donec elementum non metus et condimentum. Mauris ac leo vel odio aliquam
+        lacinia et in dui. Aenean tempus porta ligula id ornare. In nec sem eu nunc ornare finibus in eget felis. Suspendisse ultricies egestas laoreet. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed suscipit dolor blandit lectus pellentesque
+        efficitur. Duis gravida lorem neque, ut hendrerit magna mattis at. Sed facilisis venenatis elit faucibus ultrices. Maecenas suscipit augue ut leo dignissim accumsan. Proin ultricies tellus ut auctor imperdiet. Nulla non nulla tincidunt eros feugiat
+        ultricies a at nunc. Mauris non fringilla nulla. Nullam molestie nisi eu nunc euismod congue. Nullam id suscipit nibh, placerat ultrices metus. Donec eget nisl sed augue bibendum molestie sit amet quis erat. Phasellus sollicitudin turpis non ante
+        hendrerit, vel malesuada quam ultricies. Vivamus vitae lorem sollicitudin, elementum enim ac, tempor mi. Etiam semper faucibus tortor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Quisque sit amet pretium
+        ipsum, ut aliquam enim. Donec lorem ipsum, convallis id ultrices a, luctus id felis. Suspendisse placerat varius faucibus. Donec maximus pellentesque mi, non semper augue. Morbi placerat, lorem vitae auctor convallis, dolor mi ultrices leo, in
+        lacinia felis arcu a sem. Duis condimentum dolor imperdiet, feugiat metus eu, tincidunt nisl. Suspendisse eu faucibus purus, at tincidunt eros.</p>
+    <div id="overlay" class="overlay"></div>
+    <div id="prompt" class="prompt">
+        <div style="
+            width: 100%;
+            height: 30px;
+        ">
+            <div style="
+                border-radius: 50%;
+                background: linear-gradient(rgb(125 128 147 / 80%), rgb(55 62 88 / 80%));
+                position: absolute;
+                top: -30px;
+                width: 100%;
+                height: 60px;">
+            </div>
+
+        </div>
+        <div style="
+            position: relative;
+            top: -30%;
+            width: auto;
+            height: auto;
+            color: white;
+            text-align: center;
+            padding: 0px 20px;
+            font-family: Helvetica;
+            font-weight: 600;
+            font-size: 3vh;
+            text-shadow: 0px -2px 0px black;
+        ">Whenever I go back inside</div>
+        <div style="
+            position: relative;
+            top: -30%;
+            width: 100%;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            font-family: Helvetica;
+            font-size: 2.5vh;
+            text-shadow: 0px -2px 0px black;
+            line-height: 1.5;
+        ">I see places that I never saw
+            <br> The things I fail to notice
+            <br> But I can see them now
+        </div>
+        <button class="btn" onclick="closePrompt()">OK</button>
+        <button class="btnCancel" onclick="closePrompt()">Cancel</button>
+    </div>
+    <script>
+        function openPrompt() {
+            var x = document.getElementById("prompt").getBoundingClientRect();
+            document.getElementById("overlay").style.visibility = "visible"
+            document.getElementById("prompt").style.top = "calc(50% - " + (x.height / 2) + "px)"
+            document.getElementById("prompt").style.left = "calc(50% - " + (x.width / 2) + "px)"
+            document.getElementById("overlay").style.animation = "fade 0.8s normal"
+            document.getElementById("prompt").style.visibility = "visible"
+            document.getElementById("prompt").style.animation = "mymove 0.8s normal"
+        }
+
+        function closePrompt() {
+            document.getElementById("overlay").style.animation = "fadeout 0.5s normal"
+            document.getElementById("prompt").style.animation = "fadeout 0.4s normal"
+            setTimeout(function() {
+                document.getElementById("overlay").style.visibility = "hidden"
+                document.getElementById("prompt").style.visibility = "hidden"
+            }, 400)
+        }
+    </script>
+
+
+</body>
+
+</html>

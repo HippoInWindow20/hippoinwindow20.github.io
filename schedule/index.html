@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta name="apple-mobile-web-app-title" content="課表查詢">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+
+		<link rel="apple-touch-icon" sizes="128x128" href="scicon.jpg">
+		<link rel="icon" href="favicon.ico">
+
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+		<title>課表查詢 v5.1</title>
+	</head>
+	<style>
+		.buttonclose {
+			font-size: 54px;
+			color: #FF0000;
+			background-color: #FFFFFF;
+			margin: 2px 6px;
+			font-family: Segoe UI;
+			border-radius: 10px;
+		}
+
+		.buttonclose:active {
+			font-size: 54px;
+			color: #FFFFFF;
+			background-color: #FF0000;
+			margin: 2px 6px;
+			font-family: Segoe UI;
+			border-radius: 10px;
+		}
+
+		.buttonmenu {
+			font-size: 54px;
+			color: black;
+			margin: 2px 6px;
+			font-family: Segoe UI;
+			border-radius: 10px;
+		}
+
+		.buttonnum {
+			background-image: linear-gradient(#666666, #000000);
+			border-radius: 15px;
+			font-size: 80px;
+			padding: 0px 22px;
+			font-family: HelvBold;
+			color: white;
+		}
+
+		.buttonnum:active {
+			background-image: linear-gradient(#000000, #666666);
+			border-radius: 15px;
+			font-size: 80px;
+			padding: 0px 22px;
+			font-family: HelvBold;
+			color: white;
+		}
+
+		.buttoncall {
+			background-image: linear-gradient(0deg, #395CAB, #FF0000);
+			font-size: 72px;
+			color: white;
+			margin: 2px 6px;
+			font-family: Segoe UI;
+			border-radius: 10px;
+		}
+
+		.buttoncall:active {
+			background-image: linear-gradient(0deg, #FF0000, #395CAB);
+			font-size: 72px;
+			color: white;
+			margin: 2px 6px;
+			font-family: Segoe UI;
+			border-radius: 10px;
+		}
+
+		.buttoncall2 {
+			background-image: linear-gradient(0deg, #395CAB, #33C51F);
+			font-size: 72px;
+			color: white;
+			margin: 2px 6px;
+			font-family: Segoe UI;
+			border-radius: 10px;
+		}
+
+		.buttoncall2:active {
+			background-image: linear-gradient(0deg, #33C51F, #395CAB);
+			font-size: 72px;
+			color: white;
+			margin: 2px 6px;
+			font-family: Segoe UI;
+			border-radius: 10px;
+		}
+
+		.buttoncall3 {
+			background-image: linear-gradient(0deg, #395CAB, #FDE427);
+			font-size: 72px;
+			color: white;
+			margin: 2px 6px;
+			font-family: Segoe UI;
+			border-radius: 10px;
+		}
+
+		.buttoncall3:active {
+			background-image: linear-gradient(0deg, #FDE427, #395CAB);
+			font-size: 72px;
+			color: white;
+			margin: 2px 6px;
+			font-family: Segoe UI;
+			border-radius: 10px;
+		}
+
+		.buttonclear {
+			border-radius: 15px;
+			font-size: 68px;
+			padding: 0px 24px;
+			font-family: Roboto;
+			background-image: linear-gradient(#FF859C, #E3002C);
+			color: white;
+		}
+
+		.buttonclear:active {
+			border-radius: 15px;
+			font-size: 68px;
+			padding: 0px 24px;
+			font-family: Roboto;
+			background-image: linear-gradient(#E3002C, #FF859C);
+			color: white;
+		}
+
+		@font-face {
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: normal;
+			src: url('files/roboto.woff') format('woff');
+		}
+
+		@font-face {
+			font-family: 'Segoe UI';
+			font-style: normal;
+			font-weight: normal;
+			src: url('files/msjhbd.woff') format('woff');
+		}
+
+		@font-face {
+			font-family: 'HelvBold';
+			font-style: normal;
+			font-weight: normal;
+			src: url('files/hbold.woff') format('woff');
+		}
+
+		.bulletinboard {
+			font-family: Segoe UI;
+			font-size: 155px;
+			color: #FFE989;
+		}
+	</style>
+
+	<body style="font-family: Roboto;background-color: black;">
+		<div id="select">
+			<table height="30%" align="center" style="width: 100%;border: 0px;">
+				<td align="center">
+					<button type="button" class="buttonmenu" style="color: white;background-color: #C48C31;"
+						onClick="loadimg()">課表🎁</button>
+					<button type="button" class="buttonmenu" style="color: white;background-color: #E3002C;"
+						onClick="timeclass()">目前時段⏲️</button>
+					<button type="button" class="buttonmenu" style="color: white;background-color: #008659;"
+						onClick="closenow()">關閉❌</button>
+					<button type="button" class="buttonmenu" style="background-color: #F8B61C;"
+						onClick="about()">關於❔</button>
+					<button type="button" class="buttonmenu" style="color: white;background-color: #0070BD;"
+						onClick="linking()">快速捷徑🏀</button>
+					<button type="button" class="buttonmenu" style="background-color: #FFDB00;"
+						onClick="pickperson()">抽籤🎲</button>
+					<button type="button" class="buttonmenu" id="retractbutton" style="background-color: #FD9263;"
+						onClick="bulletin()">告示牌📄</button>
+					<button type="button" class="buttonclose" id="retractbutton" style="padding: 0px 20px;"
+						onClick="retract()">╳</button>
+
+				</td>
+			</table>
+		</div>
+		<div id="dropdown" style="display: none;">
+			<table style="width: 100%;border: 0px;">
+				<td align="right">
+					<img style="opacity: 0.1;width: 80px;z-index: 3;" onclick="detract()" src="files/drop.png"></img>
+				</td>
+			</table>
+		</div>
+		<div id="board" style="display: none;">
+			<table style="width: 100%;border: 0px;">
+				<td align="center">
+					<div id="fileupload">
+						<input type="file" id="targetfile"
+							style="font-family: Segoe UI;font-size: 36px;color: white;"></input>
+						<button class="buttoncall" onclick="upload()" style="font-size: 36px;">上傳</button>
+						<button class="buttoncall2" onclick="hideupload()" style="font-size: 36px;">隱藏</button>
+						<button class="buttoncall3" onclick="restore()" style="font-size: 36px;">說明</button>
+						<a href="files/test.txt"><button class="buttoncall" style="font-size: 36px;">另存示範檔案</button></a>
+					</div>
+					<div id="fileshow" style="display: none;">
+						<table style="width: 100%;border: 0px;">
+							<td align="right">
+								<button onclick="showupload()" style="font-size: 36px;opacity: 0.1;">顯示上傳</button>
+							</td>
+						</table>
+					</div>
+					<p></p>
+					<text id="line1" class="bulletinboard">布告欄 (.txt檔案)</text>
+					<p></p>
+					<text id="line2" class="bulletinboard">欲布告項目最多4行</text>
+					<p></p>
+					<text id="line3" class="bulletinboard">換行請以 , 分隔，</text>
+					<p></p>
+					<text id="line4" class="bulletinboard">不用Enter。</text>
+					<p></p>
+				</td>
+			</table>
+		</div>
+
+		<div id="classimg" style="display: none;">
+			<table style="width: 100%;border: 0px;">
+				<td align="center">
+					<img style="opacity: 0.75;width: 1900px;" src="files/base.png"></img>
+				</td>
+			</table>
+		</div>
+		<div id="picker" style="display: none;">
+			<table style="width: 100%;border: 0px;">
+				<tr>
+					<td align="center" width="100%">
+						<div style="opacity: 0.0001;">
+							<hr />
+							<hr />
+							<hr />
+						</div>
+						<button type="button" class="buttoncall" onClick="pickone()">抽一人</button>
+						<button type="button" class="buttoncall" onClick="picktwo()">抽二人</button>
+						<button type="button" class="buttoncall" onClick="pickthree()">抽三人</button>
+						<p></p>
+						<div style="opacity: 0.0001;">
+							<hr />
+							<hr />
+						</div>
+
+						<hr />
+						<label for="custom" style="font-size: 72px;color: white;font-family: Segoe UI;">號碼</label>
+						<select name="custom" id="mathcalc" style="font-size: 66px;font-family: Segoe UI;">
+							<option value="plus">+</option>
+							<option value="minus">-</option>
+							<option value="times">*</option>
+							<option value="divide">/</option>
+						</select>
+						<input type="number" size="50" id="valuefor" style="font-size: 72px;font-family: HelvBold;"
+							min="0" max="9999999999"></input>
+						<button type="button" class="buttoncall2" onClick="pickcustom()">抽籤</button>
+						<div style="border-radius: 8px;">
+							<table width="300px">
+								<td align="center">
+									<button class="buttonnum" width="33%" onclick="press(1)">1</button>
+									<button class="buttonnum" width="33%" onclick="press(2)">2</button>
+									<button class="buttonnum" width="33%" onclick="press(3)">3</button>
+									<p></p>
+									<button class="buttonnum" width="33%" onclick="press(4)">4</button>
+									<button class="buttonnum" width="33%" onclick="press(5)">5</button>
+									<button class="buttonnum" width="33%" onclick="press(6)">6</button>
+									<p></p>
+									<button class="buttonnum" width="33%" onclick="press(7)">7</button>
+									<button class="buttonnum" width="33%" onclick="press(8)">8</button>
+									<button class="buttonnum" width="33%" onclick="press(9)">9</button>
+									<p></p>
+									<button class="buttonnum" width="33%" onclick="press(0)">0</button>
+									<button class="buttonclear" width="66%" style="" onclick="clearvalue()">清除</button>
+								</td>
+
+					</td>
+
+			</table>
+		</div>
+
+		<p></p>
+		<div style="opacity: 0.0001;">
+			<hr />
+			<hr />
+		</div>
+
+		<hr />
+		<label for="datesel" style="font-size: 72px;color: white;font-family: Segoe UI;">日期 (日月)</label>
+		<select name="datesel" id="datealg" style="font-size: 72px;font-family: Segoe UI;">
+			<option value="plus">相加</option>
+			<option value="minus">相減</option>
+			<option value="times">相乘</option>
+			<option value="divide">相除</option>
+		</select>
+		<button type="button" class="buttoncall3" onClick="pickfromdate()">抽籤</button>
+		<p></p>
+
+		</td>
+		</tr>
+		</table>
+		</div>
+		<div align="center" id="pickerresults" style="display: none;">
+			<table width="100%">
+				<tr>
+					<div style="opacity: 0.0001;">
+						<hr />
+						<hr />
+						<hr />
+					</div>
+					<td align="center" style="padding: 70px 0px;">
+						<text style="font-family: Segoe UI;color: #FFFFFF;font-size: 100px;">結果：</text>
+						<p></p>
+						<text id="stdresult1" style="font-family: Segoe UI;color: #FFE989;font-size: 130px;"></text>
+						<p></p>
+						<text id="stdresult2" style="font-family: Segoe UI;color: #FFE989;font-size: 130px;"></text>
+						<p></p>
+						<text id="stdresult3" style="font-family: Segoe UI;color: #FFE989;font-size: 130px;"></text>
+						<p></p>
+						<button type="button" class="buttoncall" onClick="goback()">返回</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div id="classtime">
+			<div style="opacity: 0.0001;">
+				<hr />
+				<hr />
+				<hr />
+				<hr />
+				<hr />
+				<hr />
+				<hr />
+				<hr />
+				<hr />
+				<hr />
+				<hr />
+				<hr />
+			</div>
+			<table width="100%" height="90%" border="0">
+				<tr height="40%">
+					<td align="center" style="overflow: hidden;">
+						<text class="time" id="timer" align="center"
+							style="font-family: Roboto;font-size: 300px;position: relative;color: white;opacity: 0.8;"
+							onclick="switchtime()">--:--~--:--</text>
+						<p></p>
+						<text class="time" id="realtime" align="center"
+							style="font-family: Roboto;font-size: 300px;position: relative;color: white;opacity: 0.8;display: none;"
+							onclick="switchtimer()">--:--</text>
+					</td>
+				</tr>
+				<tr height="50%">
+					<td>
+						<table width="100%" border="0">
+							<tr>
+								<td>
+									<center>
+
+										<text id="subject"
+											style="font-family: Segoe UI;font-size: 285px;position: absolute;right: 50%;color: #FFE989;z-index: 1;">科目→</text>
+									</center>
+								</td>
+								<td>
+									<text id="upnext" align="left"
+										style="font-family: Segoe UI;font-size: 285px;position: absolute;color: #FFFFFF;opacity: 0.5;z-index: 1;">→科目</text>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="aboutver" style="display: none;">
+			<table style="width: 100%;border: 0px;">
+				<td align="center">
+					<div style="opacity: 0.0001;">
+						<hr />
+						<hr />
+					</div>
+					<text style="font-family: Segoe UI;font-size: 92px;color: #FFE989;">版本： 5.1</text>
+					<p></p>
+					<text style="font-family: Segoe UI;font-size: 92px;color: #FFE989;">2021-04-15</text>
+					<p></p>
+					<text style="font-family: Segoe UI;font-size: 92px;color: #FFE989;">． 新增足球連結</text>
+					<p></p>
+					<text style="font-family: Segoe UI;font-size: 92px;color: #FFE989;">． 改善抽籤限制</text>
+					<p></p>
+					<text style="font-family: Segoe UI;font-size: 92px;color: #FFE989;">． 新增範例txt檔案</text>
+					<p></p>
+					<text style="font-family: Segoe UI;font-size: 92px;color: #FFE989;">． 新增即時時間</text>
+					<p></p>
+					<i style="font-family: Roboto;font-size: 60px;color: #FFE989;">"Eventually we will run out of
+						ideas,</i>
+					<p></p>
+					<i style="font-family: Roboto;font-size: 60px;color: #FFE989;">but don't worry about that now."</i>
+				</td>
+			</table>
+		</div>
+		<div id="closeins" style="display: none;">
+			<table style="width: 100%;border: 0px;">
+				<td align="center">
+					<img src="files/ins1.png" width="850px"></img>
+					<p></p>
+					<text style="font-family: Segoe UI;font-size: 64px;color: white;">1. 從螢幕頂端下拉直到搜尋列 (OmniBar)
+						出現。</text>
+					<p></p>
+					<img src="files/ins2.png" width="850px"></img>
+					<p></p>
+					<text style="font-family: Segoe UI;font-size: 64px;color: white;">2. 選擇最小化 ( _ )。</text>
+					<p></p>
+					<img src="files/ins3.png" width="850px"></img>
+					<p></p>
+					<text style="font-family: Segoe UI;font-size: 64px;color: white;">3. 點名完畢請記得復原視窗。</text>
+
+				</td>
+			</table>
+		</div>
+		<div id="sportslink" style="display: none;">
+			<table style="width: 100%;border: 0px;">
+				<td align="center">
+					<div style="opacity: 0.0001;">
+						<hr />
+						<hr />
+						<hr />
+						<hr />
+					</div>
+					<a href="https://www.google.com/search?q=nba" target="_blank"><img src="files/nba.png"
+							width="850px"></img></a>
+					<p></p>
+					<a href="https://www.55zhibo.com/lanqiu/nba/" target="_blank"><img src="files/nbalive.png"
+							width="850px"></img></a>
+					<p></p>
+					<a href="https://www.google.com/search?q=mlb" target="_blank"><img src="files/mlb.png"
+							width="850px"></img></a>
+					<p></p>
+					<a href="https://www.google.com/search?q=premier+league" target="_blank"><img src="files/pls.png"
+							width="850px"></img></a>
+				</td>
+			</table>
+		</div>
+
+
+		<script src="files/jquery.min.js"></script>
+		<script src="files/jquery.backstretch.min.js"></script>
+		<script src="files/script.js"></script>
+		<script src="files/numpad.js"></script>
+		<script src="files/picker.js"></script>
+		<script src="files/bulletin.js"></script>
+
+		<div class="backstretch"
+			style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 881px; width: 1903px; z-index: -999999; position: fixed;opacity: 0.75;">
+			<img src="files/1.jpg"
+				style="position: absolute; margin: 0px; padding: 0px; border: none; width: 1903px; height: 1268.67px; max-height: none; max-width: none; z-index: -999999; left: 0px; top: -193.833px;opacity: 0.75;">
+		</div>
+	</body>
+
+</html>

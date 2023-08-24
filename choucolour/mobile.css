@@ -1,0 +1,402 @@
+body {
+    background: white;
+    font-family: "Plus Jakarta Sans", "微軟正黑體", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    overflow: hidden;
+    touch-action: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@font-face {
+    font-family: "Plus Jakarta Sans";
+    src: url("font/PlusJakartaSans-ExtraLight.woff");
+    font-weight: 200;
+    font-style: normal;
+}
+
+
+/* @font-face {
+    font-family: "Plus Jakarta Sans";
+    src: url("font/PlusJakartaSans-ExtraLightItalic.woff");
+    font-weight: 200;
+    font-style: italic, oblique;
+} */
+
+@font-face {
+    font-family: "Plus Jakarta Sans";
+    src: url("font/PlusJakartaSans-Light.woff");
+    font-weight: 300;
+    font-style: normal;
+}
+
+
+/* @font-face {
+    font-family: "Plus Jakarta Sans";
+    src: url("font/PlusJakartaSans-LightItalic.woff");
+    font-weight: 300;
+    font-style: italic, oblique;
+} */
+
+@font-face {
+    font-family: "Plus Jakarta Sans";
+    src: url("font/PlusJakartaSans-Regular.woff");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Plus Jakarta Sans";
+    src: url("font/PlusJakartaSans-Medium.woff");
+    font-weight: 500;
+    font-style: normal;
+}
+
+
+/* @font-face {
+    font-family: "Plus Jakarta Sans";
+    src: url("font/PlusJakartaSans-MediumItalic.woff");
+    font-weight: 500;
+    font-style: italic, oblique;
+} */
+
+@font-face {
+    font-family: "Plus Jakarta Sans";
+    src: url("font/PlusJakartaSans-SemiBold.woff");
+    font-weight: 600;
+    font-style: normal;
+}
+
+
+/* @font-face {
+    font-family: "Plus Jakarta Sans";
+    src: url("font/PlusJakartaSans-SemiBoldItalic.woff");
+    font-weight: 600;
+    font-style: italic, oblique;
+} */
+
+@font-face {
+    font-family: "Plus Jakarta Sans";
+    src: url("font/PlusJakartaSans-Bold.woff");
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+/* @font-face {
+    font-family: "Plus Jakarta Sans";
+    src: url("font/PlusJakartaSans-BoldItalic.woff");
+    font-weight: 700;
+    font-style: italic, oblique;
+} */
+
+@font-face {
+    font-family: "Plus Jakarta Sans";
+    src: url("font/PlusJakartaSans-ExtraBold.woff");
+    font-weight: 800;
+    font-style: normal;
+}
+
+
+/* @font-face {
+    font-family: "Plus Jakarta Sans";
+    src: url("font/PlusJakartaSans-ExtraBoldItalic.woff");
+    font-weight: 800;
+    font-style: italic, oblique;
+} */
+
+.header {
+    background: white;
+    /* box-shadow: 0px 2px 10px 1px #666; */
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 10px;
+    z-index: 99;
+}
+
+.title {
+    padding: 0vh 2vh;
+    font-size: 4vh;
+}
+
+button {
+    background: none;
+    border: none;
+    transition: 0.1s;
+    border-radius: 6.5vh;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+}
+
+button:hover {
+    /*background: rgba(0, 0, 0, 0.1);*/
+    background: rgba(0, 0, 0, 0);
+}
+
+button:active {
+    /* background: rgba(0, 0, 0, 0.15); */
+    background: rgba(0, 0, 0, 0);
+}
+
+.main {
+    z-index: 98;
+}
+
+input {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.flexbox {
+    display: flex;
+    width: 33.3%;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    height: 14.5vh;
+}
+
+.preset {
+    height: 7vh;
+    width: 7vh;
+    border-radius: 50%;
+    border: 3px solid #FFF;
+    background: #666;
+}
+
+.preset:hover {
+    background: #666;
+    height: 7vh;
+    width: 7vh;
+}
+
+.preset:active {
+    height: 4vh;
+    width: 4vh;
+}
+
+.custom {
+    height: 7vh;
+    width: 7vh;
+    border-radius: 50%;
+    border: 3px solid #FFF;
+    background: url("wheel.png");
+    background-size: contain;
+    display: none;
+}
+
+.custom:active {
+    background: url("wheel.png");
+    background-size: contain;
+    height: 4vh;
+    width: 4vh;
+}
+
+.custom:hover {
+    background: url("wheel.png");
+    background-size: contain;
+    height: 7vh;
+    width: 7vh;
+}
+
+.selected {
+    border: 3px solid rgb(0, 162, 255);
+}
+
+.settingsPanel {
+    width: 100%;
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 2vh 2vh;
+    /* overflow-y: auto;
+    overflow-x: hidden; */
+}
+
+.heading {
+    font-size: 7vh;
+    padding: 0 2vh;
+}
+
+.spacing {
+    padding: 3vh 2vh;
+    width: 90vw;
+    vertical-align: baseline;
+    transition: 0.5s;
+    height: 12vh;
+    /* border-top: 1px solid #555;
+    border-bottom: 1px solid #555; */
+    border-radius: 6vh;
+    box-sizing: border-box;
+}
+
+
+/* .spacing:active {
+    background: rgba(0, 162, 255, 0.1);
+    transition: 0s;
+    border-top: 1px solid rgb(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgb(0, 0, 0, 0.08);
+} */
+
+.valueTitle {
+    font-size: 4.5vh;
+    float: left;
+    font-family: "Plus Jakarta Sans", "微軟正黑體", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.valueSwitch {
+    height: 6vh;
+    width: auto;
+    float: right;
+}
+
+.popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0);
+    width: 100vw;
+    height: 100vh;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+.innerPopup {
+    background: white;
+    width: 90vw;
+    height: auto;
+    padding: 2vh 2vh;
+    border-radius: 6vh;
+    text-align: center;
+    transform: scale(0);
+    transition: 0.2s;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.popupTitle {
+    font-size: 5vh;
+    padding: 0 2vh;
+    font-weight: 500;
+    text-align: center;
+}
+
+.popupContent {
+    font-size: 3vh;
+    padding: 2vh 2vh;
+    text-align: center;
+}
+
+.closeBtn {
+    letter-spacing: 1px;
+    font-size: 3vh;
+    color: rgb(0, 162, 255);
+    padding: 2vh 2vh;
+    font-family: inherit;
+    font-weight: 800;
+    width: 100%;
+    transition: 0s;
+}
+
+.closeBtn:active {
+    transition: 0.2s;
+}
+
+.closeBtn:active {
+    background: rgba(0, 162, 255, 0.1);
+}
+
+.saveBtn {
+    background: #006aa7;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    letter-spacing: 10px;
+    padding: 2vh;
+    color: white;
+    transition: 0.2s;
+}
+
+.saveBtn:hover {
+    background: #006aa7;
+}
+
+.saveBtn:active {
+    /* letter-spacing: 25px; */
+    background: #edf8ff;
+    color: #006aa7;
+    transform: scale(0.8);
+}
+
+.revertBtn {
+    background: #edf8ff;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    letter-spacing: 10px;
+    padding: 2vh;
+    color: #006aa7;
+    transition: 0.2s;
+}
+
+.revertBtn:hover {
+    background: #edf8ff;
+}
+
+.revertBtn:active {
+    /* letter-spacing: 25px; */
+    background: #006aa7;
+    color: white;
+    transform: scale(0.8);
+}
+
+.template {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 50vh;
+    transition: 0.2s;
+    width: 35.5vh
+}
+
+.template:active {
+    filter: brightness(0.7);
+    transform: scale(0.8);
+}
+
+.templatebg {
+    width: 35.5vh;
+    height: 50vh;
+    overflow: hidden;
+    box-shadow: 0px 2px 10px 1px #888;
+    transition: 0.2s
+}
+
+.template:active {
+    filter: brightness(0.8);
+    transform: scale(0.8);
+}
+
+img {
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}

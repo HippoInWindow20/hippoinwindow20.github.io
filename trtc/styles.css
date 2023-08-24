@@ -1,0 +1,9 @@
+img:hover {
+filter: brightness(2);
+cursor: pointer;
+transition: 0.3s;
+}
+img:active {
+filter: brightness(0.5);
+cursor: pointer;
+}

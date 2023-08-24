@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Metro Test</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;400;500;700&display=swap" rel="stylesheet">
+</head>
+<style>
+    @font-face {
+        font-family: 'DIN Next Bold';
+        font-style: normal;
+        font-weight: normal;
+        src: url('din.woff') format('woff');
+    }
+    
+    span.ripple {
+        position: absolute;
+        /* The absolute position we mentioned earlier */
+        border-radius: 50%;
+        transform: scale(0);
+        animation: ripple 400ms linear;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+    
+    @keyframes ripple {
+        to {
+            transform: scale(1);
+            opacity: 0;
+        }
+    }
+    
+    .main {
+        background: white;
+        font-family: Noto Sans TC;
+        font-size: 30px;
+        color: #444;
+        font-weight: 700;
+        width: 100%;
+        padding: 230px 0;
+    }
+    
+    .weather {
+        width: 90%;
+        background: linear-gradient(to right, #4C6BA0, #2B4F8B);
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px 3px #888;
+        color: white;
+        font-family: Noto Sans TC;
+        font-weight: normal;
+        overflow: hidden;
+    }
+    
+    .menucard {
+        width: 90%;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px 3px #888;
+        color: white;
+        font-family: Noto Sans TC;
+        overflow: hidden;
+        transition: 0.3s;
+    }
+    
+    .menucard:active {
+        box-shadow: 0px 0px 15px 3px rgb(255, 242, 0);
+    }
+    
+    button,
+    textarea,
+    input,
+    select,
+    a {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        -webkit-tap-highlight-color: transparent;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+</style>
+
+<body style="background: white;font-weight: 400;" ontouchstart>
+
+    <div align="center" id="main" class="main">
+        <img src="ad.jpg" style="width: 90%;border-radius: 10px;box-shadow: 0px 0px 15px 3px #888;"></img>
+        <p></p>
+
+        <div align="center" id="weather" class="weather">
+            <table width="96%">
+                <tr>
+                    <td align="left" width="80%">
+                        <text style="font-size: 3vw;opacity: 0.8;">天氣 | </text>
+                        <img src="location.svg" style="height: 3vw;padding: 0px 5px;"></img>
+                        <text style="font-size: 3vw;">台北市中山區 </text>
+                    </td>
+                    <td align="right" width="20%">
+                        <text style="font-size: 3vw;opacity: 0.6;" onclick="cwb()">中央氣象局</text>
+                    </td>
+                </tr>
+            </table>
+            <table width="96%">
+                <tr>
+                    <td width="26%">
+                        <img src="weather.png" style="padding: 15px 15px;width: 80%;filter: drop-shadow(0px 0px 10px #888);"></img>
+                    </td>
+                    <td width="29%">
+                        <text style="font-family: DIN Next Bold;font-size: 10vw;color: white;">28℃</text>
+                    </td>
+                    <td width="45%">
+                        <text style="font-family: Noto Sans TC;font-size: 6vw;color: white;font-weight: 500;">多雲時陰</text>
+                        <br>
+                        <text style="font-family: Noto Sans TC;font-size: 4vw;color: white;">降雨機率：</text>
+                        <text style="font-family: DIN Next Bold;font-size: 4vw;color: white;">40%</text>
+                        <br>
+                        <text style="font-family: Noto Sans TC;font-size: 3vw;color: white;">最低：</text>
+                        <text style="font-family: DIN Next Bold;font-size: 3vw;color: white;">26℃ |</text>
+                        <text style="font-family: Noto Sans TC;font-size: 3vw;color: white;"> 最高：</text>
+                        <text style="font-family: DIN Next Bold;font-size: 3vw;color: white;">29℃</text>
+                        <br><br>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <p></p>
+        <div align="center" id="menucard" class="menucard">
+            <table width="96%">
+                <tr>
+                    <td align="left" width="20%">
+
+                        <img src="menuicon1.webp" style="width: 100%;padding: 20px 0px;"></img>
+                    </td>
+                    <td align="left" width="80%" style="padding: 0px 20px;">
+                        <text style="font-size: 4vw;color: black;font-weight: 700;">捷運路網</text>
+                        <hr style="border: 3px solid #e3002c;">
+                        <text style="font-size: 3vw;color: black;font-weight: 400;">旅程規劃、票價</text>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <div align="center" id="menucard" class="menucard">
+            <table width="96%">
+                <tr>
+                    <td align="left" width="20%">
+
+                        <img src="ic_hm_coupon.png" style="width: 100%;padding: 20px 0px;"></img>
+                    </td>
+                    <td align="left" width="80%" style="padding: 0px 20px;">
+                        <text style="font-size: 4vw;color: black;font-weight: 700;">會員獨享</text>
+                        <hr style="border: 3px solid #f8b61c;">
+                        <text style="font-size: 3vw;color: black;font-weight: 400;">捷運周邊商家優惠</text>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <div align="center" id="menucard" class="menucard">
+            <table width="96%">
+                <tr>
+                    <td align="left" width="20%">
+
+                        <img src="icon_sc.webp" style="width: 100%;padding: 20px 0px;"></img>
+                    </td>
+                    <td align="left" width="80%" style="padding: 0px 20px;">
+                        <text style="font-size: 4vw;color: black;font-weight: 700;">我的票卡</text>
+                        <hr style="border: 3px solid #ffdb00;">
+                        <text style="font-size: 3vw;color: black;font-weight: 400;">常客優惠、扣款紀錄</text>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <div align="center" id="menucard" class="menucard">
+            <table width="96%">
+                <tr>
+                    <td align="left" width="20%">
+
+                        <img src="ic_metrocoupon.webp" style="width: 100%;padding: 20px 0px;"></img>
+                    </td>
+                    <td align="left" width="80%" style="padding: 0px 20px;">
+                        <text style="font-size: 4vw;color: black;font-weight: 700;">捷客配</text>
+                        <hr style="border: 3px solid #008659;">
+                        <text style="font-size: 3vw;color: black;font-weight: 400;">旅程規劃、票價</text>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <div align="center" id="menucard" class="menucard">
+            <table width="96%">
+                <tr>
+                    <td align="left" width="20%">
+
+                        <img src="ic_menu_cw.webp" style="width: 100%;padding: 20px 0px;"></img>
+                    </td>
+                    <td align="left" width="80%" style="padding: 0px 20px;">
+                        <text style="font-size: 4vw;color: black;font-weight: 700;">車廂擁擠度</text>
+                        <hr style="border: 3px solid #0070bd;">
+                        <text style="font-size: 3vw;color: black;font-weight: 400;">板南線、文湖線車廂擁擠度</text>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <div align="center" id="menucard" class="menucard">
+            <table width="96%">
+                <tr>
+                    <td align="left" width="20%">
+
+                        <img src="menuicon2.webp" style="width: 100%;padding: 20px 0px;"></img>
+                    </td>
+                    <td align="left" width="80%" style="padding: 0px 20px;">
+                        <text style="font-size: 4vw;color: black;font-weight: 700;">到站時刻</text>
+                        <hr style="border: 3px solid #c48c31;">
+                        <text style="font-size: 3vw;color: black;font-weight: 400;">進站時間、鄰近車站</text>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <div align="center" id="menucard" class="menucard">
+            <table width="96%">
+                <tr>
+                    <td align="left" width="20%">
+
+                        <img src="ic_kkday.webp" style="width: 100%;padding: 20px 0px;"></img>
+                    </td>
+                    <td align="left" width="80%" style="padding: 0px 20px;">
+                        <text style="font-size: 4vw;color: black;font-weight: 700;">捷運假期</text>
+                        <hr style="border: 3px solid #008659;">
+                        <text style="font-size: 3vw;color: black;font-weight: 400;">Metro Holiday X KKday</text>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <div align="center" id="menucard" class="menucard">
+            <table width="96%">
+                <tr>
+                    <td align="left" width="20%">
+
+                        <img src="menuicon_fresh.png" style="width: 100%;padding: 20px 0px;"></img>
+                    </td>
+                    <td align="left" width="80%" style="padding: 0px 20px;">
+                        <text style="font-size: 4vw;color: black;font-weight: 700;">捷客鮮</text>
+                        <hr style="border: 3px solid #e3002c;">
+                        <text style="font-size: 3vw;color: black;font-weight: 400;">APP訂餐、車站取餐</text>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <div align="center" id="menucard" class="menucard">
+            <table width="96%">
+                <tr>
+                    <td align="left" width="20%">
+
+                        <img src="alertbtn2.webp" style="width: 100%;padding: 20px 0px;"></img>
+                    </td>
+                    <td align="left" width="80%" style="padding: 0px 20px;">
+                        <text style="font-size: 4vw;color: black;font-weight: 700;">下車提醒</text>
+                        <hr style="border: 3px solid #f8b61c;">
+                        <text style="font-size: 3vw;color: black;font-weight: 400;">開啟藍牙，設定目的車站</text>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+<script>
+    function createRipple(event) {
+        const button = event.currentTarget;
+        const circle = document.createElement("span");
+        const diameter = Math.max(button.clientWidth, button.clientHeight);
+        const radius = diameter / 2;
+        circle.style.width = circle.style.height = `${diameter}px`;
+        circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+        circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
+        circle.classList.add("ripple");
+        const ripple = button.getElementsByClassName("ripple")[0];
+        if (ripple) {
+            ripple.remove();
+        }
+        button.appendChild(circle);
+    }
+    const buttons = document.getElementsByTagName("button");
+    for (const button of buttons) {
+        button.addEventListener("click", createRipple);
+    }
+
+    setInterval(function() {
+        var x = window.innerWidth * 0.9;
+        var y = x / 2.2;
+        //document.getElementById("weather").style.height = y + "px";
+    }, 500);
+
+    function cwb() {
+        window.open("https://www.cwb.gov.tw/V8/C/");
+    }
+</script>
+
+</html>

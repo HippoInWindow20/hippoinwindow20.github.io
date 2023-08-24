@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--Hey kind starnger, may I confess something to you?-->
+<html>
+	<head>
+		<title>線上時鐘</title>
+		<meta charset="UTF-8">
+		<meta name="apple-mobile-web-app-title" content="線上時鐘">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="theme-color" content="#262222">
+		<link rel="apple-touch-icon" sizes="128x128" href="clock.png">
+		<link rel="icon" href="clock.png">
+		<link href="style.css" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		
+	</head>
+	<!-- ON LOAD OF THE PAGE, THE CLOCK WILL START TICKING. -->
+	<body onload="digitized()">
+		<div style="opacity: 0.001;">
+			<hr>
+			<hr>
+			<hr>
+			<hr>
+			<hr>
+			<hr>
+			<hr>
+			<hr>
+			<hr>
+		</div>
+		<div id="spaceholder" style="opacity: 0.001;display: none;">
+			<hr>
+			<hr>
+			<hr>
+			<hr>
+			<hr>
+			<hr>
+			<hr>
+			<hr>
+		</div>
+		<text style="font-size: 10vw;" id="emojit" contenteditable onfocus="microEdit()" onblur="saveContents()"></text>
+		<!-- <text style="font-size: 10vw;" id="emojit" contenteditable onblur="saveContents()"></text> -->
+		<button id="saveContents" onclick="saveContents()" class="change" style="display: none;">儲存變更</button>
+		<div>
+			<text class="clock" style="font-size: 24vw;" id="dc" align="center" valign="middle" onclick="showpanel()"></text> 
+        </div>
+		<div id="emojifield" style="display: none;">
+			<hr>
+			<text style="font-size: 3vw;font-weight: bold;">修改標題文字</text>
+			<br>
+			<input id="username"></input>
+			<button title="更改標題文字" class="change" type="button" id="startfunc" onclick="change()">更改</button>
+			<button title="隱藏此介面，並停用捲動功能。點選時鐘以顯示此介面。" class="hidePanel" style="" onclick="hide()">隱藏面板</button>
+		</div>
+	</body>
+	<script>
+	var titleText = document.getElementById("username");
+
+	titleText.addEventListener("keyup", function(event) {
+		if (event.keyCode === 13) {
+			event.preventDefault();
+			document.getElementById("startfunc").click();
+		}
+	});
+	</script>
+	<script src="script.js"></script>
+</html>
