@@ -1,37 +1,35 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
-		<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" >
+		<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 		<title>台北捷運廣播選播~一般車站</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<link rel="stylesheet" href="styles.css">
+		<link rel="stylesheet" href="styles.css">
 		<style>
 			body {
 				text-decoration: none;
 				display: none;
+				font-family: '微軟正黑體', 'Roboto', -apple-system, sans-serif;
+				font-weight: bolder;
 			}
-			@font-face {
-				font-family: 'Segoe UI Regular';
-				font-style: normal;
-				font-weight: normal;
-				src: url('../schedule/files/msjhbd.woff') format('woff');
-			}
+
 			.title {
-				font-family: 'Segoe UI Regular';
 				font-size: 40px;
 			}
+
 			.sub {
-				font-family: 'Segoe UI Regular';
 				font-size: 24px;
 			}
+
 			.j {
-				font-family: 'Segoe UI Regular';
 				font-size: 36px;
 			}
 		</style>
 	</head>
+
 	<body>
 		<div align="center">
 			<a href="https://www.metro.taipei/">
@@ -44,45 +42,46 @@
 			<br>
 			<text class="sub">轉乘廣播請至</text>
 			<img style="cursor: pointer;" src="images/transfer.png" onclick="jump()"></img>
-			<hr>
-			<img src="images/left.png"  width="164" height="29"  onclick="playsp('left')"></img>
-			<img src="images/right.png"  width="164" height="29"  onclick="playsp('right')"></img>
-			<hr>
+			<br>
+			<img src="images/left.png" width="164" height="29" onclick="playsp('left')"></img>
+			<img src="images/right.png" width="164" height="29" onclick="playsp('right')"></img>
+			<br>
 			<audio id="main" controls>
-			<hr>
+				<br>
 		</div>
-		<img src="images/bricon.jpg"  width="36" height="36"></img>
+		<img src="images/bricon.jpg" width="36" height="36"></img>
 		<text class="j">文湖線 Wenhu Line</text>
-		<hr>
-		<img src="images/BR/br.png" width="164" height="29" onclick="play('br01')" ></img>
-		<img src="images/BR/br2.png" width="164" height="29" onclick="play('br02')" ></img>
-		<img src="images/BR/br3.png" width="164" height="29"  onclick="play('br03')"></img>
-		<img src="images/BR/br4.png" width="164" height="29"  onclick="play('br04')"></img>
-		<img src="images/BR/br5.png" width="164" height="29"  onclick="play('br05')"></img>
-		<img src="images/BR/br6.png" width="164" height="29"  onclick="play('br06')"></img>
-		<img src="images/BR/br7.png" width="164" height="29"  onclick="play('br07')"></img>
-		<img src="images/BR/br8.png" width="164" height="29"  onclick="play('br08')"></img>
-		<img src="images/BR/br9.png" width="164" height="29"  onclick="play('br09')"></img>
-		<img src="images/BR/br10.png" width="164" height="29"  onclick="play('br10')"></img>
-		<img src="images/BR/br11.png" width="164" height="29"  onclick="play('br11')"></img>
-		<img src="images/BR/br12.png" width="164" height="29"  onclick="play('br12')"></img>
-		<img src="images/BR/br13.png" width="164" height="29"  onclick="play('br13')"></img>
-		<img src="images/BR/br14.png" width="164" height="29"  onclick="play('br14')"></img>
-		<img src="images/BR/br15.png" width="164" height="29"  onclick="play('br15')"></img>
-		<img src="images/BR/br16.png" width="164" height="29"  onclick="play('br16')"></img>
-		<img src="images/BR/br17.png" width="164" height="29"  onclick="play('br17')"></img>
-		<img src="images/BR/br18.png" width="164" height="29"  onclick="play('br18')"></img>
-		<img src="images/BR/br19.png" width="164" height="29"  onclick="play('br19')"></img>
-		<img src="images/BR/br20.png" width="164" height="29"  onclick="play('br20')"></img>
-		<img src="images/BR/br21.png" width="164" height="29"  onclick="play('br21')"></img>
-		<img src="images/BR/br22.png" width="164" height="29"  onclick="play('br22')"></img>
-		<img src="images/BR/br23.png" width="164" height="29"  onclick="play('br23')"></img>
-		<img src="images/BR/br24.png" width="164" height="29"  onclick="play('br24')"></img>
+		<br>
+		<img src="images/BR/br.png" width="164" height="29" onclick="play('br01')"></img>
+		<img src="images/BR/br2.png" width="164" height="29" onclick="play('br02')"></img>
+		<img src="images/BR/br3.png" width="164" height="29" onclick="play('br03')"></img>
+		<img src="images/BR/br4.png" width="164" height="29" onclick="play('br04')"></img>
+		<img src="images/BR/br5.png" width="164" height="29" onclick="play('br05')"></img>
+		<img src="images/BR/br6.png" width="164" height="29" onclick="play('br06')"></img>
+		<img src="images/BR/br7.png" width="164" height="29" onclick="play('br07')"></img>
+		<img src="images/BR/br8.png" width="164" height="29" onclick="play('br08')"></img>
+		<img src="images/BR/br9.png" width="164" height="29" onclick="play('br09')"></img>
+		<img src="images/BR/br10.png" width="164" height="29" onclick="play('br10')"></img>
+		<img src="images/BR/br11.png" width="164" height="29" onclick="play('br11')"></img>
+		<img src="images/BR/br12.png" width="164" height="29" onclick="play('br12')"></img>
+		<img src="images/BR/br13.png" width="164" height="29" onclick="play('br13')"></img>
+		<img src="images/BR/br14.png" width="164" height="29" onclick="play('br14')"></img>
+		<img src="images/BR/br15.png" width="164" height="29" onclick="play('br15')"></img>
+		<img src="images/BR/br16.png" width="164" height="29" onclick="play('br16')"></img>
+		<img src="images/BR/br17.png" width="164" height="29" onclick="play('br17')"></img>
+		<img src="images/BR/br18.png" width="164" height="29" onclick="play('br18')"></img>
+		<img src="images/BR/br19.png" width="164" height="29" onclick="play('br19')"></img>
+		<img src="images/BR/br20.png" width="164" height="29" onclick="play('br20')"></img>
+		<img src="images/BR/br21.png" width="164" height="29" onclick="play('br21')"></img>
+		<img src="images/BR/br22.png" width="164" height="29" onclick="play('br22')"></img>
+		<img src="images/BR/br23.png" width="164" height="29" onclick="play('br23')"></img>
+		<img src="images/BR/br24.png" width="164" height="29" onclick="play('br24')"></img>
 		<br>
 		<br>
-		<img src="images/ricon.jpg"  width="36" height="36"></img>
+		<br>
+		<img src="images/ricon.jpg" width="36" height="36"></img>
 		<text class="j">淡水信義線 Tamsui-Xinyi Line</text>
-		<hr>
+		<br>
 		<img src="images/R/r2.png" width="164" height="29" onclick="play('r02')"></img>
 		<img src="images/R/r3.png" width="164" height="29" onclick="play('r03')"></img>
 		<img src="images/R/r4.png" width="164" height="29" onclick="play('r04')"></img>
@@ -113,9 +112,10 @@
 		<img src="images/R/r28.png" width="164" height="29" onclick="play('r28')"></img>
 		<br>
 		<br>
-		<img src="images/gicon.jpg"  width="36" height="36"></img>
+		<br>
+		<img src="images/gicon.jpg" width="36" height="36"></img>
 		<text class="j">松山新店線 Songshan-Xindian Line</text>
-		<hr>
+		<br>
 		<img src="images/G/g01.png" width="164" height="29" onclick="play('g01')"></img>
 		<img src="images/G/g02.png" width="164" height="29" onclick="play('g02')"></img>
 		<img src="images/G/g03.png" width="164" height="29" onclick="play('g03')"></img>
@@ -138,9 +138,10 @@
 		<img src="images/G/g19.png" width="164" height="29" onclick="play('g19')"></img>
 		<br>
 		<br>
-		<img src="images/oicon.jpg"  width="36" height="36"></img>
+		<br>
+		<img src="images/oicon.jpg" width="36" height="36"></img>
 		<text class="j">中和新蘆線 Zhonghe-Xinlu Line</text>
-		<hr>
+		<br>
 		<img src="images/O/o01.png" width="164" height="29" onclick="play('o01')"></img>
 		<img src="images/O/o02.png" width="164" height="29" onclick="play('o02')"></img>
 		<img src="images/O/o03.png" width="164" height="29" onclick="play('o03')"></img>
@@ -169,9 +170,10 @@
 		<img src="images/O/o54.png" width="164" height="29" onclick="play('o54')"></img>
 		<br>
 		<br>
-		<img src="images/blicon.jpg"  width="36" height="36" >
+		<br>
+		<img src="images/blicon.jpg" width="36" height="36">
 		<text class="j">板南線 Bannan Line</text>
-		<hr>
+		<br>
 		<img src="images/BL/bl01.png" width="164" height="29" onclick="play('bl01')">
 		<img src="images/BL/bl02.png" width="164" height="29" onclick="play('bl02')">
 		<img src="images/BL/bl03.png" width="164" height="29" onclick="play('bl03')">
@@ -197,10 +199,11 @@
 		<img src="images/BL/bl23.png" width="164" height="29" onclick="play('bl23')">
 		<br>
 		<br>
-		<img src="images/yicon.png"  width="36" height="36"></img>
+		<br>
+		<img src="images/yicon.png" width="36" height="36"></img>
 		<text class="j">環狀線 Circular Line</text>
-		<hr>
-		<img src="images/Y/y07.png" width="164" height="29" onclick="play('y07')" >
+		<br>
+		<img src="images/Y/y07.png" width="164" height="29" onclick="play('y07')">
 		<img src="images/Y/y08.png" width="164" height="29" onclick="play('y08')">
 		<img src="images/Y/y09.png" width="164" height="29" onclick="play('y09')">
 		<img src="images/Y/y10.png" width="164" height="29" onclick="play('y10')">
@@ -219,25 +222,26 @@
 			<img style="cursor: pointer;" src="images/transfer.png" onclick="jump()">
 		</div>
 	</body>
-    <script>
-	function play(name){
-		document.getElementById("main").src = "../audio/new/" + name + ".mp3";
-		var audio = document.getElementById("main");
-		audio.play();
-	}
-	function playsp(name){
-		document.getElementById("main").src = "../audio/" + name + ".mp3";
-		var audio = document.getElementById("main");
-		audio.play();
-	}
-	setTimeout(function () {
-		$("body").fadeIn();
-	}, 1000);
-	function jump () {
-		$("body").fadeOut();
+	<script>
+		function play(name) {
+			document.getElementById("main").src = "../audio/new/" + name + ".mp3";
+			var audio = document.getElementById("main");
+			audio.play();
+		}
+		function playsp(name) {
+			document.getElementById("main").src = "../audio/" + name + ".mp3";
+			var audio = document.getElementById("main");
+			audio.play();
+		}
 		setTimeout(function () {
-			window.location.href = "transfer.html";
+			$("body").fadeIn();
 		}, 1000);
-	}
-    </script>
+		function jump() {
+			$("body").fadeOut();
+			setTimeout(function () {
+				window.location.href = "transfer.html";
+			}, 1000);
+		}
+	</script>
+
 </html>
