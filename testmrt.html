@@ -1,455 +1,499 @@
 <!DOCTYPE html>
 <html>
-<meta charset= "UTF-8">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="apple-mobile-web-app-title" content="MetroPIDS">
-<meta name="apple-mobile-web-app-capable" content="yes">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="MetroPIDS">
+  <meta name="apple-mobile-web-app-capable" content="yes">
 
-<link rel="apple-touch-icon" sizes="128x128"  href="apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="128x128" href="apple-touch-icon.png">
 
 
-<head>
-<title>台北捷運旅客資訊顯示器 v3.1</title>
-</head>
+  <head>
+    <title>台北捷運旅客資訊顯示器 v3.1</title>
+  </head>
 
-<style>
-@font-face {
-    font-family: 'Segoe UI Regular';
-    font-style: normal;
-    font-weight: normal;
-    src: url('segoe/SegoeUISemi.woff') format('woff');
+  <style>
+    @font-face {
+      font-family: 'Segoe UI Regular';
+      font-style: normal;
+      font-weight: normal;
+      src: url('segoe/SegoeUISemi.woff') format('woff');
     }
-timeset {
-  font-family: "Segoe UI Regular";
-  font-size: 45px;
-  font-weight: normal;
-}
-datelol {
-  font-family: "Segoe UI Regular";
-  font-size: 38px;
-  font-weight: normal;
-  padding-top: 0px;
-}
-timelol {
-  font-family: "Segoe UI Regular";
-  font-size: 38px;
-  font-weight: normal;
-  padding-top: 0px;
-}
-direction {
-  font-family: "Segoe UI Regular";
-  font-size: 48px;
-  font-weight: normal;
-}
-directionext {
-  font-family: "Segoe UI Regular";
-  font-size: 36px;
-  font-weight: normal;
-}
-toletter {
-  font-family: "Segoe UI Regular";
-  font-size: 36px;
-  font-weight: normal;
-}
-approach{
-font-family: "Segoe UI Regular";
-  font-size: 36px;
-  font-weight: normal;
-  }
-warning{
-font-family: "Segoe UI Regular";
-  font-size: 50px;
-  font-weight: normal;
-  color: white
-}
-</style>
 
-<body style="background-image:url(mrtimages/bg.png);">
+    timeset {
+      font-family: "Segoe UI Regular";
+      font-size: 45px;
+      font-weight: normal;
+    }
 
+    datelol {
+      font-family: "Segoe UI Regular";
+      font-size: 38px;
+      font-weight: normal;
+      padding-top: 0px;
+    }
 
+    timelol {
+      font-family: "Segoe UI Regular";
+      font-size: 38px;
+      font-weight: normal;
+      padding-top: 0px;
+    }
 
+    direction {
+      font-family: "Segoe UI Regular";
+      font-size: 48px;
+      font-weight: normal;
+    }
 
-<div id="viewporttest" style="display: none;">
-<table width="100%" style="border: 1px solid #ffffff;" align="center">
-<td align="center">
-<img src="images/rotate.svg" width="200" height="200">
-<p></p>
-<warning align>將顯示裝置橫放以正常顯示。</warning>
-<p></p>
-<warning>Turn your viewing device landscape to continue.</warning>
-</td>
-</table>
-</div>
+    directionext {
+      font-family: "Segoe UI Regular";
+      font-size: 36px;
+      font-weight: normal;
+    }
+
+    toletter {
+      font-family: "Segoe UI Regular";
+      font-size: 36px;
+      font-weight: normal;
+    }
+
+    approach {
+      font-family: "Segoe UI Regular";
+      font-size: 36px;
+      font-weight: normal;
+    }
+
+    warning {
+      font-family: "Segoe UI Regular";
+      font-size: 50px;
+      font-weight: normal;
+      color: white
+    }
+  </style>
+
+  <body style="background-image:url(mrtimages/bg.png);">
 
 
 
-<div id="maincontent">
-<table width="1340" style="font-family:'Segoe UI Regular';border: 1px solid #ffffff;">
-  <tr>
-    <td width="344" height="720" ><table width="344" style="border: 1px solid #ffffff;">
-      <tr>
-        <td height="180" align="center" valign="middle" bgcolor="#0070bd">
-        <toletter style="color: white;" id="directchi"></toletter>
-        
-        
-		<directionext style="color: white;" id="directionchiext"></directionext>
-		<direction style="color: white;" id="directionchi"></direction>
-        <p></p>
-        <timeset id="demo" style="color: white;"></timeset>
-		<approach id="demoext" style="color: white;"></approach></td>
-      </tr>
-      <tr>
-        <td height="180" align="center" bgcolor="#0070bd">
-        <toletter style="color: white;" id="directchito"></toletter>
-        
-		<directionext style="color: white;" id="directionchitoext"></directionext>
-        <direction style="color: white;" id="directionchito"></direction>
-        <p></p>
-        <timeset id="demoto" style="color: white;"></timeset>
-		<approach id="demotoext" style="color: white;"></approach>
+
+    <div id="viewporttest" style="display: none;">
+      <table width="100%" style="border: 1px solid #ffffff;" align="center">
+        <td align="center">
+          <img src="images/rotate.svg" width="200" height="200">
+          <p></p>
+          <warning>將顯示裝置橫放以正常顯示。</warning>
+          <p></p>
+          <warning>Turn your viewing device landscape to continue.</warning>
         </td>
-      </tr>
-      <tr id="colourchange">
-        <td style="width: 344px;height: 180px;background-color: #000000;" align="center" >
-        <datelol id="monthnow" style="color: white;"></datelol>
-        <p></p>
-        <timelol id="timenow" style="color: white;"></timelol>
-        <p></p>
-		<timelol id="daynow" style="color: white;"></timelol>
-		</td>
-      </tr>
-      <tr>
-        <td height="175" align="right" style="background-image:url(mrtimages/test.png);">
-		<table width="170" border="0">
-          <tr>
-            <td  height="174" align="center">
-			<h2 id="servicing">Fetching Information</h2>
-			<p></p>
-			<h2 id="hours"></h2>
-			</td>
-          </tr>
-        </table></td>
-      </tr>
-    </table>
-    
-    </td>
-    <td width="986"><table width="986" style="border: 1px solid #ffffff;">
-      <tr>
-        <td height="630" align="center" bgcolor="#000000">
-        <img id="mainImage" style="height: 630px;width: 986px;"></img>
-        <!--<video controls loop style="width: 996px;height: 630px;">
-  <source src="mrtimages/ad.mp4" type="video/mp4">
-  <source src="movie.ogg" type="video/ogg">
-  Your browser does not support the video tag.
-</video>--></td>
-      </tr>
-      <tr>
-        <td height="100" bgcolor="#000000">
-        <marquee style="font-family:'Segoe UI Regular';font-size:48px;color: white;" id="announcing"></marquee>
-        </td>
-      </tr>
-    </table></td>
-  </tr>
-</table>
-<p id="demo"></p>
-<button type="button" style="font-size: 36px;" onclick="location.reload()">重新整理 System Reload</button>
-</div>
-<script>
-
-
-// Set the date we're counting down to
-var newrandom = Math.floor((Math.random() * 900000) + 1000);
-var newrandom2 = Math.floor((Math.random() * 900000) + 1000);
-var countDownDate = new Date().getTime();
-var addnum = Math.floor(countDownDate + newrandom);
-var addnumtokunyang = Math.floor(countDownDate + newrandom2);
-
-// Update the count down every 1 second
- var langselect = 2;
-var x = setInterval(function() {
-
-  // Get today's date and time
-  var now = new Date().getTime();
-
-  // Find the distance between now and the count down date
-  var distance = addnum - now;
-  var distancetokunyang = addnumtokunyang - now;
-
-  // Time calculations for minutes and seconds
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-   var minutesto = Math.floor((distancetokunyang % (1000 * 60 * 60)) / (1000 * 60));
-  var secondsto = Math.floor((distancetokunyang % (1000 * 60)) / 1000);
-
-  // choose language
-  
- 
-  
-  if (langselect == 1){
-  langselect = 2}
-  else{
-  langselect = 1}
-  
-  if (langselect == 1){
-  document.getElementById("directchi").innerHTML = "往 ";
-  document.getElementById("directchito").innerHTML = "往 ";
-  document.getElementById("directionchi").innerHTML = "南港展覽館";
-  document.getElementById("directionchiext").innerHTML = "";
-  document.getElementById("directionchito").innerHTML = "昆陽";
-  document.getElementById("directionchitoext").innerHTML = "";
-  document.getElementById("servicing").innerHTML = "今日營運時間:";
-  //start hour change
- 
-
-  if (new Date().getDay() == 0) {
-document.getElementById("hours").innerHTML = "08:30~21:00";
-}
-
-  if (new Date().getDay() == 1) {
-document.getElementById("hours").innerHTML = "今日暫停營運";
-}
-  if (new Date().getDay() == 2 || new Date().getDay() == 3 || new Date().getDay() == 4) {
-document.getElementById("hours").innerHTML = "09:00~21:00";
-}
-
-  if (new Date().getDay() == 5) {
-document.getElementById("hours").innerHTML = "09:00~22:00";
-}
-
-  if (new Date().getDay() == 6) {
-document.getElementById("hours").innerHTML = "08:30~22:00";
-}
-
-  
-  
-  
+      </table>
+    </div>
 
 
 
-  if (minutes < 10){
-	  if (seconds < 10){
-          document.getElementById("demo").innerHTML = '約 0' + minutes + " 分 " + '0' + seconds + " 秒 ";}
-      else{
-	      document.getElementById("demo").innerHTML = '約 0' + minutes + " 分 "  + seconds + " 秒 ";}
-  }
-  else{
-	  if (seconds < 10){
-          document.getElementById("demo").innerHTML =  "約 " + minutes + " 分 " + '0' + seconds + " 秒 ";}
-      else{
-	      document.getElementById("demo").innerHTML = "約 " + minutes + " 分 "  + seconds + " 秒 ";}
-  }
-    if (minutesto < 10){
-	  if (secondsto < 10){
-          document.getElementById("demoto").innerHTML = '約 0' + minutesto + " 分 " + '0' + secondsto + " 秒 ";}
-      else{
-	      document.getElementById("demoto").innerHTML = '約 0' + minutesto + " 分 "  + secondsto + " 秒 ";}
-  }
-  else{
-	  if (secondsto < 10){
-          document.getElementById("demoto").innerHTML = "約 " + minutesto + " 分 " + '0' + secondsto + " 秒 ";}
-      else{
-	      document.getElementById("demoto").innerHTML = "約 " + minutesto + " 分 "  + secondsto + " 秒 ";}
-  }
-  // If the count down is finished, write some text
-  if (distance < 0) {
-    document.getElementById("demo").innerHTML = "列車進站中";
-  }
-  if (distancetokunyang < 0) {
-    document.getElementById("demoto").innerHTML = "列車進站中";
-  }
-if (distance < 20) {
-    document.getElementById("demo").innerHTML = "列車進站中";
-	document.getElementById("demoext").innerHTML = "";
-  }
-  if (distancetokunyang < 20) {
-    document.getElementById("demoto").innerHTML = "列車進站中";
-	document.getElementById("demotoext").innerHTML = "";
+    <div id="maincontent">
+      <table width="1340" style="font-family:'Segoe UI Regular';border: 1px solid #000;">
+        <tr>
+          <td width="344" height="720">
+            <table width="344" style="border: 1px solid #000;">
+              <tr>
+                <td height="180" align="center" valign="middle" bgcolor="#0070bd">
+                  <toletter style="color: white;" id="directchi"></toletter>
 
-  }
 
-var datenow = new Date();
-var months = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
-var days = ["星期日","星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
-document.getElementById("monthnow").innerHTML = datenow.getFullYear() + '年' + months[datenow.getMonth()] + '月' + datenow.getDate() + '日' ;
-if (datenow.getMinutes() < 10){
-	if (datenow.getHours() < 10){
-        document.getElementById("timenow").innerHTML = '0' + datenow.getHours() + ':' + '0' + datenow.getMinutes();}
-    else{
-	    document.getElementById("timenow").innerHTML = datenow.getHours() + ':' + '0' + datenow.getMinutes();}
-}else{
-	if (datenow.getHours() < 10){
-        document.getElementById("timenow").innerHTML = '0' + datenow.getHours() + ':' + datenow.getMinutes();}
-    else{
-	document.getElementById("timenow").innerHTML = datenow.getHours() + ':' + datenow.getMinutes();}
-}
-document.getElementById("daynow").innerHTML = days[datenow.getDay()];}
-else{
-  document.getElementById("directchi").innerHTML = "To ";
-  document.getElementById("directchito").innerHTML = "To ";
-  document.getElementById("directionchiext").innerHTML = "BL23 Nangang Exhibition Center";
-  document.getElementById("directionchi").innerHTML = "";
-  document.getElementById("directionchitoext").innerHTML = "BL21 Kunyang";
-  document.getElementById("directionchito").innerHTML = "";
-  document.getElementById("servicing").innerHTML = "Service Hours:";
-  //start hour change
-  
+                  <directionext style="color: white;" id="directionchiext"></directionext>
+                  <direction style="color: white;" id="directionchi"></direction>
+                  <p></p>
+                  <timeset id="demo" style="color: white;"></timeset>
+                  <approach id="demoext" style="color: white;"></approach>
+                </td>
+              </tr>
+              <tr>
+                <td height="180" align="center" bgcolor="#0070bd">
+                  <toletter style="color: white;" id="directchito"></toletter>
 
-  if (new Date().getDay() == 0) {
-document.getElementById("hours").innerHTML = "08:30~21:00";
-}
+                  <directionext style="color: white;" id="directionchitoext"></directionext>
+                  <direction style="color: white;" id="directionchito"></direction>
+                  <p></p>
+                  <timeset id="demoto" style="color: white;"></timeset>
+                  <approach id="demotoext" style="color: white;"></approach>
+                </td>
+              </tr>
+              <tr id="colourchange">
+                <td style="width: 344px;height: 180px;background-color: #000000;" align="center">
+                  <datelol id="monthnow" style="color: white;"></datelol>
+                  <p></p>
+                  <timelol id="timenow" style="color: white;"></timelol>
+                  <p></p>
+                  <timelol id="daynow" style="color: white;"></timelol>
+                </td>
+              </tr>
+              <tr>
+                <td height="175" align="right" style="background-image:url(mrtimages/test.png);">
+                  <table width="170" border="0">
+                    <tr>
+                      <td height="174" align="center">
+                        <h2 id="servicing">Fetching Information</h2>
+                        <p></p>
+                        <h2 id="hours"></h2>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
 
-  if (new Date().getDay() == 1) {
-document.getElementById("hours").innerHTML = "Service Suspended";
-}
-  if (new Date().getDay() == 2 || new Date().getDay() == 3 || new Date().getDay() == 4) {
-document.getElementById("hours").innerHTML = "09:00~21:00";
-}
+          </td>
+          <td width="986">
+            <table width="986" style="border: 1px solid #000;">
+              <tr>
+                <td height="630" align="center" bgcolor="#000000">
+                  <img id="mainImage" style="height: 630px;width: 986px;"></img>
+                    <!--<video controls loop style="width: 996px;height: 630px;">
+                      <source src="mrtimages/ad.mp4" type="video/mp4">
+                      <source src="movie.ogg" type="video/ogg">
+                      Your browser does not support the video tag.
+                    </video>-->
+                </td>
+              </tr>
+              <tr>
+                <td height="100" bgcolor="#000000">
+                  <marquee style="font-family:'Segoe UI Regular';font-size:48px;color: white;" id="announcing">
+                  </marquee>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <p id="demo"></p>
+      <button type="button" style="font-size: 36px;" onclick="location.reload()">重新整理 System Reload</button>
+    </div>
+    <script>
 
-  if (new Date().getDay() == 5) {
-document.getElementById("hours").innerHTML = "09:00~22:00";
-}
 
-  if (new Date().getDay() == 6) {
-document.getElementById("hours").innerHTML = "08:30~22:00";
-}
+      // Set the date we're counting down to
+      var newrandom = Math.floor((Math.random() * 900000) + 1000);
+      var newrandom2 = Math.floor((Math.random() * 900000) + 1000);
+      var countDownDate = new Date().getTime();
+      var addnum = Math.floor(countDownDate + newrandom);
+      var addnumtokunyang = Math.floor(countDownDate + newrandom2);
 
-  
-  if (minutes < 10){
-	  if (seconds < 10){
-          document.getElementById("demo").innerHTML = '0' + minutes + " min. " + '0' + seconds + " sec. ";}
-      else{
-	      document.getElementById("demo").innerHTML = '0' + minutes + " min. "  + seconds + " sec. ";}
-  }
-  else{
-	  if (seconds < 10){
-          document.getElementById("demo").innerHTML =  minutes + " min. " + '0' + seconds + " sec. ";}
-      else{
-	      document.getElementById("demo").innerHTML = minutes + " min. "  + seconds + " sec. ";}
-  }
-    if (minutesto < 10){
-	  if (secondsto < 10){
-          document.getElementById("demoto").innerHTML = '0' + minutesto + " min. " + '0' + secondsto + " sec. ";}
-      else{
-	      document.getElementById("demoto").innerHTML = '0' + minutesto + " min. "  + secondsto + " sec. ";}
-  }
-  else{
-	  if (secondsto < 10){
-          document.getElementById("demoto").innerHTML =  minutesto + " min. " + '0' + secondsto + " sec. ";}
-      else{
-	      document.getElementById("demoto").innerHTML = minutesto + " min. "  + secondsto + " sec. ";}
-  }
-  // If the count down is finished, write some text
-  if (distance < 20) {
-    document.getElementById("demoext").innerHTML = "Train approaching";
-    document.getElementById("demo").innerHTML = "";
-  }
-  if (distancetokunyang < 20) {
-    document.getElementById("demotoext").innerHTML = "Train approaching";
-	document.getElementById("demoto").innerHTML = "";
-  }
+      // Update the count down every 1 second
+      var langselect = 2;
+      var x = setInterval(function () {
+
+        // Get today's date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = addnum - now;
+        var distancetokunyang = addnumtokunyang - now;
+
+        // Time calculations for minutes and seconds
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        var minutesto = Math.floor((distancetokunyang % (1000 * 60 * 60)) / (1000 * 60));
+        var secondsto = Math.floor((distancetokunyang % (1000 * 60)) / 1000);
+
+        // choose language
 
 
 
-var datenow = new Date();
-var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-var days = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-document.getElementById("monthnow").innerHTML =  months[datenow.getMonth()] +" "+  datenow.getDate() + ", " + datenow.getFullYear();
+        if (langselect == 1) {
+          langselect = 2
+        }
+        else {
+          langselect = 1
+        }
 
-if (datenow.getMinutes() < 10){
-	if (datenow.getHours() < 10){
-        document.getElementById("timenow").innerHTML = '0' + datenow.getHours() + ':' + '0' + datenow.getMinutes();}
-    else{
-	    document.getElementById("timenow").innerHTML = datenow.getHours() + ':' + '0' + datenow.getMinutes();}
-}else{
-	if (datenow.getHours() < 10){
-        document.getElementById("timenow").innerHTML = '0' + datenow.getHours() + ':' + datenow.getMinutes();}
-    else{
-	document.getElementById("timenow").innerHTML = datenow.getHours() + ':' + datenow.getMinutes();}
-}
-document.getElementById("daynow").innerHTML = days[datenow.getDay()];}
-}, 5000);
-
-//announce
-setInterval(function(){
-var announcements = [
-  "(CNA) Apple to begin mass produce iPhones in India.",
-  "搭乘捷運，請全程配戴口罩。勸導不聽者，最高罰新台幣15000元，並拒絕運送。",
-  "文湖線目前發生系統異常，班距約10分鐘。",
-  "請儘量往車廂內移動，並將後背包提於手上或置於前方，謝謝。",
-  "歡迎搭乘台北捷運",
-];
-
-var randomItem = announcements[Math.floor(Math.random()*announcements.length)];
-document.getElementById("announcing").innerHTML = randomItem;
-} , 17000);
+        if (langselect == 1) {
+          document.getElementById("directchi").innerHTML = "往 ";
+          document.getElementById("directchito").innerHTML = "往 ";
+          document.getElementById("directionchi").innerHTML = "南港展覽館";
+          document.getElementById("directionchiext").innerHTML = "";
+          document.getElementById("directionchito").innerHTML = "昆陽";
+          document.getElementById("directionchitoext").innerHTML = "";
+          document.getElementById("servicing").innerHTML = "今日營運時間:";
+          //start hour change
 
 
+          if (new Date().getDay() == 0) {
+            document.getElementById("hours").innerHTML = "08:30~21:00";
+          }
 
+          if (new Date().getDay() == 1) {
+            document.getElementById("hours").innerHTML = "今日暫停營運";
+          }
+          if (new Date().getDay() == 2 || new Date().getDay() == 3 || new Date().getDay() == 4) {
+            document.getElementById("hours").innerHTML = "09:00~21:00";
+          }
 
-//start of image change
-var myImage = document.getElementById("mainImage");
+          if (new Date().getDay() == 5) {
+            document.getElementById("hours").innerHTML = "09:00~22:00";
+          }
 
-var imageArray = [
-"mrtimages/1.jpeg", 
-"mrtimages/2.jpeg",
-"mrtimages/3.jpeg", 
-"mrtimages/4.jpeg",
-"mrtimages/5.jpeg",
-                 ]
-
-var imageIndex = 0;
-
-function changeImage() {
-  myImage.setAttribute("src",imageArray[imageIndex]);
-  imageIndex++;
-  if (imageIndex >= imageArray.length) {
-    imageIndex = 0;
-  }
-}
-
-setInterval(changeImage,3500);
+          if (new Date().getDay() == 6) {
+            document.getElementById("hours").innerHTML = "08:30~22:00";
+          }
 
 
 
 
 
-//change trtime colour
-var colourArray = [
-"#f8b61c", 
-"#c48c31",
-"#e3002c", 
-"#008659",
-"#0070bd",                 ]
-setInterval(function(){
-var newy = document.getElementById("colourchange").getElementsByTagName("td");
-var randomColour = colourArray[Math.floor(Math.random()*colourArray.length)];
-newy[0].style.backgroundColor =  randomColour;
-} , 5000);
-
- 
 
 
+          if (minutes < 10) {
+            if (seconds < 10) {
+              document.getElementById("demo").innerHTML = '約 0' + minutes + " 分 " + '0' + seconds + " 秒 ";
+            }
+            else {
+              document.getElementById("demo").innerHTML = '約 0' + minutes + " 分 " + seconds + " 秒 ";
+            }
+          }
+          else {
+            if (seconds < 10) {
+              document.getElementById("demo").innerHTML = "約 " + minutes + " 分 " + '0' + seconds + " 秒 ";
+            }
+            else {
+              document.getElementById("demo").innerHTML = "約 " + minutes + " 分 " + seconds + " 秒 ";
+            }
+          }
+          if (minutesto < 10) {
+            if (secondsto < 10) {
+              document.getElementById("demoto").innerHTML = '約 0' + minutesto + " 分 " + '0' + secondsto + " 秒 ";
+            }
+            else {
+              document.getElementById("demoto").innerHTML = '約 0' + minutesto + " 分 " + secondsto + " 秒 ";
+            }
+          }
+          else {
+            if (secondsto < 10) {
+              document.getElementById("demoto").innerHTML = "約 " + minutesto + " 分 " + '0' + secondsto + " 秒 ";
+            }
+            else {
+              document.getElementById("demoto").innerHTML = "約 " + minutesto + " 分 " + secondsto + " 秒 ";
+            }
+          }
+          // If the count down is finished, write some text
+          if (distance < 0) {
+            document.getElementById("demo").innerHTML = "列車進站中";
+          }
+          if (distancetokunyang < 0) {
+            document.getElementById("demoto").innerHTML = "列車進站中";
+          }
+          if (distance < 20) {
+            document.getElementById("demo").innerHTML = "列車進站中";
+            document.getElementById("demoext").innerHTML = "";
+          }
+          if (distancetokunyang < 20) {
+            document.getElementById("demoto").innerHTML = "列車進站中";
+            document.getElementById("demotoext").innerHTML = "";
 
-//portrait test
+          }
 
-setInterval(function() {
+          var datenow = new Date();
+          var months = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
+          var days = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+          document.getElementById("monthnow").innerHTML = datenow.getFullYear() + '年' + months[datenow.getMonth()] + '月' + datenow.getDate() + '日';
+          if (datenow.getMinutes() < 10) {
+            if (datenow.getHours() < 10) {
+              document.getElementById("timenow").innerHTML = '0' + datenow.getHours() + ':' + '0' + datenow.getMinutes();
+            }
+            else {
+              document.getElementById("timenow").innerHTML = datenow.getHours() + ':' + '0' + datenow.getMinutes();
+            }
+          } else {
+            if (datenow.getHours() < 10) {
+              document.getElementById("timenow").innerHTML = '0' + datenow.getHours() + ':' + datenow.getMinutes();
+            }
+            else {
+              document.getElementById("timenow").innerHTML = datenow.getHours() + ':' + datenow.getMinutes();
+            }
+          }
+          document.getElementById("daynow").innerHTML = days[datenow.getDay()];
+        }
+        else {
+          document.getElementById("directchi").innerHTML = "To ";
+          document.getElementById("directchito").innerHTML = "To ";
+          document.getElementById("directionchiext").innerHTML = "BL23 Nangang Exhibition Center";
+          document.getElementById("directionchi").innerHTML = "";
+          document.getElementById("directionchitoext").innerHTML = "BL21 Kunyang";
+          document.getElementById("directionchito").innerHTML = "";
+          document.getElementById("servicing").innerHTML = "Service Hours:";
+          //start hour change
 
-var maincon = document.getElementById("maincontent");
 
-var viewtest = document.getElementById("viewporttest");
+          if (new Date().getDay() == 0) {
+            document.getElementById("hours").innerHTML = "08:30~21:00";
+          }
 
-if(window.innerHeight > window.innerWidth){
-    maincon.style.display = "none";
-    viewtest.style.display = "block";
+          if (new Date().getDay() == 1) {
+            document.getElementById("hours").innerHTML = "Service Suspended";
+          }
+          if (new Date().getDay() == 2 || new Date().getDay() == 3 || new Date().getDay() == 4) {
+            document.getElementById("hours").innerHTML = "09:00~21:00";
+          }
 
-}else{
+          if (new Date().getDay() == 5) {
+            document.getElementById("hours").innerHTML = "09:00~22:00";
+          }
 
-    maincon.style.display = "block";
-    viewtest.style.display = "none";
-}
-}, 500);
+          if (new Date().getDay() == 6) {
+            document.getElementById("hours").innerHTML = "08:30~22:00";
+          }
 
 
-</script>
-</body>
+          if (minutes < 10) {
+            if (seconds < 10) {
+              document.getElementById("demo").innerHTML = '0' + minutes + " min. " + '0' + seconds + " sec. ";
+            }
+            else {
+              document.getElementById("demo").innerHTML = '0' + minutes + " min. " + seconds + " sec. ";
+            }
+          }
+          else {
+            if (seconds < 10) {
+              document.getElementById("demo").innerHTML = minutes + " min. " + '0' + seconds + " sec. ";
+            }
+            else {
+              document.getElementById("demo").innerHTML = minutes + " min. " + seconds + " sec. ";
+            }
+          }
+          if (minutesto < 10) {
+            if (secondsto < 10) {
+              document.getElementById("demoto").innerHTML = '0' + minutesto + " min. " + '0' + secondsto + " sec. ";
+            }
+            else {
+              document.getElementById("demoto").innerHTML = '0' + minutesto + " min. " + secondsto + " sec. ";
+            }
+          }
+          else {
+            if (secondsto < 10) {
+              document.getElementById("demoto").innerHTML = minutesto + " min. " + '0' + secondsto + " sec. ";
+            }
+            else {
+              document.getElementById("demoto").innerHTML = minutesto + " min. " + secondsto + " sec. ";
+            }
+          }
+          // If the count down is finished, write some text
+          if (distance < 20) {
+            document.getElementById("demoext").innerHTML = "Train approaching";
+            document.getElementById("demo").innerHTML = "";
+          }
+          if (distancetokunyang < 20) {
+            document.getElementById("demotoext").innerHTML = "Train approaching";
+            document.getElementById("demoto").innerHTML = "";
+          }
+
+
+
+          var datenow = new Date();
+          var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+          var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+          document.getElementById("monthnow").innerHTML = months[datenow.getMonth()] + " " + datenow.getDate() + ", " + datenow.getFullYear();
+
+          if (datenow.getMinutes() < 10) {
+            if (datenow.getHours() < 10) {
+              document.getElementById("timenow").innerHTML = '0' + datenow.getHours() + ':' + '0' + datenow.getMinutes();
+            }
+            else {
+              document.getElementById("timenow").innerHTML = datenow.getHours() + ':' + '0' + datenow.getMinutes();
+            }
+          } else {
+            if (datenow.getHours() < 10) {
+              document.getElementById("timenow").innerHTML = '0' + datenow.getHours() + ':' + datenow.getMinutes();
+            }
+            else {
+              document.getElementById("timenow").innerHTML = datenow.getHours() + ':' + datenow.getMinutes();
+            }
+          }
+          document.getElementById("daynow").innerHTML = days[datenow.getDay()];
+        }
+      }, 5000);
+
+      //announce
+      setInterval(function () {
+        var announcements = [
+          "(CNA) Apple to begin mass produce iPhones in India.",
+          "搭乘捷運，請全程配戴口罩。勸導不聽者，最高罰新台幣15000元，並拒絕運送。",
+          "文湖線目前發生系統異常，班距約10分鐘。",
+          "請儘量往車廂內移動，並將後背包提於手上或置於前方，謝謝。",
+          "歡迎搭乘台北捷運",
+        ];
+
+        var randomItem = announcements[Math.floor(Math.random() * announcements.length)];
+        document.getElementById("announcing").innerHTML = randomItem;
+      }, 17000);
+
+
+
+
+      //start of image change
+      var myImage = document.getElementById("mainImage");
+
+      var imageArray = [
+        "mrtimages/1.jpeg",
+        "mrtimages/2.jpeg",
+        "mrtimages/3.jpeg",
+        "mrtimages/4.jpeg",
+        "mrtimages/5.jpeg",
+      ]
+
+      var imageIndex = 0;
+
+      function changeImage() {
+        myImage.setAttribute("src", imageArray[imageIndex]);
+        imageIndex++;
+        if (imageIndex >= imageArray.length) {
+          imageIndex = 0;
+        }
+      }
+
+      setInterval(changeImage, 3500);
+
+
+
+
+
+      //change trtime colour
+      var colourArray = [
+        "#f8b61c",
+        "#c48c31",
+        "#e3002c",
+        "#008659",
+        "#0070bd",]
+      setInterval(function () {
+        var newy = document.getElementById("colourchange").getElementsByTagName("td");
+        var randomColour = colourArray[Math.floor(Math.random() * colourArray.length)];
+        newy[0].style.backgroundColor = randomColour;
+      }, 5000);
+
+
+
+
+
+      //portrait test
+
+      setInterval(function () {
+
+        var maincon = document.getElementById("maincontent");
+
+        var viewtest = document.getElementById("viewporttest");
+
+        if (window.innerHeight > window.innerWidth) {
+          maincon.style.display = "none";
+          viewtest.style.display = "block";
+
+        } else {
+
+          maincon.style.display = "block";
+          viewtest.style.display = "none";
+        }
+      }, 500);
+
+
+    </script>
+  </body>
+
 </html>
