@@ -1,0 +1,33 @@
+body {
+    font-family: "Segoe UI",sans-serif;
+    background: #eee;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    transition: 0.5s;
+}
+
+.standardLink {
+    font-size: 2rem;
+    padding: 1rem;
+    margin: 1rem;
+    background: rgb(181, 255, 251);
+    border-radius: 10px;
+    transition: 0.5s;
+}
+.standardLink:active{
+    background: black;
+}
+a:active{
+    color: white;
+}
