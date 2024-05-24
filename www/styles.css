@@ -1,0 +1,161 @@
+body {
+    overflow: hidden;
+    opacity: 0;
+    transition: all 1s ease 1s;
+    text-align: center;
+    font-family: "微軟正黑體", "Microsoft Jhenghei UI", "-apple-system", "Roboto", sans-serif, "Arial";
+}
+
+h1 {
+    font-size: 4.5vh;
+}
+
+h2 {
+    font-size: 3.5vh;
+}
+
+p {
+    font-size: 3.2vh;
+}
+
+.bg {
+    transition: 1s;
+    /*position: absolute;
+    top: 0;
+    left: 0;*/
+    z-index: 1;
+    position: relative;
+}
+
+.transparentButton {
+    background: none;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: 1s;
+}
+
+.transparentButton:hover {
+    opacity: 1;
+}
+
+.blur {
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px);
+}
+
+.mainPrompt {
+    display: none;
+    transform: scale(0.01);
+    transition: all 0.5s;
+    z-index: 6;
+    background: white;
+    box-shadow: 0px 0px 12px 2px rgb(70, 70, 70);
+    border-radius: 15px;
+    color: black;
+    text-align: center;
+    padding: 2vh 2vh;
+    position: absolute;
+    opacity: 0;
+}
+
+.menuItem {
+    /*display: none;*/
+    transform: scale(0.01);
+    transition: 0.5s;
+    z-index: 3;
+    background: white;
+    box-shadow: 0px 0px 12px 2px rgb(70, 70, 70);
+    border-radius: 5px;
+    color: black;
+    text-align: center;
+    padding: 1vh 1vh;
+    position: absolute;
+    font-size: 2.5vh;
+    top: 0;
+    left: 0;
+    border: none;
+    /*opacity: 0;*/
+}
+
+.menuItem:hover {
+    transform: scale(1.5);
+    cursor: pointer;
+}
+
+.h {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    width: 3vh;
+}
+
+.overlay {
+    z-index: 5;
+    opacity: 0;
+    background: white;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    transition: all ease 1s;
+}
+
+.backButton {
+    background: #4C8BF5;
+    color: white;
+    padding: 1vh 3vh;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    transition: 1s;
+    border: none;
+    cursor: pointer;
+    font-size: 2vh;
+}
+
+.backButton:hover {
+    background: #70a5ff;
+    color: white;
+    box-shadow: 2px 2px 12px 2px rgb(70, 70, 70);
+}
+
+.backButton:active {
+    background: #0f68ff;
+    color: #DDD;
+}
+
+.mainDIV {
+    position: absolute;
+    top: 8vh;
+    left: 6vh;
+    width: calc(100vw - 12vh);
+    height: 84vh;
+    background: rgba(255, 255, 255, 0.6);
+    border: #FFF;
+    z-index: 4;
+    box-shadow: 0px 0px 12px 2px rgb(131, 131, 131);
+    border-radius: 15px;
+    display: none;
+    opacity: 0;
+}
+
+.mainFrame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100vw - 12vh);
+    z-index: 4;
+    height: 84vh;
+    background: none;
+    border: rgb(0, 0, 0);
+    box-shadow: 0px 0px 12px 2px rgb(70, 70, 70);
+    border-radius: 15px;
+}

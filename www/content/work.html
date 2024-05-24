@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="innerstyle.css">
+<script src="work.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>幹部介紹</title>
+</head>
+
+<body>
+    <iframe id="workerFrame" src="work/placeholder.html" style="position: absolute;width: 100vw;height: 100vh;border: none;overflow: auto;z-index: 1;top:0;left:0;"></iframe>
+    <button style="z-index: 2;position: absolute;height: 8vh;top: 4vh;left: 4vh;border: none;background: none;cursor: pointer;" onclick="openHamburger()" title="選單">
+        <img src="teacher/menu.svg" style="width: 8vh;height: 8vh;">
+    </button>
+    <div id="navbarw" style="z-index: 3;width:100vw;background: white;height: 100vh;position: absolute;top:0;left:-100vw;text-align: left;overflow-y: auto;overflow-x: hidden;">
+        <div style="width: 98vw;position: absolute;left: 4vw;">
+            <button style="height: 8vh;padding: 8vh 0;border: none;background: none;cursor: pointer;" onclick="closeHamburger()" title="關閉選單">
+                <img src="teacher/back.svg" style="width: 8vh;height: 8vh;">
+            </button>
+            <br>
+            <br>
+            <button class="teacherSelect" onclick="viewWorker('leader')">班長</button>
+            <button class="teacherSelect" onclick="viewWorker('leader_assistant')">副班長</button>
+            <button class="teacherSelect" onclick="viewWorker('rule')">風紀股長</button>
+            <button class="teacherSelect" onclick="viewWorker('art')">學藝股長</button>
+            <button class="teacherSelect" onclick="viewWorker('pe')">體育股長</button>
+            <button class="teacherSelect" onclick="viewWorker('general')">總務股長</button>
+            <button class="teacherSelect" onclick="viewWorker('test')">試務股長</button>
+            <button class="teacherSelect" onclick="viewWorker('hygiene')">衛生股長</button>
+            <button class="teacherSelect" onclick="viewWorker('eco')">環保股長</button>
+            <button class="teacherSelect" onclick="viewWorker('recycle')">資源回收股長</button>
+            <button class="teacherSelect" onclick="viewWorker('info')">資訊股長</button>
+            <button class="teacherSelect" onclick="viewWorker('assist')">輔導股長</button>
+            <button class="teacherSelect" onclick="viewWorker('greenify')">綠化股長</button>
+            <button class="teacherSelect" onclick="viewWorker('covid')">防疫股長</button>
+            <button class="teacherSelect" onclick="viewWorker('representative')">班級代表</button>
+        </div>
+    </div>
+</body>
+<script>
+    let x = document.getElementsByClassName("teacherSelect");
+    for (let i = 0; i < x.length; i++) {
+        if ((i + 1) % 4 == 1)
+            x[i].classList.add("bl");
+        else if ((i + 1) % 4 == 2)
+            x[i].classList.add("r");
+        else if ((i + 1) % 4 == 3)
+            x[i].classList.add("y");
+        else
+            x[i].classList.add("g");
+    }
+</script>
+
+</html>

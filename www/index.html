@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--favicon-->
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <title>106 班級網頁</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- JavaScript Bundle with Popper -->
+
+    <link rel="stylesheet" href="styles.css">
+    <meta property="og:title" content="106" />
+    <meta property="og:image" content="home.png" />
+    <meta property="og:description" content="106 班級網頁" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Supports Apple Web App-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="106">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#5C6D57">
+    <link rel="apple-touch-icon" href="icon.png">
+
+
+</head>
+
+<body>
+    <button id="homeBtn" class="transparentButton" style="width: 8vh;height: 8vh;position: absolute;top: 1vh;left: 1vh;z-index: 2;display: none;" onclick="restoreZoom()">
+            <img src="home.svg" alt="首頁" title="首頁" style="width: 100%" />
+        </button>
+    <div id="mainPrompt" class="mainPrompt"></div>
+
+    <button class="transparentButton" style="width: 8vh;height: 8vh;position: absolute;bottom: 1vh;left: 1vh;z-index: 2;" onclick="
+            showPrompt('版權宣告','','背景：© Google LLC 2022<br>延平中學衛星影像：<br>© Google LLC 2022<br>房屋圖示：<br>Fluency Icons from Icons8.com<br>單色圖示： Google Fonts<br>內容背景圖片：自行拍攝<br>Google Chrome 圖示：<br>© Google LLC 2022<br>Microsoft Edge 圖示：<br>© Microsoft Corporation 2022<br>Safari 圖示：© Apple Inc. 2022','關閉')
+        ">
+            <img src="copyright.svg" alt="版權宣告" title="版權宣告" style="width: 100%" />
+        </button>
+    <button class="transparentButton" style="width: 8vh;height: 8vh;position: absolute;top: 1vh;right: 1vh;z-index: 2;" onclick="
+            showCounter()
+        ">
+            <img src="timer.svg" alt="網站拜訪次數" title="網站拜訪次數" style="width: 100%" />
+        </button>
+
+    <button class="transparentButton" style="width: 8vh;height: 8vh;position: absolute;bottom: 1vh;right: 1vh;z-index: 2;" onclick="firstTime()">
+            <img src="help.svg" alt="使用說明" title="使用說明" style="width: 100%" />
+        </button>
+
+    <!--<button onclick="zoom(70,50,3)">sample zoom</button>
+            <button onclick="restoreZoom()">restore zoom</button>
+            <button onclick="showPrompt('mainPrompt')">sample prompt</button>-->
+
+    <div style="position: absolute;top: 0; left: 0;width: 100vw;z-index: 1;overflow: hidden;height: 100vh;background: url(map.png);text-align: center;background-size: cover;">
+        <div style="height: 100vh;width: 53.846vh;position: relative;margin: auto;">
+            <img id="bg" class="bg" src="fg.png" alt="延平中學衛星影像." style="height: 100vh" title="延平中學衛星影像" draggable="false" />
+            <button id="classroom" class="menuItem" style="top: 10%;left: 92%;" onclick="zoom(200,-50,3,this.id)"><span class="h">我們這一班</span></button>
+            <button id="teacher" class="menuItem" style="top: 59%;left: 20%;" onclick="zoom(20,100,3,this.id)">關於教師</button>
+            <button id="bulletin" class="menuItem" style="top: 41%;left: 54%;" onclick="zoom(130,10,4,this.id)">公告</button>
+            <button id="link" class="menuItem" style="top: 5%;left: 18%; " onclick="zoom(20,-50,3,this.id)">其他連結</button>
+            <button id="team" class="menuItem" style="top: 43%;left: 7%; " onclick="zoom(-40,50,3,this.id)"><span
+                        class="h">關於團隊</span></button>
+            <button id="work" class="menuItem" style="top: 70%;left: 55%; " onclick="zoom(110,140,3,this.id)"><span
+                        class="h">幹部介紹</span></button>
+        </div>
+    </div>
+    <div id="overlay" class="overlay" onclick="removePrompt()"></div>
+    <div id="mainDIV" class="mainDIV">
+        <iframe id="mainFrame" class="mainFrame"></iframe>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

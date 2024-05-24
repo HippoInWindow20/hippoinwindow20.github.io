@@ -1,0 +1,53 @@
+body {
+    text-align: center;
+    background: none;
+    font-family: "微軟正黑體", "Microsoft Jhenghei UI", "-apple-system", "Roboto", sans-serif, "Arial";
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 5vh;
+}
+
+h2 {
+    font-size: 4vh;
+}
+
+p {
+    font-size: 3.8vh;
+    line-height: 8vh;
+}
+
+.teacherSelect {
+    padding: 4vh 4vh;
+    /*background: white;*/
+    background: none;
+    color: black;
+    font-size: 4vh;
+    width: 400px;
+    transition: 0.5s;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    font-family: "微軟正黑體", "Microsoft Jhenghei UI", "-apple-system", "Roboto", sans-serif, "Arial";
+}
+
+.bl:hover {
+    background: #4285F4;
+    color: white;
+}
+
+.r:hover {
+    background: #DB4437;
+    color: white;
+}
+
+.g:hover {
+    background: #0F9D58;
+    color: white;
+}
+
+.y:hover {
+    background: #F4B400;
+    color: white;
+}

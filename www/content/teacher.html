@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="innerstyle.css">
+<script src="teacher.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>關於教師</title>
+</head>
+
+<body>
+    <iframe id="teacherFrame" src="teacher/placeholder.html" style="position: absolute;width: 100vw;height: 100vh;border: none;overflow: auto;z-index: 1;top:0;left:0;"></iframe>
+    <button style="z-index: 2;position: absolute;height: 8vh;top: 4vh;left: 4vh;border: none;background: none;cursor: pointer;" onclick="openHamburger()" title="選單">
+        <img src="teacher/menu.svg" style="width: 8vh;height: 8vh;">
+    </button>
+    <div id="navbar" style="z-index: 3;width:100vw;background: white;height: 100vh;position: absolute;top:0;left:-100vw;text-align: left;overflow-y: auto;overflow-x: hidden;">
+        <div style="width: 98vw;position: absolute;left: 4vw;">
+            <button style="height: 8vh;padding: 8vh 0;border: none;background: none;cursor: pointer;" onclick="closeHamburger()" title="關閉選單">
+                <img src="teacher/back.svg" style="width: 8vh;height: 8vh;">
+            </button>
+            <br>
+            <br>
+            <button class="teacherSelect" onclick="viewTeacher('chinese')">國文</button>
+            <button class="teacherSelect" onclick="viewTeacher('english')">英文</button>
+            <button class="teacherSelect" onclick="viewTeacher('math')">數學</button>
+            <button class="teacherSelect" onclick="viewTeacher('physics')">物理</button>
+            <button class="teacherSelect" onclick="viewTeacher('chemistry')">化學</button>
+            <button class="teacherSelect" onclick="viewTeacher('biology')">生物</button>
+            <button class="teacherSelect" onclick="viewTeacher('earth')">地球科學</button>
+            <button class="teacherSelect" onclick="viewTeacher('history')">歷史</button>
+            <button class="teacherSelect" onclick="viewTeacher('geography')">地理</button>
+            <button class="teacherSelect" onclick="viewTeacher('social')">公民</button>
+            <button class="teacherSelect" onclick="viewTeacher('cs')">資訊科學</button>
+            <button class="teacherSelect" onclick="viewTeacher('pe')">體育</button>
+            <button class="teacherSelect" onclick="viewTeacher('life')">生命教育</button>
+            <button class="teacherSelect" onclick="viewTeacher('music')">音樂</button>
+            <button class="teacherSelect" onclick="viewTeacher('engcon_a')">英文會話 A</button>
+            <button class="teacherSelect" onclick="viewTeacher('engcon_b')">英文會話 B</button>
+            <button class="teacherSelect" onclick="viewTeacher('selfstudy_a')">自主學習 A</button>
+            <button class="teacherSelect" onclick="viewTeacher('selfstudy_b')">自主學習 B</button>
+            <button class="teacherSelect" onclick="viewTeacher('explore')">探究與實作</button>
+        </div>
+    </div>
+</body>
+<script>
+    let x = document.getElementsByClassName("teacherSelect");
+    for (let i = 0; i < x.length; i++) {
+        if ((i + 1) % 4 == 1)
+            x[i].classList.add("bl");
+        else if ((i + 1) % 4 == 2)
+            x[i].classList.add("r");
+        else if ((i + 1) % 4 == 3)
+            x[i].classList.add("y");
+        else
+            x[i].classList.add("g");
+    }
+</script>
+
+</html>

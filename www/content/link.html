@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="innerstyle.css">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>更多連結</title>
+</head>
+
+<body>
+    <div id="title" style="position: absolute;top:0;left:0;width: 100vw;height:30vh;background: linear-gradient(to right, #41a638,#1274a6);background-size: 100% 100%;text-align: left;color: white;">
+        <h1 style="position: absolute;top: 17vh;left: 15vw;font-size: 5vh;">更多連結</h1>
+    </div>
+    <div style="position: absolute;top:30vh;left:14vw;width: 72vw;color: black;text-align: left;padding: 0 1vw;height: 70vh;overflow: auto;overflow-x: hidden;">
+        <button class="teacherSelect" onclick="viewPage(this.innerHTML)">延平中學網頁</button>
+        <button class="teacherSelect" onclick="viewPage(this.innerHTML)">高中校務行政系統</button>
+        <button class="teacherSelect" onclick="viewPage(this.innerHTML)">班級聯絡簿</button>
+        <button class="teacherSelect" onclick="viewPage(this.innerHTML)">延平雙月刊</button>
+        <button class="teacherSelect" onclick="viewPage(this.innerHTML)">延平英文雜誌</button>
+        <button class="teacherSelect" onclick="viewPage(this.innerHTML)">酷課雲</button>
+        <button class="teacherSelect" onclick="viewPage(this.innerHTML)">線上資料庫</button>
+        <button class="teacherSelect" onclick="viewPage(this.innerHTML)">雙語資料庫</button>
+        <button class="teacherSelect" onclick="viewPage(this.innerHTML)">Khan Academy</button>
+    </div>
+</body>
+<script>
+    let x = document.getElementsByClassName("teacherSelect");
+    for (let i = 0; i < x.length; i++) {
+        if ((i + 1) % 4 == 1)
+            x[i].classList.add("bl");
+        else if ((i + 1) % 4 == 2)
+            x[i].classList.add("r");
+        else if ((i + 1) % 4 == 3)
+            x[i].classList.add("y");
+        else
+            x[i].classList.add("g");
+    }
+
+    function viewPage(name) {
+        let url;
+        switch (name) {
+            case "延平中學網頁":
+                url = "https://www.yphs.tp.edu.tw/";
+                break;
+            case "高中校務行政系統":
+                url = "https://sschool.tp.edu.tw/ecampus/Login.action?schNo=331301";
+                break;
+            case "班級聯絡簿":
+                url = "https://lds.yphs.tp.edu.tw/tea/tu2.aspx";
+                break;
+            case "延平雙月刊":
+                url = "https://www.yphs.tp.edu.tw/ypd/post/journal.asp";
+                break;
+            case "延平英文雜誌":
+                url = "https://proxy.yphs.tp.edu.tw/~ypk/ypnews/index.htm";
+                break;
+            case "酷課雲":
+                url = "https://cooc.tp.edu.tw/";
+                break;
+            case "線上資料庫":
+                url = "https://onlinedb.tp.edu.tw/Login.action";
+                break;
+            case "雙語資料庫":
+                url = "https://bilingual.ndc.gov.tw/";
+                break;
+            case "Khan Academy":
+                url = "https://www.khanacademy.org/";
+                break;
+        }
+        window.open(url, '_blank').focus();
+    }
+</script>
+
+</html>
