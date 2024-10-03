@@ -14,47 +14,22 @@
 	<style>
 		body {
 			text-decoration: none;
-			display: none;
 			font-family: '微軟正黑體', 'Roboto', -apple-system, sans-serif;
 			font-weight: bolder;
 			color: white;
 			background: #111;
 			overflow-x: hidden;
 		}
-
-		.title {
-			font-size: 40px;
-		}
-
-		.sub {
-			font-size: 24px;
-		}
-
-		.j {
-			font-size: 36px;
-		}
 	</style>
 
 	<body>
+		<div id="redirect" style="text-align: center;background:#222;border-radius: 10px;padding-top: 20px;padding-bottom: 20px;display: none;">
+			<h1>播放器已搬家！</h1>
+			<h2>The player has been moved!</h2>
+			<p>新網站在這：<a href="index.html">index.html</a></p>
+			<p>The new website is here：<a href="index.html">index.html</a></p>
+		</div>
 		<div style="width: 100%;max-width: 1200px;margin: auto;-webkit-tap-highlight-color: rgba(255, 255, 255, 0)">
-			<div align="center">
-				<a href="https://www.metro.taipei" style="text-decoration: none;">
-					<img src="images/TRTC.png" width="81" height="40" />
-				</a>
-				<img src="images/chitext.png" height="35" style="filter: invert();" />
-				<text class="title" style="font-size: 40px;">廣播選播~轉乘、終點站</text>
-				<br>
-				<!-- <img style="cursor: pointer;width: min(100%, 800px)" src="images/news.png" />
-				<br> -->
-				<text class="sub">一般車站廣播請至</text>
-				<img style="cursor: pointer;" src="images/reg.png" onclick="jump()" />
-				<br>
-				<img src="images/left.png" width="164" height="29" onclick="playsp('left')" />
-				<img src="images/right.png" width="164" height="29" onclick="playsp('right')" />
-				<br>
-				<audio id="main" controls>
-					<br>
-			</div>
 			<img src="images/BR_logo.svg" alt="BR 文湖線 Wenhu Line" style="width: 100%;max-width: 400px;" />
 			<hr style="border: 3px solid rgb(158,101,46);">
 			<br>
@@ -154,34 +129,28 @@
 			<img alt="Y17 新埔民生 Xinpu Minsheng" src="images/Y/y17.svg" class="stdStn" onclick="play('y17')" tabindex="0" />
 			<img alt="Y18 頭前庄 Touqianzhuang (臺北醫院 Taipei Hospital)" src="images/Y/y18.svg" class="stdStn" onclick="play('y18')" tabindex="0" />
 			<img alt="Y20 新北產業園區 New Taipei Industrial Park" src="images/Y/y20.svg" class="stdStn" onclick="play('y20')" tabindex="0" />
-			<br>
+			<!-- <br>
 			<br>
 			<br>
 			<div align="center">
 				<hr>
 				<img style="cursor: pointer;" src="images/reg.png" onclick="jump()">
-			</div>
+			</div> -->
 		</div>
 	</body>
 	<script>
 		function play(name) {
-			document.getElementById("main").src = "audio/transfer/" + name + ".mp3";
-			var audio = document.getElementById("main");
+			var audio = window.parent.document.getElementById("main");
+			audio.src = "audio/standard/" + name + ".mp3";
 			audio.play();
 		}
 		function playsp(name) {
-			document.getElementById("main").src = "audio/" + name + ".mp3";
-			var audio = document.getElementById("main");
+			var audio = window.parent.document.getElementById("main");
+			audio.src = "audio/" + name + ".mp3";
 			audio.play();
 		}
-		setTimeout(function () {
-			$("body").fadeIn();
-		}, 1000);
-		function jump() {
-			$("body").fadeOut();
-			setTimeout(function () {
-				window.location.href = "newmain.html";
-			}, 1000);
+		if (window.parent == window){
+			document.getElementById("redirect").style.display = "block";
 		}
 	</script>
 

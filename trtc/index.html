@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <title>台北捷運廣播選播</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body {
+            text-decoration: none;
+            display: none;
+            font-family: '微軟正黑體', 'Roboto', -apple-system, sans-serif;
+            font-weight: bolder;
+            color: white;
+            background: #111;
+            overflow-x: hidden;
+        }
+
+        .categoryBtn {
+            background: none;
+            border: none;
+            padding: 0;
+            border-radius: 10px;
+            background-clip: border-box;
+            cursor: pointer;
+            transition: 0.2s;
+            width: 48vw;
+            max-width: 200px;
+        }
+
+        .doorBtn {
+            height: 50px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .doorBtn:active {
+            filter: brightness(0.5);
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="text-align: center;overflow: hidden;">
+        <div style="background:#222;border-radius: 10px;">
+            <a href="https://www.metro.taipei/" style="text-decoration: none;" tabindex="0">
+                <img src="images/title.svg" style="max-width: 600px;width: 100%;"
+                    alt="台北捷運廣播選播 Taipei Metro Station Announcements" />
+            </a>
+
+            <br>
+            <!-- <img style="cursor: pointer;width: min(100%, 800px)" src="images/news.png" />
+            <br> -->
+            <button id="newmainBtn" class="categoryBtn" onclick="switchCategory('newmain')">
+                <img src="images/reg.svg" style="width: 48vw;max-width: 200px;" />
+            </button>
+            <span style="opacity: 0.0001;">Y</span>
+            <button id="transferBtn" class="categoryBtn"
+                style="background: none;border: none;padding: none;border-radius: 10px;background-clip: border-box;opacity: 0.3;"
+                onclick="switchCategory('transfer')">
+                <img src="images/transfer.svg" style="width: 48vw;max-width: 200px;" />
+            </button>
+            <br>
+            <br>
+        </div>
+        <br>
+        <div style="text-align: center;">
+            <img src="images/left.svg" class="doorBtn" onclick="playsp('left')" tabindex="0" />
+            <img src="images/right.svg" class="doorBtn" onclick="playsp('right')" tabindex="0" />
+            <audio id="main" controls style="height: 50px;">
+        </div>
+        <br>
+        <iframe id="frame" src="newmain.html" style="width: 100%;height: 80vh;border: none;"></iframe>
+    </div>
+    <script>
+        setTimeout(function () {
+            $("body").fadeIn();
+        }, 1000);
+        function jump() {
+            $("body").fadeOut();
+            setTimeout(function () {
+                window.location.href = "transfer.html";
+            }, 1000);
+        }
+        function playsp(name) {
+            var audio = document.getElementById("main");
+            audio.src = "audio/" + name + ".mp3";
+            audio.play();
+        }
+        function switchCategory(name) {
+            var x = document.getElementsByClassName("categoryBtn");
+            for (var i = 0; i < x.length; i++) {
+                x[i].style.opacity = "0.3";
+            }
+            document.getElementById(name + "Btn").style.opacity = "1";
+            document.getElementById('frame').src = name + ".html";
+        }
+    </script>
+</body>
+
+</html>

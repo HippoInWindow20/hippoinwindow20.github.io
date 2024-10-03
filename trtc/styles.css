@@ -3,14 +3,16 @@ filter: brightness(2);
 cursor: pointer;
 transition: 0.3s;
 } */
- img {
+img {
     cursor: pointer;
     transition: 0.3s;
- }
-img:active {
-filter: brightness(0.5);
-cursor: pointer;
 }
+
+img:active {
+    filter: brightness(0.5);
+    cursor: pointer;
+}
+
 .stdStn {
     width: 49%;
     max-width: 295px;
