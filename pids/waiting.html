@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waiting</title>
+    <style>
+        .heading {
+            font-size: 12vw;
+            color: white;
+            vertical-align: middle;
+            margin-top: auto;
+            margin-bottom: auto;
+            font-family: 'Microsoft Jhenghei', '微軟正黑體', sans-serif;
+            font-weight: bold;
+            padding-left: 2vw;
+            padding-right: 2vw;
+        }
+    </style>
+</head>
+
+<body style="background: #ffe2e2;margin: 0;">
+    <table id="mainTable" style="width: 100vw;height: 100vh;display: flex;justify-content: center;">
+        <tr style="width: 100%;height: 50%;">
+            <td style="width: 100%;height: 50%;">
+                <div id="top" style="width: 80%;height:100%;margin: auto;display: flex;flex-direction: row;">
+                    <div
+                        style="height: 70%;margin-top: auto;margin-bottom: auto;display: flex;flex-direction: column;justify-content: center;">
+                        <span id="to_zh" class="heading"
+                            style="padding-left: 0;color: black;font-size: 12vw;white-space: nowrap;text-align: center;">往</span>
+                        <span id="to_foreign" class="heading"
+                            style="padding-left: 0;color: black;font-size: 5vw;white-space: nowrap;text-align: center;">To</span>
+                    </div>
+                    <div id="station_code" style="
+                    aspect-ratio: .7;
+                    background: white;
+                    border: 1vw solid red;
+                    width: 20%;
+                    margin-top: auto;
+                    margin-bottom: auto;
+                    border-radius: 3vh;
+                    margin-right: 2%;
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    ">
+                        <span id="line_color" class="heading"
+                            style="font-size: 8.5vw;margin: auto;font-weight: normal;color:black;margin-bottom: 0;">
+                            R
+                        </span>
+                        <span id="station_num" class="heading"
+                            style="font-size: 8.5vw;margin: auto;font-weight: normal;color:black;margin-top: 0;">
+                            05
+                        </span>
+                    </div>
+                    <div
+                        style="height: 70%;margin-top: auto;margin-bottom: auto;display: flex;flex-direction: column;justify-content: center;">
+                        <span id="dest_zh" class="heading"
+                            style="padding-right: 0;color: black;font-size: 12vw;white-space: nowrap;">大安</span>
+                        <span id="dest_foreign" class="heading"
+                            style="padding-right: 0;color: black;font-size: 5vw;white-space: nowrap;">大安</span>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr style="width: 100%;height: 50%;text-align: center;">
+            <td>
+                <div id="time_box"
+                    style="width: 90%;max-width: 90vw;height:80%;margin: auto;background:red;display: flex;flex-direction: row;justify-content: center;border-radius: 3vh;">
+                    <span id="min" class="heading">00</span>
+                    <div
+                        style="height: 70%;margin-top: auto;margin-bottom: auto;display: flex;flex-direction: column;justify-content: center;">
+                        <span id="min_zh" class="heading"
+                            style="color: white;font-size: 10vw;white-space: nowrap;text-align: center;">分</span>
+                        <span id="min_foreign" class="heading"
+                            style="color: white;font-size: 5vw;white-space: nowrap;text-align: center;">Min.</span>
+                    </div>
+                    <span id="sec" class="heading">05</span>
+                    <div
+                        style="height: 70%;margin-top: auto;margin-bottom: auto;display: flex;flex-direction: column;justify-content: center;">
+                        <span id="sec_zh" class="heading"
+                            style="color: white;font-size: 10vw;white-space: nowrap;text-align: center;">秒</span>
+                        <span id="sec_foreign" class="heading"
+                            style="color: white;font-size: 5vw;white-space: nowrap;text-align: center;">Sec.</span>
+                    </div>
+                </div>
+                <div id="approach_box"
+                    style="width: 90%;max-width: 90vw;height:80%;margin: auto;background:red;display: none;flex-direction: row;justify-content: center;border-radius: 3vh;">
+                    <div
+                        style="height: 70%;margin-top: auto;margin-bottom: auto;display: flex;flex-direction: column;justify-content: center;">
+                        <span id="approach_zh" class="heading"
+                            style="color: white;font-size: 10vw;white-space: nowrap;text-align: center;">列車進站中</span>
+                        <span id="approach_foreign" class="heading"
+                            style="color: white;font-size: 5vw;white-space: nowrap;text-align: center;">Train
+                            approaching</span>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        let colour = urlParams.get('colour');
+        let station_num = urlParams.get('num');
+        let dest_zh = urlParams.get('dest_zh');
+        let dest_en = urlParams.get('dest_en');
+        let dest_jp = urlParams.get('dest_jp');
+        let dest_kr = urlParams.get('dest_kr');
+        let is_final = urlParams.get('is_final');
+        let totalTime = urlParams.get('time');
+        let customColour = urlParams.get('custom_color');
+        let mainColor = "#D0002B";
+        let bgColor = "#ffe2e2";
+
+        switch (colour) {
+            case 'BR':
+                bgColor = "#fff7e2";
+                mainColor = "#9E652E";
+                break;
+            case 'R':
+                bgColor = "#ffe2e2";
+                mainColor = "#D0002B";
+                break;
+            case 'G':
+                bgColor = "#e2ffec";
+                mainColor = "#007846";
+                break;
+            case 'O':
+                bgColor = "#fff5e2";
+                mainColor = "#FFA000";
+                break;
+            case 'BL':
+                bgColor = "#e2f0ff";
+                mainColor = "#005FB9";
+                break;
+            case 'Y':
+                bgColor = "#ffffe2";
+                mainColor = "#FFDB00";
+                break;
+            case 'LG':
+                bgColor = "#eeffe2";
+                mainColor = "#9FD584";
+                break;
+            default:
+                mainColor = "#" + customColour;
+                bgColor = "#fff";
+                break;
+        }
+        document.body.style.background = bgColor;
+        if (is_final == "1") {
+            document.getElementById("station_code").style.border = "1vw solid " + bgColor;
+            document.getElementById("station_code").style.background = mainColor;
+            document.getElementById("line_color").style.color = "white";
+            document.getElementById("station_num").style.color = "white";
+        } else {
+            document.getElementById("station_code").style.border = "1vw solid " + mainColor;
+            document.getElementById("station_code").style.background = "white";
+            document.getElementById("line_color").style.color = "black";
+            document.getElementById("station_num").style.color = "black";
+        }
+
+        document.getElementById("dest_zh").innerHTML = dest_zh;
+        document.getElementById("dest_foreign").innerHTML = dest_en;
+        document.getElementById("time_box").style.background = mainColor;
+        document.getElementById("approach_box").style.background = mainColor
+        function setTime(time) {
+            var sec = time % 60
+            var min = (time - sec) / 60
+            document.getElementById("min").innerHTML = twoDigits(min.toString());
+            document.getElementById("sec").innerHTML = twoDigits(sec.toString());
+            if (totalTime <= 20) {
+                document.getElementById("time_box").style.display = "none"
+                document.getElementById("approach_box").style.display = "flex"
+            }else{
+                document.getElementById("time_box").style.display = "flex"
+                document.getElementById("approach_box").style.display = "none"
+            }
+        }
+        setTime(totalTime)
+
+        document.getElementById("line_color").innerHTML = colour;
+        document.getElementById("station_num").innerHTML = station_num;
+
+        var x = document.getElementById("top").children
+        var totalLength = 0;
+        var bodyLength = document.body.getBoundingClientRect().width;
+        for (var i = 0; i < x.length; i++) {
+            totalLength += x[i].getBoundingClientRect().width;
+        }
+        if (totalLength >= bodyLength * 0.8) {
+            document.getElementById('top').style.justifyContent = "center";
+            document.getElementById('top').style.scale = bodyLength * 0.9 / totalLength;
+        } else {
+            document.getElementById('mainTable').style.display = null
+
+        }
+
+
+
+        function twoDigits(num) {
+            if (num.length == 1) {
+                return '0' + num
+            } else {
+                return num
+            }
+        }
+        function minus(num) {
+            totalTime -= num
+            setTime(totalTime)
+        }
+
+        var language = ['EN','JP','KR']
+        var select = 0
+        function switchLanguage() {
+            switch (language[select]){
+                case 'EN':
+                    document.getElementById('to_foreign').innerHTML = "To"
+                    document.getElementById('dest_foreign').innerHTML = dest_en
+                    document.getElementById('min_foreign').innerHTML = "Min."
+                    document.getElementById('sec_foreign').innerHTML = "Sec."
+                    document.getElementById('approach_foreign').innerHTML = "Train approaching"
+                    break;
+                case 'JP':
+                    document.getElementById('to_foreign').innerHTML = "行き"
+                    document.getElementById('dest_foreign').innerHTML = dest_jp
+                    document.getElementById('min_foreign').innerHTML = "分"
+                    document.getElementById('sec_foreign').innerHTML = "秒"
+                    document.getElementById('approach_foreign').innerHTML = "電車がまいります"
+                    break;
+                case 'KR':
+                    document.getElementById('to_foreign').innerHTML = "까지"
+                    document.getElementById('dest_foreign').innerHTML = dest_kr
+                    document.getElementById('min_foreign').innerHTML = "분"
+                    document.getElementById('sec_foreign').innerHTML = "초"
+                    document.getElementById('approach_foreign').innerHTML = "지금열차가들어오고있습니다"
+                    break;
+            }
+        }
+
+        setInterval(
+            function (){
+                if (select == 2){
+                    select = 0
+                }else{
+                    select++
+                }
+                switchLanguage()
+            },6000
+        )
+    </script>
+</body>
+
+</html>
