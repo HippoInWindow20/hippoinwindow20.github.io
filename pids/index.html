@@ -103,7 +103,7 @@
         }
 
         function setDate() {
-            document.getElementById('date').innerHTML = twoDigits(new Date().getMonth().toString()) + '/' + twoDigits(new Date().getDate().toString()) + ' ' + twoDigits(new Date().getHours().toString()) + ":" + twoDigits(new Date().getMinutes().toString())
+            document.getElementById('date').innerHTML = twoDigits((new Date().getMonth() + 1).toString()) + '/' + twoDigits(new Date().getDate().toString()) + ' ' + twoDigits(new Date().getHours().toString()) + ":" + twoDigits(new Date().getMinutes().toString())
         }
         setDate()
         setInterval(setDate, 1000)
