@@ -27,7 +27,7 @@
             background-clip: border-box;
             cursor: pointer;
             transition: 0.2s;
-            width: 30vw;
+            width: 48vw;
             max-width: 200px;
         }
 
@@ -57,18 +57,18 @@
             <!-- <img style="cursor: pointer;width: min(100%, 800px)" src="images/news.png" />
             <br> -->
             <button aria-label="一般廣播 Regular Announcements" id="newmainBtn" class="categoryBtn" onclick="switchCategory('newmain')">
-                <img alt="一般廣播 Regular Announcements" src="images/reg.svg" style="width: 30vw;max-width: 200px;" />
+                <img alt="一般廣播 Regular Announcements" src="images/reg.svg" style="width: 48vw;max-width: 200px;" />
             </button>
             <button aria-label="轉乘、終點站廣播 Transfer and Terminal Announcements" id="transferBtn" class="categoryBtn"
                 style="background: none;border: none;padding: none;border-radius: 10px;background-clip: border-box;opacity: 0.3;"
                 onclick="switchCategory('transfer')">
-                <img alt="轉乘、終點站廣播 Transfer and Terminal Announcements" src="images/transfer.svg" style="width: 30vw;max-width: 200px;" />
+                <img alt="轉乘、終點站廣播 Transfer and Terminal Announcements" src="images/transfer.svg" style="width: 48vw;max-width: 200px;" />
             </button>
-            <button aria-label="問卷調查 Questionnaire" id="compareBtn" class="categoryBtn"
+            <!-- <button aria-label="問卷調查 Questionnaire" id="compareBtn" class="categoryBtn"
                 style="background: none;border: none;padding: none;border-radius: 10px;background-clip: border-box;opacity: 0.3;"
                 onclick="switchCategory('compare')">
                 <img alt="問卷調查 Questionnaire" src="images/compare.svg" style="width: 30vw;max-width: 200px;" />
-            </button>
+            </button> -->
             <br>
         </div>
         <br>
@@ -97,12 +97,21 @@
         }
         function switchCategory(name) {
             try{
-                var x = document.getElementsByClassName("categoryBtn");
-                for (var i = 0; i < x.length; i++) {
-                    x[i].style.opacity = "0.3";
+                if (name !== "compare"){
+                    var x = document.getElementsByClassName("categoryBtn");
+                    for (var i = 0; i < x.length; i++) {
+                        x[i].style.opacity = "0.3";
+                    }
+                    document.getElementById(name + "Btn").style.opacity = "1";
+                    document.getElementById('frame').src = name + ".html";
+                }else{
+                    setTimeout(
+                        function (){
+                            window.location.href = "poll_closed.html";
+                        },1000
+                    )
                 }
-                document.getElementById(name + "Btn").style.opacity = "1";
-                document.getElementById('frame').src = name + ".html";
+                    
             }catch(e){
                 switchCategory("newmain")
             }
