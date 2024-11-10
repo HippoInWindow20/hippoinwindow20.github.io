@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+		<title>台北捷運廣播選播~宣導廣播</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+		<link rel="stylesheet" href="styles.css">
+
+	</head>
+	<style>
+		body {
+			text-decoration: none;
+			font-family: '微軟正黑體', 'Roboto', -apple-system, sans-serif;
+			font-weight: bolder;
+			color: white;
+			background: #111;
+			overflow-x: hidden;
+		}
+		.standard {
+			background: #222;
+			padding: 5px;
+			padding-left: 20px;
+			padding-right: 20px;
+			margin: 10px;
+			border-radius: 10px;
+			transition: 0.2s;
+			cursor: pointer;
+		}
+		.standard:hover {
+			background: #333;
+		}
+		.standard:active{
+			background: #151515;
+		}
+	</style>
+
+	<body>
+		<div id="redirect" style="text-align: center;background:#222;border-radius: 10px;padding-top: 20px;padding-bottom: 20px;display: none;">
+			<h1>播放器已搬家！</h1>
+			<h2>The player has been moved!</h2>
+			<p>新網站在這：<a href="index.html">index.html</a></p>
+			<p>The new website is here：<a href="index.html">index.html</a></p>
+		</div>
+		<div style="width: 100%;max-width: 1200px;margin: auto;-webkit-tap-highlight-color: rgba(255, 255, 255, 0)">
+			<div class="standard" onclick="play('alert')" tabindex="0">
+				<h2>提高警覺，注意身旁人、事、物。遇異常狀況，冷靜勿驚慌、不推擠，立即撥打110，及通報站車人員。</h2>
+				<h3>Stay alert to your surroundings. In case of an emergency, call 110 or notify staff immediately. Stay calm and do not push or panic.</h3>
+			</div>
+			<div class="standard" onclick="play('anomaly')" tabindex="0">
+				<h2>發現異常狀況時，冷靜勿驚慌，勿奔跑推擠，將正確訊息告知其他旅客，並通報站車人員。</h2>
+				<h3>In the event of an anomaly, stay calm and relay the correct information to others. Do not push or panic, and to notify staff immediately.</h3>
+			</div>
+			<div class="standard" onclick="play('doors')" tabindex="0">
+				<h2>您好，關門警示音響起時，請勿再進出車廂。</h2>
+				<h3>Do not rush onto the train once the door closing buzzer has sounded.</h3>
+			</div>
+			<div class="standard" onclick="play('lean')" tabindex="0">
+				<h2>您好，搭車時請勿倚靠車門，上下車時留意車門與月台間隙，並請記得隨身攜帶物品，謝謝。</h2>
+				<h3>Attention. When taking the MRT, please do not lean on the doors. When getting on or off the train, please don't forget your belongings, and mind the gap between the train and the platform. Thank you.</h3>
+			</div>
+			<div class="standard" onclick="play('mask_new')" tabindex="0">
+				<h2>搭乘捷運，請全程配戴口罩。違反規定者，最高罰新台幣15,000元，並拒絕運送。</h2>
+				<h3>Face masks must be worn on the Taipei Metro at all times. Those who refuse to comply will be refused service and fined up to 15,000 NT dollars.</h3>
+			</div>
+			<div class="standard" onclick="play('move')" tabindex="0">
+				<h2>您好，請往車廂內部移動，將後背包提於手上或置於前方，並勿倚靠車門。</h2>
+				<h3>Please move to the center of the car, and hold your backpack by hand or place it in front of you.</h3>
+			</div>
+			<div class="standard" onclick="play('move_single')" tabindex="0">
+				<h2>您好，請旅客儘量往車廂內部移動，將後背包提於手上或置於前方，勿停留在車門附近倚靠車門及屏風。</h2>
+			</div>
+			<div class="standard" onclick="play('no_food')" tabindex="0">
+				<h2>您好，捷運系統內請勿吸菸、飲食、嚼食口香糖或檳榔。</h2>
+				<h3>Please do not smoke, eat, drink, or chew gum, or betel nut in the Taipei Metro.</h3>
+			</div>
+			<div class="standard" onclick="play('no_service')" tabindex="0">
+				<h2>各位旅客請注意，本列車不再提供載客服務，到站後請儘速下車，謝謝。</h2>
+				<h3>This service terminates here, please alight at once. Thank you.</h3>
+			</div>
+			<div class="standard" onclick="play('no_service_2')" tabindex="0">
+				<h2>各位旅客請注意，因行車調度因素，本列車不再提供載客服務，不再提供載客服務，請儘速下車。造成您的不便，敬請見諒。</h2>
+				<h3>Attention please. This train has been suspended due to dispatch issues. Please alight at once. We apologize for the inconvenience.</h3>
+			</div>
+			<div class="standard" onclick="play('r28_bike')" tabindex="0">
+				<h2>您好，淡水站不開放自行車進出，攜帶自行車的旅客，請在紅樹林站下車出站，謝謝。</h2>
+				<h3>Attention please. Cyclists are not allowed to enter or exit Tamsui station. Passengers with bicycles should exit by Hongshulin station. Thank you.</h3>
+			</div>
+			<div class="standard" onclick="play('social_distancing_app')" tabindex="0">
+				<h2>請下載台灣社交距離App，並開啟藍芽。自我防衛，從你我做起。</h2>
+			</div>
+			<div class="standard" onclick="play('stop')" tabindex="0">
+				<h2>各位旅客請注意，本列車臨時停車，請稍候。造成您的不便，敬請見諒。</h2>
+				<h3>Attention. The train has stopped temporarily. Please wait. Thank you for your patience.</h3>
+			</div>
+			<div class="standard" onclick="play('transfer')" tabindex="0">
+				<h2>您好，本列車因接駁轉乘旅客，請稍候。</h2>
+				<h3>We are stopping briefly to wait for transferring passengers to join us.</h3>
+			</div>
+			<div class="standard" onclick="play('y_partial')" tabindex="0">
+				<h2>各位旅客請注意，因4月3日地震影響，新北環狀線列車運行區段為大坪林至中和，板橋至新北產業園區，公車接駁區段為中和站至板橋站。</h2>
+			</div>
+		</div>
+	</body>
+	<script>
+		function play(name) {
+			var audio = window.parent.document.getElementById("main");
+			audio.src = "audio/general/" + name + ".mp3";
+			audio.play();
+		}
+		if (window.parent == window){
+			document.getElementById("redirect").style.display = "block";
+		}
+	</script>
+
+</html>
