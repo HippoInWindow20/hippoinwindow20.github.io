@@ -1,0 +1,8 @@
+<section id="social-links">
+{% for i in site.data.author.contact %}
+  <a href="{{i.url}}" target="_blank" title="{{i.tooltip}}">
+    <img src="{{site.baseurl}}/assets/icons/{{i.title}}.svg" alt="" />
+    <span>&nbsp;{{i.formal}}</span>
+  </a>
+{%endfor%}
+</section>

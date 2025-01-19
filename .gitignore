@@ -9,3 +9,8 @@ answer/eng20220627.html
 answer/math20220506-1.html
 answer/math20220506-2.html
 answer/math20220506.pdf
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor

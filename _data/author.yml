@@ -1,0 +1,27 @@
+name: Shippo Hsu
+# dp: https://avatars2.githubusercontent.com/u/36638057?s=460&u=0cbe4fd6b5a3655d91b3eb86db834d0829a0c086&v=4
+description: "
+  <h2>This design is very pretty and I like it.</h2>
+  <br>
+  <p style='font-weight: 500'>I tried designing my old site for years writing in pure HTML and I hated it. So eventually I resorted to using someone else's design and looks 10x better than what I have ever done.</p>
+  <br>
+  <p style='font-weight: 500'>So yes, this is the new look of my homepage. The old stuff are still here, looking as shitty as always.</p>
+  <br>
+  <h3>Enjoy your stay.</h3>
+  <br>
+  <p style='font-weight: 500'>If you want the old homepage, <a href='index_old.html'>here it is.</a></p>
+"
+email: shippo.hsu.test@gmail.com
+contact:
+  - title: youtube
+    formal: YouTube
+    tooltip: This is now my active channel. Forget all the other ones if you want.
+    url: https://www.youtube.com/@ShippoHsuVlog
+  - title: github
+    formal: GitHub
+    tooltip: My shit ton of unfinished projects.
+    url: https://github.com/HippoInWindow20
+  - title: instagram
+    formal: Instagram
+    tooltip: If you like MRT station photography and some miscellaneous stuff, go here.
+    url: https://www.instagram.com/shippohsu/
