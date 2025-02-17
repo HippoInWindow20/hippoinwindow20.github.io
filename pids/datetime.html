@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Date Time</title>
+    </head>
+
+    <body style="box-sizing: border-box;background:green;text-align: center;">
+        <span id="date"
+            style="font-family: 'Microsoft Jhenghei','微軟正黑體',sans-serif;font-size: 15vw;font-weight: bold;color: white;margin: auto;">
+            10/11 11:41
+        </span>
+        <script>
+            function setDate() {
+                document.getElementById('date').innerHTML = twoDigits((new Date().getMonth() + 1).toString()) + '/' + twoDigits(new Date().getDate().toString()) + ' ' + twoDigits(new Date().getHours().toString()) + ":" + twoDigits(new Date().getMinutes().toString())
+            }
+            setDate()
+            setInterval(setDate, 1000)
+        </script>
+    </body>
+
+</html>

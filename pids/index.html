@@ -15,14 +15,14 @@
                     <td style="width: 25%;height: 87%;padding: 0;">
                         <div style="width: 100%;height: 33.33%;box-sizing: border-box;">
                             <iframe id="train1"
-                                src="waiting.html?colour=G&num=01&dest_zh=新店&dest_en=Xindian&dest_jp=新店&dest_kr=신뎬&is_final=1&min=15&sec=50"
+                                src="waiting.html?colour=G&num=01&dest_zh=新店&dest_en=Xindian&dest_jp=新店&dest_kr=신뎬&is_final=1&time=200"
                                 style="width: 100%;height: 100%;border: none;border: 0.4vw solid black;box-sizing: border-box;">
 
                             </iframe>
                         </div>
                         <div style="width: 100%;height: 33.33%;box-sizing: border-box;">
                             <iframe id="train2"
-                                src="waiting.html?colour=G&num=08&dest_zh=台電大樓&dest_en=Taipower%20Building&dest_jp=台湾電力ビル&dest_kr=대만%20전력공사%20빌딩&is_final=0&min=10&sec=20"
+                                src="waiting.html?colour=Y&num=07&dest_zh=大坪林&dest_en=Dapinglin&dest_jp=大坪林&dest_kr=다핑린&is_final=1&time=100"
                                 style="width: 100%;height: 100%;border: 0.4vw solid black;box-sizing: border-box;">
 
                             </iframe>
@@ -38,37 +38,25 @@
                             style="width: 100%;height: 85%;border: none;box-sizing: border-box;background: url('ad/bg.jpg');background-size: cover;">
 
                         </iframe>
-                        <div style="width: 100%;height: 15%;background: white;margin-top: -4px;text-align: center;display: flex;justify-content: center;">
-                            <span
-                                style="font-family: 'Microsoft Jhenghei','微軟正黑體',sans-serif;font-size: 6cqh;font-weight: bold;color: black;margin-top: auto;margin-bottom:auto;margin-left: 0;margin-right: 2cqh;">
-                                G01
-                            </span>
-                            <img src="crowdness/0_left.svg" style="height: 8cqh;margin-top:auto;margin-bottom:auto" />
-                            <img src="crowdness/1_middle.svg" style="height: 8cqh;margin-top:auto;margin-bottom:auto" />
-                            <img src="crowdness/1_middle.svg" style="height: 8cqh;margin-top:auto;margin-bottom:auto" />
-                            <img src="crowdness/2_middle.svg" style="height: 8cqh;margin-top:auto;margin-bottom:auto" />
-                            <img src="crowdness/3_middle.svg" style="height: 8cqh;margin-top:auto;margin-bottom:auto" />
-                            <img src="crowdness/2_middle.svg" style="height: 8cqh;margin-top:auto;margin-bottom:auto" />
-                        </div>
+                        <iframe src="crowdness.html" style="width: 100%;height: 15%;background: white;margin-top: -4px;text-align: center;display: flex;justify-content: center;border: 0;">
+                            
+                        </iframe>
                     </td>
                 </tr>
                 <tr style="width: 100%;height: 13%;">
                     <td style="width: 25%;height: 13%;">
-                        <div
-                            style="display: flex;justify-content: center;box-sizing: border-box;border-left: 5px solid black;border-right: 5px solid black;background:green;height: 100%;">
-                            <span id="date"
-                                style="font-family: 'Microsoft Jhenghei','微軟正黑體',sans-serif;font-size: 6cqh;font-weight: bold;color: white;margin: auto;">
-                                10/11 11:41
-                            </span>
-                        </div>
+                        <iframe
+                                src="datetime.html"
+                                style="width: 100%;aspect-ratio: 3.15;border: 0.4vw solid black;box-sizing: border-box;">
+
+                            </iframe>
                     </td>
                     <td style="width: 75%;height: 13%;background:black;">
-                        <div class="marquee" style="width: 100%;height: 100%;overflow: hidden;display: flex;">
-                            <marquee id="marquee"
-                                style="color: white;font-family: 'Microsoft Jhenghei','微軟正黑體',sans-serif;font-size: 6cqh;margin-top: auto;margin-bottom: auto;white-space: nowrap;">
-                                (CNA) Master hacker Shippo Hsu has been arrested for assaulting young children.
-                            </marquee>
-                        </div>
+                        <iframe
+                                src="marquee.html"
+                                style="width: 100%;aspect-ratio: 10;border: none;box-sizing: border-box;">
+
+                            </iframe>
                     </td>
                 </tr>
             </table>
@@ -102,17 +90,11 @@
             }
         }
 
-        function setDate() {
-            document.getElementById('date').innerHTML = twoDigits((new Date().getMonth() + 1).toString()) + '/' + twoDigits(new Date().getDate().toString()) + ' ' + twoDigits(new Date().getHours().toString()) + ":" + twoDigits(new Date().getMinutes().toString())
-        }
-        setDate()
-        setInterval(setDate, 1000)
-
         //Counting
         var counter1 = (Math.floor(Math.random() * 144))*5
         var counter2 = counter1 + (Math.floor(Math.random() * 144))*5
         document.getElementById('train1').src = "waiting.html?colour=G&num=01&dest_zh=新店&dest_en=Xindian&dest_jp=新店&dest_kr=신뎬&is_final=1&time=" + counter1
-        document.getElementById('train2').src = "waiting.html?colour=G&num=08&dest_zh=台電大樓&dest_en=Taipower%20Building&dest_jp=台湾電力ビル&dest_kr=대만%20전력공사%20빌딩&is_final=0&time=" + counter2
+        document.getElementById('train2').src = "waiting.html?colour=Y&num=07&dest_zh=大坪林&dest_en=Dapinglin&dest_jp=大坪林&dest_kr=다핑린&is_final=1&time=" + counter2
         setInterval(function () {
             counter1 -= 5
             counter2 -= 5
