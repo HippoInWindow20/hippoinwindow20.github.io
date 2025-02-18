@@ -30,4 +30,19 @@ function setLine(){
     var url2 = `waiting.html?colour=${line2}&num=${code2}&dest_zh=${parsedStations[line2][index2][1]}&dest_en=${parsedStations[line2][index2][2]}&dest_jp=${parsedStations[line2][index2][3]}&dest_kr=${parsedStations[line2][index2][4]}&is_final=${isFinal2}&time=${counter2}`
     document.getElementById('train1').src = url1;
     document.getElementById('train2').src = url2;
+    var carts = {
+        "BR": 4,
+        "R": 6,
+        "RA":6,
+        "G": 6,
+        "O": 6,
+        "BL": 6,
+        "Y": 4,
+        "LG":4
+    }
+    var crowdness = "";
+    for (var i = 0;i < carts[line1];i++) {
+        crowdness += Math.floor(Math.random() * 4).toString();
+    }
+    document.getElementById("crowdness").src = `crowdness.html?line=${line1}&direction=left&code=${code1}&carts=${carts[line1]}&crowdness=${crowdness}`;
 }

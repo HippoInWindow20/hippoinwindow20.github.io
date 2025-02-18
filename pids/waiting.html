@@ -20,11 +20,11 @@
     </style>
 </head>
 
-<body style="background: #ffe2e2;margin: 0;" onclick="window.parent.document.getElementById('configureEntry').click()">
+<body style="background: #ffe2e2;margin: 0;overflow-x: hidden;" onclick="window.parent.document.getElementById('configureEntry').click()">
     <table id="mainTable" style="width: 100vw;height: 100vh;display: flex;justify-content: center;">
         <tr>
-            <td style="width: 100%;aspect-ratio: 16/4.5;">
-                <div id="top" style="width: 80%;aspect-ratio: 16/4.5;margin: auto;display: flex;flex-direction: row;">
+            <td style="width: 100vw;aspect-ratio: 16/4.5;">
+                <div id="top" style="width: 90%;aspect-ratio: 16/4.5;margin: auto;display: flex;flex-direction: row;">
                     <div
                         style="height: 70%;margin-top: auto;margin-bottom: auto;display: flex;flex-direction: column;justify-content: center;">
                         <span id="to_zh" class="heading"
@@ -162,6 +162,10 @@
             document.getElementById("station_code").style.background = mainColor;
             document.getElementById("line_color").style.color = "white";
             document.getElementById("station_num").style.color = "white";
+            if ((colour == 'O' || colour == 'Y') || colour == 'LG') {
+                document.getElementById("line_color").style.color = "black";
+                document.getElementById("station_num").style.color = "black";
+            }
         } else {
             document.getElementById("station_code").style.border = "1vw solid " + mainColor;
             document.getElementById("station_code").style.background = "white";
@@ -192,13 +196,12 @@
             document.getElementById("line_color").style.color = "black";
             document.getElementById("station_num").innerHTML = station_num;
             document.getElementById("station_num").style.color = "black";
-            if (station_num.length > 2)
-                document.getElementById("station_num").style.fontSize = "7vw";
-            
         }else{
             document.getElementById("line_color").innerHTML = colour;
             document.getElementById("station_num").innerHTML = station_num;
         }
+        if (station_num.length > 2)
+                document.getElementById("station_num").style.fontSize = "7vw";
         
         var x = document.getElementById("top").children
         var totalLength = 0;

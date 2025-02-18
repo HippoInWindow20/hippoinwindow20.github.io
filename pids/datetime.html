@@ -7,11 +7,13 @@
         <title>Date Time</title>
     </head>
 
-    <body style="box-sizing: border-box;background:green;text-align: center;">
-        <span id="date"
-            style="font-family: 'Microsoft Jhenghei','微軟正黑體',sans-serif;font-size: 15vw;font-weight: bold;color: white;margin: auto;">
-            10/11 11:41
-        </span>
+    <body style="box-sizing: border-box;background:green;text-align: center;margin: 0;overflow: hidden;">
+        <div style="display: flex;align-items: center;width: 100vw;height: 100vh;">
+            <span id="date"
+                style="font-family: 'Microsoft Jhenghei','微軟正黑體',sans-serif;font-size: 15vw;font-weight: bold;color: white;margin: auto;">
+                10/11 11:41
+            </span>
+        </div>
         <script>
             function setDate() {
                 document.getElementById('date').innerHTML = twoDigits((new Date().getMonth() + 1).toString()) + '/' + twoDigits(new Date().getDate().toString()) + ' ' + twoDigits(new Date().getHours().toString()) + ":" + twoDigits(new Date().getMinutes().toString())
@@ -25,6 +27,15 @@
             }
             setDate()
             setInterval(setDate, 1000)
+            var colors = ["red","green","blue","orange"]
+            var i = 0
+            setInterval(() => {
+                document.body.style.background = colors[i]
+                i++
+                if (i == colors.length) {
+                    i = 0
+                }
+            }, 5000)
         </script>
     </body>
 
