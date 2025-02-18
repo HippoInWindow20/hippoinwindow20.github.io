@@ -16,6 +16,13 @@
             function setDate() {
                 document.getElementById('date').innerHTML = twoDigits((new Date().getMonth() + 1).toString()) + '/' + twoDigits(new Date().getDate().toString()) + ' ' + twoDigits(new Date().getHours().toString()) + ":" + twoDigits(new Date().getMinutes().toString())
             }
+            function twoDigits(num) {
+                if (num.length == 1) {
+                    return '0' + num
+                } else {
+                    return num
+                }
+            }
             setDate()
             setInterval(setDate, 1000)
         </script>

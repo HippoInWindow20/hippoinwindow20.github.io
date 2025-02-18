@@ -73,47 +73,50 @@
                     </div>
                     <div class="modal-body">
                         <h4>第一格</h4>
-                        <select>
+                        <select id="line1" onchange="getStations(1)">
                             <option value="BR">BR 文湖線</option>
                             <option value="R">R 淡水信義線</option>
+                            <option value="RA">新北投支線</option>
                             <option value="G">G 松山新店線</option>
+                            <option value="GA">小碧潭支線</option>
                             <option value="O">O 中和新蘆線</option>
                             <option value="BL">BL 板南線</option>
                             <option value="Y">Y 環狀線</option>
                             <option value="LG">LG 萬大線</option>
                             <option value="custom">自訂</option>
                         </select>
-                        <select>
-                            <option value="G01">G01 新店</option>
-                        </select>
-                        <label for="final">是終點站</label>
-                        <input type="checkbox" id="final" name="final" value="1">
+                        <select id="station1"></select>
+                        <label for="final1">是終點站</label>
+                        <input type="checkbox" id="final1" name="final" value="1">
                         <br>
                         <h4>第二格</h4>
-                        <select>
+                        <select id="line2" onchange="getStations(2)">
                             <option value="BR">BR 文湖線</option>
                             <option value="R">R 淡水信義線</option>
+                            <option value="RA">新北投支線</option>
                             <option value="G">G 松山新店線</option>
+                            <option value="GA">小碧潭支線</option>
                             <option value="O">O 中和新蘆線</option>
                             <option value="BL">BL 板南線</option>
                             <option value="Y">Y 環狀線</option>
                             <option value="LG">LG 萬大線</option>
                             <option value="custom">自訂</option>
                         </select>
-                        <select>
-                            <option value="G01">G01 新店</option>
+                        <select id="station2">
                         </select>
-                        <label for="final">是終點站</label>
-                        <input type="checkbox" id="final" name="final" value="1">
+                        <label for="final2">是終點站</label>
+                        <input type="checkbox" id="final2" name="final" value="1">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">捨棄變更</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">儲存變更</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="setLine()">儲存變更</button>
                     </div>
                 </div>
             </div>
         </div>
         <script src="bootstrap-5.3.3-dist/js/bootstrap.js"></script>
+        <script src="station_list.js"></script>
+        <script src="settings.js"></script>
         <script>
             var ad_cur = 1;
             var ads = [
@@ -133,14 +136,6 @@
                     }
                 }, 10000
             )
-
-            function twoDigits(num) {
-                if (num.length == 1) {
-                    return '0' + num
-                } else {
-                    return num
-                }
-            }
 
             //Counting
             var counter1 = (Math.floor(Math.random() * 144)) * 5

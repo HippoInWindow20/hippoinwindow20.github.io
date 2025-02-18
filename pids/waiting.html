@@ -22,9 +22,9 @@
 
 <body style="background: #ffe2e2;margin: 0;" onclick="window.parent.document.getElementById('configureEntry').click()">
     <table id="mainTable" style="width: 100vw;height: 100vh;display: flex;justify-content: center;">
-        <tr style="width: 100%;height: 50%;">
-            <td style="width: 100%;height: 50%;">
-                <div id="top" style="width: 80%;height:100%;margin: auto;display: flex;flex-direction: row;">
+        <tr>
+            <td style="width: 100%;aspect-ratio: 16/4.5;">
+                <div id="top" style="width: 80%;aspect-ratio: 16/4.5;margin: auto;display: flex;flex-direction: row;">
                     <div
                         style="height: 70%;margin-top: auto;margin-bottom: auto;display: flex;flex-direction: column;justify-content: center;">
                         <span id="to_zh" class="heading"
@@ -64,10 +64,10 @@
                 </div>
             </td>
         </tr>
-        <tr style="width: 100%;height: 50%;text-align: center;">
-            <td>
+        <tr style="text-align: center;">
+            <td style="width: 100%;aspect-ratio: 16/4.5;">
                 <div id="time_box"
-                    style="width: 90%;max-width: 90vw;height:80%;margin: auto;background:red;display: flex;flex-direction: row;justify-content: center;border-radius: 3vh;">
+                    style="width: 90%;max-width: 90vw;aspect-ratio: 16/4.5;margin: auto;background:red;display: flex;flex-direction: row;justify-content: center;border-radius: 3vh;">
                     <span id="min" class="heading">00</span>
                     <div
                         style="height: 70%;margin-top: auto;margin-bottom: auto;display: flex;flex-direction: column;justify-content: center;">
@@ -187,12 +187,13 @@
             }
         }
         setTime(totalTime)
-        if (isA(colour)){
+        if (isA(colour)) {
             document.getElementById("line_color").innerHTML = colour.substring(0,1);
             document.getElementById("line_color").style.color = "black";
             document.getElementById("station_num").innerHTML = station_num;
             document.getElementById("station_num").style.color = "black";
-            document.getElementById("station_num").style.fontSize = "7vw";
+            if (station_num.length > 2)
+                document.getElementById("station_num").style.fontSize = "7vw";
             
         }else{
             document.getElementById("line_color").innerHTML = colour;
@@ -205,7 +206,7 @@
         for (var i = 0; i < x.length; i++) {
             totalLength += x[i].getBoundingClientRect().width;
         }
-        if (totalLength >= bodyLength * 0.8) {
+        if (totalLength >= bodyLength * 0.9) {
             document.getElementById('top').style.justifyContent = "center";
             document.getElementById('top').style.scale = bodyLength * 0.9 / totalLength;
         } else {
