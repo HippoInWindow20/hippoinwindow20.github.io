@@ -1,133 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>台北捷運多語 PIDS</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>台北捷運多語 PIDS</title>
+        <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.css">
+    </head>
 
-<body style="margin: 0;background: black;overflow-x: hidden;">
-    <div style="width: 100vw;height: 100vh;display: flex;justify-content: center;align-items: center;">
-        <div id="main" style="width: 100vw;height: 56.25vw;background: black;box-sizing: content-box;padding: 5px;">
-            <table style="width: 100%;height: 100%;background-color: black;">
-                <tr style="width: 100%;height: 87%;border: 0.4vw solid black;">
-                    <td style="width: 25%;height: 87%;padding: 0;">
-                        <div style="width: 100%;aspect-ratio: 1.58;box-sizing: border-box;">
-                            <iframe id="train1"
-                                src="waiting.html?colour=G&num=01&dest_zh=新店&dest_en=Xindian&dest_jp=新店&dest_kr=신뎬&is_final=1&time=200"
-                                style="width: 100%;height: 100%;border: none;border: 0.4vw solid black;box-sizing: border-box;">
+    <body style="margin: 0;background: black;overflow-x: hidden;">
+        <div style="width: 100vw;height: 100vh;display: flex;justify-content: center;align-items: center;">
+            <div id="main" style="width: 100vw;height: 56.25vw;background: black;box-sizing: content-box;padding: 5px;">
+                <table style="width: 100%;height: 100%;background-color: black;">
+                    <tr style="width: 100%;height: 87%;border: 0.4vw solid black;">
+                        <td style="width: 25%;height: 87%;padding: 0;">
+                            <div id="configureEntry" style="width: 100%;aspect-ratio: 1.58;box-sizing: border-box;" data-bs-toggle="modal" data-bs-target="#configure">
+                                <iframe id="train1"
+                                    src="waiting.html?colour=G&num=01&dest_zh=新店&dest_en=Xindian&dest_jp=新店&dest_kr=신뎬&is_final=1&time=200"
+                                    style="width: 100%;height: 100%;border: none;border: 0.4vw solid black;box-sizing: border-box;">
 
-                            </iframe>
-                        </div>
-                        <div style="width: 100%;aspect-ratio: 1.58;box-sizing: border-box;">
-                            <iframe id="train2"
-                                src="waiting.html?colour=Y&num=07&dest_zh=大坪林&dest_en=Dapinglin&dest_jp=大坪林&dest_kr=다핑린&is_final=1&time=100"
-                                style="width: 100%;height: 100%;border: 0.4vw solid black;box-sizing: border-box;">
-
-                            </iframe>
-                        </div>
-                        <div style="width:100%;height: 33.33%;background: black;box-sizing: border-box;">
-                            <div id="news"
-                                style="width: 100%;aspect-ratio: 1.58;border: 0.4vw solid black;box-sizing: border-box;background: url('ad/ad1.svg');background-size:cover;">
+                                </iframe>
                             </div>
-                        </div>
-                    </td>
-                    <td style="width: 75%;height: 85%;background:black;border: 0.4vw solid black;border-left: 0;box-sizing: border-box;">
-                        <iframe
-                            style="width: 100%;height: 85%;border: none;box-sizing: border-box;background: url('ad/bg.jpg');background-size: cover;">
+                            <div style="width: 100%;aspect-ratio: 1.58;box-sizing: border-box;">
+                                <iframe id="train2"
+                                    src="waiting.html?colour=Y&num=07&dest_zh=大坪林&dest_en=Dapinglin&dest_jp=大坪林&dest_kr=다핑린&is_final=1&time=100"
+                                    style="width: 100%;height: 100%;border: 0.4vw solid black;box-sizing: border-box;">
 
-                        </iframe>
-                        <iframe src="crowdness.html" style="width: 100%;aspect-ratio: 10;background: white;margin-top: -4px;text-align: center;display: flex;justify-content: center;border: 0;">
-                            
-                        </iframe>
-                    </td>
-                </tr>
-                <tr style="width: 100%;height: 13%;">
-                    <td style="width: 25%;height: 13%;">
-                        <iframe
-                                src="datetime.html"
+                                </iframe>
+                            </div>
+                            <div style="width:100%;height: 33.33%;background: black;box-sizing: border-box;">
+                                <div id="news"
+                                    style="width: 100%;aspect-ratio: 1.58;border: 0.4vw solid black;box-sizing: border-box;background: url('ad/ad1.svg');background-size:cover;">
+                                </div>
+                            </div>
+                        </td>
+                        <td
+                            style="width: 75%;height: 85%;background:black;border: 0.4vw solid black;border-left: 0;box-sizing: border-box;">
+                            <iframe
+                                style="width: 100%;height: 85%;border: none;box-sizing: border-box;background: url('ad/bg.jpg');background-size: cover;">
+
+                            </iframe>
+                            <iframe src="crowdness.html"
+                                style="width: 100%;aspect-ratio: 10;background: white;margin-top: -4px;text-align: center;display: flex;justify-content: center;border: 0;">
+
+                            </iframe>
+                        </td>
+                    </tr>
+                    <tr style="width: 100%;height: 13%;">
+                        <td style="width: 25%;height: 13%;">
+                            <iframe src="datetime.html"
                                 style="width: 100%;aspect-ratio: 3.15;border: 0.4vw solid black;box-sizing: border-box;">
 
                             </iframe>
-                    </td>
-                    <td style="width: 75%;height: 13%;background:black;">
-                        <iframe
-                                src="marquee.html"
+                        </td>
+                        <td style="width: 75%;height: 13%;background:black;">
+                            <iframe src="marquee.html"
                                 style="width: 100%;aspect-ratio: 10;border: none;box-sizing: border-box;">
 
                             </iframe>
-                    </td>
-                </tr>
-            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
-    </div>
-    <script>
-        var ad_cur = 1;
-        var ads = [
-            'ad1.svg',
-            'ad2.svg',
-            'ad3.svg',
-            'ad4.svg'
-        ]
-        setInterval(
-            function () {
-                document.getElementById("news").style.background = 'url(ad/' + ads[ad_cur] + ')'
-                document.getElementById("news").style.backgroundSize = 'cover'
-                if (ad_cur == ads.length - 1) {
-                    ad_cur = 0
+
+        <!-- Modal -->
+        <div class="modal fade" id="configure" tabindex="-1" aria-labelledby="configure" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">設定資訊</h1>
+                    </div>
+                    <div class="modal-body">
+                        <h4>第一格</h4>
+                        <select>
+                            <option value="BR">BR 文湖線</option>
+                            <option value="R">R 淡水信義線</option>
+                            <option value="G">G 松山新店線</option>
+                            <option value="O">O 中和新蘆線</option>
+                            <option value="BL">BL 板南線</option>
+                            <option value="Y">Y 環狀線</option>
+                            <option value="LG">LG 萬大線</option>
+                            <option value="custom">自訂</option>
+                        </select>
+                        <select>
+                            <option value="G01">G01 新店</option>
+                        </select>
+                        <label for="final">是終點站</label>
+                        <input type="checkbox" id="final" name="final" value="1">
+                        <br>
+                        <h4>第二格</h4>
+                        <select>
+                            <option value="BR">BR 文湖線</option>
+                            <option value="R">R 淡水信義線</option>
+                            <option value="G">G 松山新店線</option>
+                            <option value="O">O 中和新蘆線</option>
+                            <option value="BL">BL 板南線</option>
+                            <option value="Y">Y 環狀線</option>
+                            <option value="LG">LG 萬大線</option>
+                            <option value="custom">自訂</option>
+                        </select>
+                        <select>
+                            <option value="G01">G01 新店</option>
+                        </select>
+                        <label for="final">是終點站</label>
+                        <input type="checkbox" id="final" name="final" value="1">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">捨棄變更</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">儲存變更</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="bootstrap-5.3.3-dist/js/bootstrap.js"></script>
+        <script>
+            var ad_cur = 1;
+            var ads = [
+                'ad1.svg',
+                'ad2.svg',
+                'ad3.svg',
+                'ad4.svg'
+            ]
+            setInterval(
+                function () {
+                    document.getElementById("news").style.background = 'url(ad/' + ads[ad_cur] + ')'
+                    document.getElementById("news").style.backgroundSize = 'cover'
+                    if (ad_cur == ads.length - 1) {
+                        ad_cur = 0
+                    } else {
+                        ad_cur++
+                    }
+                }, 10000
+            )
+
+            function twoDigits(num) {
+                if (num.length == 1) {
+                    return '0' + num
                 } else {
-                    ad_cur++
+                    return num
                 }
-            }, 10000
-        )
-
-        function twoDigits(num) {
-            if (num.length == 1) {
-                return '0' + num
-            } else {
-                return num
             }
-        }
 
-        //Counting
-        var counter1 = (Math.floor(Math.random() * 144))*5
-        var counter2 = counter1 + (Math.floor(Math.random() * 144))*5
-        document.getElementById('train1').src = "waiting.html?colour=G&num=01&dest_zh=新店&dest_en=Xindian&dest_jp=新店&dest_kr=신뎬&is_final=1&time=" + counter1
-        document.getElementById('train2').src = "waiting.html?colour=Y&num=07&dest_zh=大坪林&dest_en=Dapinglin&dest_jp=大坪林&dest_kr=다핑린&is_final=1&time=" + counter2
-        setInterval(function () {
-            counter1 -= 5
-            counter2 -= 5
-            var random1 = (Math.floor(Math.random() * 144))*5
-            var random2 = (Math.floor(Math.random() * 144))*5
-            if (counter1 <= -70){
-                counter1 += random1
-                document.getElementById('train1').contentWindow.minus(5-random1)
-            }else{
-                document.getElementById('train1').contentWindow.minus(5)
-            }
-            if (counter2 <= -70){
-                counter2 += random2
-                document.getElementById('train2').contentWindow.minus(5-random2)
-            }else{
-                document.getElementById('train2').contentWindow.minus(5)
-            }
-        }, 5000)
-
-        setInterval(
-            function (){
-                var width = window.innerWidth
-                var height = window.innerHeight
-                if (width/height >= (16/9)){
-                    document.getElementById("main").style.width = (1600/9) + "vh"
-                    document.getElementById("main").style.height = "100vh" 
-                }else{
-                    document.getElementById("main").style.width = "100vw"
-                    document.getElementById("main").style.height = "56.25vw" 
+            //Counting
+            var counter1 = (Math.floor(Math.random() * 144)) * 5
+            var counter2 = counter1 + (Math.floor(Math.random() * 144)) * 5
+            document.getElementById('train1').src = "waiting.html?colour=G&num=01&dest_zh=新店&dest_en=Xindian&dest_jp=新店&dest_kr=신뎬&is_final=1&time=" + counter1
+            document.getElementById('train2').src = "waiting.html?colour=Y&num=07&dest_zh=大坪林&dest_en=Dapinglin&dest_jp=大坪林&dest_kr=다핑린&is_final=1&time=" + counter2
+            setInterval(function () {
+                counter1 -= 5
+                counter2 -= 5
+                var random1 = (Math.floor(Math.random() * 144)) * 5
+                var random2 = (Math.floor(Math.random() * 144)) * 5
+                if (counter1 <= -70) {
+                    counter1 += random1
+                    document.getElementById('train1').contentWindow.minus(5 - random1)
+                } else {
+                    document.getElementById('train1').contentWindow.minus(5)
                 }
-            },100
-        )
-    </script>
-</body>
+                if (counter2 <= -70) {
+                    counter2 += random2
+                    document.getElementById('train2').contentWindow.minus(5 - random2)
+                } else {
+                    document.getElementById('train2').contentWindow.minus(5)
+                }
+            }, 5000)
+
+            setInterval(
+                function () {
+                    var width = window.innerWidth
+                    var height = window.innerHeight
+                    if (width / height >= (16 / 9)) {
+                        document.getElementById("main").style.width = (1600 / 9) + "vh"
+                        document.getElementById("main").style.height = "100vh"
+                    } else {
+                        document.getElementById("main").style.width = "100vw"
+                        document.getElementById("main").style.height = "56.25vw"
+                    }
+                }, 100
+            )
+        </script>
+    </body>
 
 </html>
