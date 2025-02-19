@@ -33,8 +33,9 @@ function setLine(){
     var carts = {
         "BR": 4,
         "R": 6,
-        "RA":6,
+        "RA":3,
         "G": 6,
+        "GA":3,
         "O": 6,
         "BL": 6,
         "Y": 4,
@@ -44,5 +45,6 @@ function setLine(){
     for (var i = 0;i < carts[line1];i++) {
         crowdness += Math.floor(Math.random() * 4).toString();
     }
-    document.getElementById("crowdness").src = `crowdness.html?line=${line1}&direction=left&code=${code1}&carts=${carts[line1]}&crowdness=${crowdness}`;
+    var side1 = document.getElementById("left_side1").checked ? "left" : "right";
+    document.getElementById("crowdness").src = `crowdness.html?line=${line1}&direction=${side1}&code=${code1}&carts=${carts[line1]}&crowdness=${crowdness}`;
 }

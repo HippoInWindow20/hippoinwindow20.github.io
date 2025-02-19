@@ -14,14 +14,14 @@
                 <table style="width: 100%;height: 100%;background-color: black;">
                     <tr style="width: 100%;height: 87%;border: none;">
                         <td style="width: 25%;height: 87%;padding: 0;">
-                            <div id="configureEntry" style="width: 100%;aspect-ratio: 1.58;box-sizing: border-box;" data-bs-toggle="modal" data-bs-target="#configure">
+                            <div id="configureEntry" style="width: 100%;aspect-ratio: 1.5;box-sizing: border-box;" data-bs-toggle="modal" data-bs-target="#configure">
                                 <iframe id="train1"
                                     src="waiting.html?colour=G&num=01&dest_zh=新店&dest_en=Xindian&dest_jp=新店&dest_kr=신뎬&is_final=1&time=200"
                                     style="width: 100%;height: 100%;border: none;border: 0.4vw solid black;box-sizing: border-box;">
 
                                 </iframe>
                             </div>
-                            <div style="width: 100%;aspect-ratio: 1.58;box-sizing: border-box;border-top: 0;">
+                            <div style="width: 100%;aspect-ratio: 1.5;box-sizing: border-box;border-top: 0;">
                                 <iframe id="train2"
                                     src="waiting.html?colour=Y&num=07&dest_zh=大坪林&dest_en=Dapinglin&dest_jp=大坪林&dest_kr=다핑린&is_final=1&time=100"
                                     style="width: 100%;height: 100%;border: 0.4vw solid black;box-sizing: border-box;">
@@ -30,7 +30,7 @@
                             </div>
                             <div style="width:100%;height: 33.33%;background: black;box-sizing: border-box;border-top: 0;">
                                 <div id="news"
-                                    style="width: 100%;aspect-ratio: 1.58;border: 0.4vw solid black;box-sizing: border-box;background: url('ad/ad1.svg');background-size:cover;">
+                                    style="width: 100%;aspect-ratio: 1.5;border: 0.4vw solid black;box-sizing: border-box;background: url('ad/ad1.svg');background-size:cover;">
                                 </div>
                             </div>
                         </td>
@@ -89,6 +89,13 @@
                         <label for="final1">是終點站</label>
                         <input type="checkbox" id="final1" name="final" value="1" checked>
                         <br>
+                        <input type="radio" id="left_side1" name="door_side1" value="left" checked>
+                        <label for="left_side">左側開門</label>
+                        <input type="radio" id="right_side1" name="door_side1" value="right">
+                        <label for="right_side">右側開門</label>
+                        <br>
+                        <br>
+                        <br>
                         <h4>第二格</h4>
                         <select id="line2" onchange="getStations(2)">
                             <option value="BR">BR 文湖線</option>
@@ -106,6 +113,11 @@
                         </select>
                         <label for="final2">是終點站</label>
                         <input type="checkbox" id="final2" name="final" value="1" checked>
+                        <br>
+                        <!-- <input type="radio" id="left_side2" name="door_side2" value="left" checked>
+                        <label for="left_side">左側開門</label>
+                        <input type="radio" id="right_side2" name="door_side2" value="right">
+                        <label for="right_side">右側開門</label> -->
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">捨棄變更</button>

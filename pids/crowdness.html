@@ -40,8 +40,13 @@
             let code = urlParams.get('code');
             let carts = urlParams.get('carts');
             let crowdness = urlParams.get('crowdness').toString();
-            document.getElementById('left_code').innerHTML = line + code;
-            document.getElementById('right_code').innerHTML = line + code;
+            if (line == "RA" || line == "GA") {
+                document.getElementById('left_code').innerHTML = line[0] + code;
+                document.getElementById('right_code').innerHTML = line[0] + code;
+            } else {
+                document.getElementById('left_code').innerHTML = line + code;
+                document.getElementById('right_code').innerHTML = line + code;
+            }
             if (direction == 'left') {
                 document.getElementById('left_code').style.display = null;
                 document.getElementById('right_code').style.display = 'none';
@@ -49,18 +54,18 @@
                 document.getElementById('left_code').style.display = 'none';
                 document.getElementById('right_code').style.display = null;
             }
-            for (var i = 0;i < 6;i++){
-                if (i < carts){
-                    if (direction == 'left'){
-                        if (i == 0){
+            for (var i = 0; i < 6; i++) {
+                if (i < carts) {
+                    if (direction == 'left') {
+                        if (i == 0) {
                             document.getElementById('c' + (i + 1)).src = 'crowdness/' + crowdness[i] + '_left.svg';
-                        }else{
+                        } else {
                             document.getElementById('c' + (i + 1)).src = 'crowdness/' + crowdness[i] + '_middle.svg';
                         }
                     } else {
-                        if (i == carts - 1){
+                        if (i == carts - 1) {
                             document.getElementById('c' + (i + 1)).src = 'crowdness/' + crowdness[i] + '_right.svg';
-                        }else{
+                        } else {
                             document.getElementById('c' + (i + 1)).src = 'crowdness/' + crowdness[i] + '_middle.svg';
                         }
                     }
