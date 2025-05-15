@@ -7,11 +7,21 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta charset="UTF-8">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<link rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search" />
 
 		<link rel="stylesheet" href="styles.css">
 
 	</head>
 	<style>
+		.material-symbols-outlined {
+			font-variation-settings:
+				'FILL' 0,
+				'wght' 400,
+				'GRAD' 0,
+				'opsz' 40
+		}
+
 		body {
 			text-decoration: none;
 			font-family: '微軟正黑體', 'Roboto', -apple-system, sans-serif;
@@ -20,6 +30,7 @@
 			background: #111;
 			overflow-x: hidden;
 		}
+
 		.standard {
 			background: #222;
 			padding: 5px;
@@ -30,100 +41,89 @@
 			transition: 0.2s;
 			cursor: pointer;
 		}
+
 		.standard:hover {
 			background: #333;
 		}
-		.standard:active{
+
+		.standard:active {
 			background: #151515;
+		}
+
+		.search {
+			transition: 0.2s;
+			font-family: '微軟正黑體', 'Roboto', -apple-system, sans-serif;
+			font-weight: bold;
+			min-width: 300px;
+			width: 100%;
+			font-size: 20px;
+			margin-top: 20px;
+			margin-bottom: 20px;
+			margin-left: 30px;
+			margin-right: 10px;
+			padding: 20px;
+			border-radius: 1000000px;
+			background: #222;
+			border: 2px solid #444;
+			color: white;
+			box-sizing: border-box;
+		}
+
+		.search:focus {
+			outline: none;
+			border: 2px solid #666;
+			background: #333;
+		}
+
+		.searchButton {
+			transition: 0.2s;
+			font-family: '微軟正黑體', 'Roboto', -apple-system, sans-serif;
+			font-weight: bold;
+			max-width: 300px;
+			min-width: 100px;
+			flex-grow: 1;
+			font-size: 30px;
+			margin-top: 20px;
+			margin-bottom: 20px;
+			margin-right: 30px;
+			padding: 10px;
+			border-radius: 1000000px;
+			background: #999;
+			border: 2px solid #999;
+			color: black;
+			cursor: pointer;
+		}
+
+		.searchButton:hover {
+			background: #ccc;
+			border: 2px solid #ccc;
+		}
+
+		.searchButton:active {
+			background: #555;
+			border: 2px solid #555;
 		}
 	</style>
 
 	<body>
-		<div id="redirect" style="text-align: center;background:#222;border-radius: 10px;padding-top: 20px;padding-bottom: 20px;display: none;">
+		<div id="redirect"
+			style="text-align: center;background:#222;border-radius: 10px;padding-top: 20px;padding-bottom: 20px;display: none;">
 			<h1>播放器已搬家！</h1>
 			<h2>The player has been moved!</h2>
 			<p>新網站在這：<a href="index.html">index.html</a></p>
 			<p>The new website is here：<a href="index.html">index.html</a></p>
 		</div>
-		<div style="width: 100%;max-width: 1200px;margin: auto;-webkit-tap-highlight-color: rgba(255, 255, 255, 0)">
-			<h1>使用中 In Use</h1>
-			<div class="standard" onclick="play('headphones')" tabindex="0">
-				<h2>您好，使用隨身電子產品請戴耳機，與人交談請降低音量。</h2>
-				<h3>Please speak softly and wear headphones when using personal electronics.</h3>
-			</div>
-			<div class="standard" onclick="play('fire')" tabindex="0">
-				<h2>您好，火災發生時，請以滅火器協助滅火，並通知服務人員。</h2>
-				<h3>In case of a fire, use fire extinguishers and notify staff.</h3>
-			</div>
-			<div class="standard" onclick="play('handrail')" tabindex="0">
-				<h2>您好，搭乘捷運時，請握緊扶手或拉環。</h2>
-				<h3>When taking the Metro, please hold on the handrails or hand grips for your safety.</h3>
-			</div>
-			<div class="standard" onclick="play('phone')" tabindex="0">
-				<h2>您好，上下車、搭乘電扶梯、上下樓梯或行走時，不要使用手機，避免踩空跌倒。</h2>
-				<h3>To avoid injuries, please refrain from using mobile phones when walking, boarding, and alighting, or on stairs and escalators.</h3>
-			</div>
-			<div class="standard" onclick="play('alert')" tabindex="0">
-				<h2>提高警覺，注意身旁人、事、物。遇異常狀況，冷靜勿驚慌、不推擠，立即撥打110，及通報站車人員。</h2>
-				<h3>Stay alert to your surroundings. In case of an emergency, call 110 or notify staff immediately. Stay calm and do not push or panic.</h3>
-			</div>
-			<div class="standard" onclick="play('anomaly')" tabindex="0">
-				<h2>發現異常狀況時，冷靜勿驚慌，勿奔跑推擠，將正確訊息告知其他旅客，並通報站車人員。</h2>
-				<h3>In the event of an anomaly, stay calm and relay the correct information to others. Do not push or panic, and to notify staff immediately.</h3>
-			</div>
-			<div class="standard" onclick="play('doors')" tabindex="0">
-				<h2>您好，關門警示音響起時，請勿再進出車廂。</h2>
-				<h3>Do not rush onto the train once the door closing buzzer has sounded.</h3>
-			</div>
-			<div class="standard" onclick="play('lean')" tabindex="0">
-				<h2>您好，搭車時請勿倚靠車門，上下車時留意車門與月台間隙，並請記得隨身攜帶物品，謝謝。</h2>
-				<h3>Attention. When taking the MRT, please do not lean on the doors. When getting on or off the train, please don't forget your belongings, and mind the gap between the train and the platform. Thank you.</h3>
-			</div>
-			<div class="standard" onclick="play('mask_new')" tabindex="0">
-				<h2>搭乘捷運，請全程配戴口罩。違反規定者，最高罰新台幣15,000元，並拒絕運送。</h2>
-				<h3>Face masks must be worn on the Taipei Metro at all times. Those who refuse to comply will be refused service and fined up to 15,000 NT dollars.</h3>
-			</div>
-			<div class="standard" onclick="play('move')" tabindex="0">
-				<h2>您好，請往車廂內部移動，將後背包提於手上或置於前方，並勿倚靠車門。</h2>
-				<h3>Please move to the center of the car, and hold your backpack by hand or place it in front of you.</h3>
-			</div>
-			<div class="standard" onclick="play('move_single')" tabindex="0">
-				<h2>您好，請旅客儘量往車廂內部移動，將後背包提於手上或置於前方，勿停留在車門附近倚靠車門及屏風。</h2>
-			</div>
-			<div class="standard" onclick="play('no_food')" tabindex="0">
-				<h2>您好，捷運系統內請勿吸菸、飲食、嚼食口香糖或檳榔。</h2>
-				<h3>Please do not smoke, eat, drink, or chew gum, or betel nut in the Taipei Metro.</h3>
-			</div>
-			<div class="standard" onclick="play('no_service')" tabindex="0">
-				<h2>各位旅客請注意，本列車不再提供載客服務，到站後請儘速下車，謝謝。</h2>
-				<h3>This service terminates here, please alight at once. Thank you.</h3>
-			</div>
-			<div class="standard" onclick="play('no_service_2')" tabindex="0">
-				<h2>各位旅客請注意，因行車調度因素，本列車不再提供載客服務，不再提供載客服務，請儘速下車。造成您的不便，敬請見諒。</h2>
-				<h3>Attention please. This train has been suspended due to dispatch issues. Please alight at once. We apologize for the inconvenience.</h3>
-			</div>
-			<div class="standard" onclick="play('r28_bike')" tabindex="0">
-				<h2>您好，淡水站不開放自行車進出，攜帶自行車的旅客，請在紅樹林站下車出站，謝謝。</h2>
-				<h3>Attention please. Cyclists are not allowed to enter or exit Tamsui station. Passengers with bicycles should exit by Hongshulin station. Thank you.</h3>
-			</div>
-			<div class="standard" onclick="play('stop')" tabindex="0">
-				<h2>各位旅客請注意，本列車臨時停車，請稍候。造成您的不便，敬請見諒。</h2>
-				<h3>Attention. The train has stopped temporarily. Please wait. Thank you for your patience.</h3>
-			</div>
-			<div class="standard" onclick="play('transfer')" tabindex="0">
-				<h2>您好，本列車因接駁轉乘旅客，請稍候。</h2>
-				<h3>We are stopping briefly to wait for transferring passengers to join us.</h3>
-			</div>
-			<h1>已不使用 Unused</h1>
-			<div class="standard" onclick="play('social_distancing_app')" tabindex="0">
-				<h2>請下載台灣社交距離App，並開啟藍芽。自我防衛，從你我做起。</h2>
-			</div>
-			<div class="standard" onclick="play('y_partial')" tabindex="0">
-				<h2>各位旅客請注意，因4月3日地震影響，新北環狀線列車運行區段為大坪林至中和，板橋至新北產業園區，公車接駁區段為中和站至板橋站。</h2>
-			</div>
-			<div class="standard" onclick="play('newyear')" tabindex="0">
-				<h2>跨年搭綠線，棕紅橘藍都可通，方便省時超輕鬆。跨年散場紅藍線人潮眾多，請多加利用綠線南京三民站搭車，轉乘其他路線。</h2>
-			</div>
+		<!-- search bar-->
+		<div style="display: flex;flex-direction: row;">
+			<input id="searchBar" type="text" class="search" id="search" placeholder="搜尋廣播 Search Announcements">
+			<button class="searchButton" aria-label="搜尋 Search" onclick="search()">
+				<span class="material-symbols-outlined">
+					search
+				</span>
+			</button>
+		</div>
+		<div id="content"
+			style="width: 100%;max-width: 1200px;margin: auto;-webkit-tap-highlight-color: rgba(255, 255, 255, 0)">
 		</div>
 	</body>
 	<script>
@@ -132,9 +132,141 @@
 			audio.src = "audio/general/" + name + ".mp3";
 			audio.play();
 		}
-		if (window.parent == window){
+		if (window.parent == window) {
 			document.getElementById("redirect").style.display = "block";
 		}
+
+
+		fetch("general.json")
+			.then(function (response) {
+				return response.json();
+			})
+			.then(function (myJson) {
+				//Process
+				var container = document.getElementById("content");
+				var in_use = myJson['announcements']['in_use'];
+				var unused = myJson['announcements']['not_used'];
+				var title1 = document.createElement("h1");
+				title1.innerHTML = "使用中 In Use";
+				container.appendChild(title1);
+				for (var i = 0; i < in_use.length; i++) {
+					var announcement = in_use[i];
+					var div = document.createElement("div");
+					div.className = "standard";
+					div.onclick = (function (name) {
+						return function () {
+							play(name);
+						};
+					})(announcement['id']);
+					div.innerHTML = "<h2>" + announcement['ch'] + "</h2><h3>" + announcement['en'] + "</h3>";
+					container.appendChild(div);
+				}
+				var title2 = document.createElement("h1");
+				title2.innerHTML = "停止使用 Not Used";
+				container.appendChild(title2);
+				for (var i = 0; i < unused.length; i++) {
+					var announcement = unused[i];
+					var div = document.createElement("div");
+					div.className = "standard";
+					div.onclick = (function (name) {
+						return function () {
+							play(name);
+						};
+					})(announcement['id']);
+					div.innerHTML = "<h2>" + announcement['ch'] + "</h2><h3>" + announcement['en'] + "</h3><h4>停止使用 Not used since：" + announcement['end'] + "</h4>";
+					container.appendChild(div);
+				}
+			});
+
+		// Search function
+		function search() {
+			var input = document.getElementById("searchBar").value;
+			var container = document.getElementById("content");
+			container.innerHTML = "";
+
+			fetch("general.json")
+				.then(function (response) {
+					return response.json();
+				})
+				.then(function (myJson) {
+					var in_use = myJson['announcements']['in_use'];
+					var unused = myJson['announcements']['not_used'];
+
+					var in_use_count = 0;
+					var not_used_count = 0;
+
+					// First, build in_use items
+					var inUseElements = [];
+					for (var i = 0; i < in_use.length; i++) {
+						var announcement = in_use[i];
+						if (announcement['ch'].includes(input) || announcement['en'].includes(input)) {
+							in_use_count++;
+							var div = document.createElement("div");
+							div.className = "standard";
+							div.onclick = (function (name) {
+								return function () {
+									play(name);
+								};
+							})(announcement['id']);
+							div.innerHTML = "<h2>" + announcement['ch'] + "</h2><h3>" + announcement['en'] + "</h3>";
+							inUseElements.push(div);
+						}
+					}
+
+					if (in_use_count > 0) {
+						var title1 = document.createElement("h1");
+						title1.innerHTML = "使用中 In Use";
+						container.appendChild(title1);
+						inUseElements.forEach(function (el) {
+							container.appendChild(el);
+						});
+					}
+
+					// Then, build not_used items
+					var notUsedElements = [];
+					for (var i = 0; i < unused.length; i++) {
+						var announcement = unused[i];
+						if (announcement['ch'].includes(input) || announcement['en'].includes(input)) {
+							not_used_count++;
+							var div = document.createElement("div");
+							div.className = "standard";
+							div.onclick = (function (name) {
+								return function () {
+									play(name);
+								};
+							})(announcement['id']);
+							div.innerHTML = "<h2>" + announcement['ch'] + "</h2><h3>" + announcement['en'] + "</h3><h4>停止使用 Not used since：" + announcement['end'] + "</h4>";
+							notUsedElements.push(div);
+						}
+					}
+
+					if (not_used_count > 0) {
+						var title2 = document.createElement("h1");
+						title2.innerHTML = "停止使用 Not Used";
+						container.appendChild(title2);
+						notUsedElements.forEach(function (el) {
+							container.appendChild(el);
+						});
+					}
+
+					// No results case
+					if (in_use_count === 0 && not_used_count === 0) {
+						var noResult = document.createElement("h1");
+						noResult.innerHTML = "沒有找到結果 No results found";
+						container.appendChild(noResult);
+					}
+				});
+
+		}
+		//Setup trigger
+		$(document).ready(function () {
+			$("#searchBar").on("keyup", function (event) {
+				if (event.key === "Enter") {
+					event.preventDefault();
+					search();
+				}
+			});
+		});
 	</script>
 
 </html>

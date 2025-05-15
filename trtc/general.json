@@ -1,0 +1,112 @@
+{
+    "announcements": {
+        "in_use": [
+            {
+                "id": "headphones",
+                "ch": "您好，使用隨身電子產品請戴耳機，與人交談請降低音量。",
+                "en": "Please speak softly and wear headphones when using personal electronics."
+            },
+            {
+                "id": "fire",
+                "ch": "您好，火災發生時，請以滅火器協助滅火，並通知服務人員。",
+                "en": "In case of a fire, use fire extinguishers and notify staff."
+            },
+            {
+                "id": "handrail",
+                "ch": "您好，搭乘捷運時，請握緊扶手或拉環。",
+                "en": "When taking the Metro, please hold on the handrails or hand grips for your safety."
+            },
+            {
+                "id": "phone",
+                "ch": "您好，上下車、搭乘電扶梯、上下樓梯或行走時，不要使用手機，避免踩空跌倒。",
+                "en": "To avoid injuries, please refrain from using mobile phones when walking, boarding, and alighting, or on stairs and escalators."
+            },
+            {
+                "id": "alert",
+                "ch": "提高警覺，注意身旁人、事、物。遇異常狀況，冷靜勿驚慌、不推擠，立即撥打110，及通報站車人員。",
+                "en": "Stay alert to your surroundings. In case of an emergency, call 110 or notify staff immediately. Stay calm and do not push or panic."
+            },
+            {
+                "id": "anomaly",
+                "ch": "發現異常狀況時，冷靜勿驚慌，勿奔跑推擠，將正確訊息告知其他旅客，並通報站車人員。",
+                "en": "In the event of an anomaly, stay calm and relay the correct information to others. Do not push or panic, and to notify staff immediately."
+            },
+            {
+                "id": "doors",
+                "ch": "您好，關門警示音響起時，請勿再進出車廂。",
+                "en": "Do not rush onto the train once the door closing buzzer has sounded."
+            },
+            {
+                "id": "lean",
+                "ch": "您好，搭車時請勿倚靠車門，上下車時留意車門與月台間隙，並請記得隨身攜帶物品，謝謝。",
+                "en": "Attention. When taking the MRT, please do not lean on the doors. When getting on or off the train, please don't forget your belongings, and mind the gap between the train and the platform. Thank you."
+            },
+            {
+                "id": "move",
+                "ch": "您好，請往車廂內部移動，將後背包提於手上或置於前方，並勿倚靠車門。",
+                "en": "Please move to the center of the car, and hold your backpack by hand or place it in front of you."
+            },
+            {
+                "id": "move_single",
+                "ch": "您好，請旅客儘量往車廂內部移動，將後背包提於手上或置於前方，勿停留在車門附近倚靠車門及屏風。",
+                "en": ""
+            },
+            {
+                "id": "no_food",
+                "ch": "您好，捷運系統內請勿吸菸、飲食、嚼食口香糖或檳榔。",
+                "en": "Please do not smoke, eat, drink, or chew gum, or betel nut in the Taipei Metro."
+            },
+            {
+                "id": "no_service",
+                "ch": "各位旅客請注意，本列車不再提供載客服務，到站後請儘速下車，謝謝。",
+                "en": "This service terminates here, please alight at once. Thank you."
+            },
+            {
+                "id": "no_service_2",
+                "ch": "各位旅客請注意，因行車調度因素，本列車不再提供載客服務，不再提供載客服務，請儘速下車。造成您的不便，敬請見諒。",
+                "en": "Attention please. This train has been suspended due to dispatch issues. Please alight at once. We apologize for the inconvenience."
+            },
+            {
+                "id": "r28_bike",
+                "ch": "您好，淡水站不開放自行車進出，攜帶自行車的旅客，請在紅樹林站下車出站，謝謝。",
+                "en": "Attention please. Cyclists are not allowed to enter or exit Tamsui station. Passengers with bicycles should exit by Hongshulin station. Thank you."
+            },
+            {
+                "id": "stop",
+                "ch": "各位旅客請注意，本列車臨時停車，請稍候。造成您的不便，敬請見諒。",
+                "en": "Attention. The train has stopped temporarily. Please wait. Thank you for your patience."
+            },
+            {
+                "id": "transfer",
+                "ch": "您好，本列車因接駁轉乘旅客，請稍候。",
+                "en": "We are stopping briefly to wait for transferring passengers to join us."
+            }
+        ],
+        "not_used": [
+            {
+                "id": "mask_new",
+                "ch": "搭乘捷運，請全程配戴口罩。違反規定者，最高罰新台幣15,000元，並拒絕運送。",
+                "en": "Face masks must be worn on the Taipei Metro at all times. Those who refuse to comply will be refused service and fined up to 15,000 NT dollars.",
+                "end":"2021 (COVID-19 疫情 / COVID-19 Pandemic)"
+            },
+            {
+                "id": "social_distancing_app",
+                "ch": "請下載台灣社交距離App，並開啟藍芽。自我防衛，從你我做起。",
+                "en": "",
+                "end":"2022 (COVID-19 疫情 / COVID-19 Pandemic)"
+            },
+            {
+                "id": "y_partial",
+                "ch": "各位旅客請注意，因4月3日地震影響，新北環狀線列車運行區段為大坪林至中和，板橋至新北產業園區，公車接駁區段為中和站至板橋站。",
+                "en": "",
+                "end":"2024 (環狀線地震損毀 / Circular Line Disruption due to Earthquake)"
+            },
+            {
+                "id": "newyear",
+                "ch": "跨年搭綠線，棕紅橘藍都可通，方便省時超輕鬆。跨年散場紅藍線人潮眾多，請多加利用綠線南京三民站搭車，轉乘其他路線。",
+                "en": "",
+                "end":"2024 (跨年 / New Year's Eve)"
+            }
+        ]
+    }
+}
