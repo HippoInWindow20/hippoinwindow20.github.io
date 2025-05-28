@@ -22,8 +22,8 @@
                 "en": "To avoid injuries, please refrain from using mobile phones when walking, boarding, and alighting, or on stairs and escalators."
             },
             {
-                "id": "alert",
-                "ch": "提高警覺，注意身旁人、事、物。遇異常狀況，冷靜勿驚慌、不推擠，立即撥打110，及通報站車人員。",
+                "id": "alert_new",
+                "ch": "提高警覺，注意身旁人、事、物。遇異常狀況，冷靜勿驚慌、不推擠，立即撥打110，及通報服務人員。",
                 "en": "Stay alert to your surroundings. In case of an emergency, call 110 or notify staff immediately. Stay calm and do not push or panic."
             },
             {
@@ -83,6 +83,12 @@
             }
         ],
         "not_used": [
+            {
+                "id": "alert",
+                "ch": "提高警覺，注意身旁人、事、物。遇異常狀況，冷靜勿驚慌、不推擠，立即撥打110，及通報站車人員。",
+                "en": "Stay alert to your surroundings. In case of an emergency, call 110 or notify staff immediately. Stay calm and do not push or panic.",
+                "end":"2025（重新錄製 / Re-recording）"
+            },
             {
                 "id": "mask_new",
                 "ch": "搭乘捷運，請全程配戴口罩。違反規定者，最高罰新台幣15,000元，並拒絕運送。",
