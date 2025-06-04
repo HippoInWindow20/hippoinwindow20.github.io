@@ -2,6 +2,11 @@
     "announcements": {
         "in_use": [
             {
+                "id": "spread",
+                "ch": "您好，請分散位置候車，遵守先下後上的乘車秩序。",
+                "en": "Please spread out along the platform to wait for the train. Let alighting passengers off first."
+            },
+            {
                 "id": "headphones",
                 "ch": "您好，使用隨身電子產品請戴耳機，與人交談請降低音量。",
                 "en": "Please speak softly and wear headphones when using personal electronics."
