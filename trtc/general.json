@@ -2,6 +2,11 @@
     "announcements": {
         "in_use": [
             {
+                "id": "cold",
+                "ch": "您好，有感冒症狀或身體不適的旅客，請戴口罩。",
+                "en": "Please wear a surgical mask if you have a cold."
+            },
+            {
                 "id": "spread",
                 "ch": "您好，請分散位置候車，遵守先下後上的乘車秩序。",
                 "en": "Please spread out along the platform to wait for the train. Let alighting passengers off first."
