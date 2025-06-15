@@ -130,11 +130,6 @@
 			document.getElementById("redirect").style.display = "block";
 		}
 
-		function pause() {
-			var audio = window.parent.document.getElementById("main");
-			audio.pause();
-		}
-
 
 		fetch("escalator.json")
 			.then(function (response) {
@@ -175,7 +170,6 @@
 							"錄製地點：" + announcement['loc_ch'] + "\n" +
 							"Recording location: " + announcement['loc_en']
 						);
-						pause();
 					};
 
 					h1.appendChild(infoSpan);
@@ -219,7 +213,6 @@
 							"錄製地點：" + announcement['loc_ch'] + "\n" +
 							"Recording location: " + announcement['loc_en']
 						);
-						pause();
 					};
 
 					h1.appendChild(infoSpan);
@@ -237,96 +230,6 @@
 					container.appendChild(div);
 				}
 			});
-
-		// // Search function
-		// function search() {
-		// 	var input = document.getElementById("searchBar").value;
-		// 	var container = document.getElementById("content");
-		// 	container.innerHTML = "";
-
-		// 	fetch("general.json")
-		// 		.then(function (response) {
-		// 			return response.json();
-		// 		})
-		// 		.then(function (myJson) {
-		// 			var in_use = myJson['announcements']['in_use'];
-		// 			var unused = myJson['announcements']['not_used'];
-
-		// 			var in_use_count = 0;
-		// 			var not_used_count = 0;
-
-		// 			// First, build in_use items
-		// 			var inUseElements = [];
-		// 			for (var i = 0; i < in_use.length; i++) {
-		// 				var announcement = in_use[i];
-		// 				if (announcement['ch'].includes(input) || announcement['en'].includes(input)) {
-		// 					in_use_count++;
-		// 					var div = document.createElement("div");
-		// 					div.className = "standard";
-		// 					div.onclick = (function (name) {
-		// 						return function () {
-		// 							play(name);
-		// 						};
-		// 					})(announcement['id']);
-		// 					div.innerHTML = "<h2>" + announcement['ch'] + "</h2><h3>" + announcement['en'] + "</h3>";
-		// 					inUseElements.push(div);
-		// 				}
-		// 			}
-
-		// 			if (in_use_count > 0) {
-		// 				var title1 = document.createElement("h1");
-		// 				title1.innerHTML = "使用中 In Use";
-		// 				container.appendChild(title1);
-		// 				inUseElements.forEach(function (el) {
-		// 					container.appendChild(el);
-		// 				});
-		// 			}
-
-		// 			// Then, build not_used items
-		// 			var notUsedElements = [];
-		// 			for (var i = 0; i < unused.length; i++) {
-		// 				var announcement = unused[i];
-		// 				if (announcement['ch'].includes(input) || announcement['en'].includes(input)) {
-		// 					not_used_count++;
-		// 					var div = document.createElement("div");
-		// 					div.className = "standard";
-		// 					div.onclick = (function (name) {
-		// 						return function () {
-		// 							play(name);
-		// 						};
-		// 					})(announcement['id']);
-		// 					div.innerHTML = "<h2>" + announcement['ch'] + "</h2><h3>" + announcement['en'] + "</h3><h4>停止使用 Not used since：" + announcement['end'] + "</h4>";
-		// 					notUsedElements.push(div);
-		// 				}
-		// 			}
-
-		// 			if (not_used_count > 0) {
-		// 				var title2 = document.createElement("h1");
-		// 				title2.innerHTML = "停止使用 Not Used";
-		// 				container.appendChild(title2);
-		// 				notUsedElements.forEach(function (el) {
-		// 					container.appendChild(el);
-		// 				});
-		// 			}
-
-		// 			// No results case
-		// 			if (in_use_count === 0 && not_used_count === 0) {
-		// 				var noResult = document.createElement("h1");
-		// 				noResult.innerHTML = "沒有找到結果 No results found";
-		// 				container.appendChild(noResult);
-		// 			}
-		// 		});
-
-		// }
-		// //Setup trigger
-		// $(document).ready(function () {
-		// 	$("#searchBar").on("keyup", function (event) {
-		// 		if (event.key === "Enter") {
-		// 			event.preventDefault();
-		// 			search();
-		// 		}
-		// 	});
-		// });
 	</script>
 
 </html>
