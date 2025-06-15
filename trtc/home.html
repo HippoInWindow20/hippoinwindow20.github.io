@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+        <style>
+            body {
+                text-decoration: none;
+                font-family: '微軟正黑體', 'Roboto', -apple-system, sans-serif;
+                font-weight: bolder;
+                color: white;
+                background: #111;
+                overflow-x: hidden;
+                -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+            }
+
+            h1 {
+                color: white;
+                margin: 0;
+                backdrop-filter: brightness(0.5);
+                padding-top: 30px;
+                text-shadow: 0 0 10px black;
+                padding-left: 30px;
+            }
+
+            h2 {
+                color: #ccc;
+                margin: 0;
+                padding-left: 30px;
+                padding-bottom: 30px;
+                text-shadow: 0 0 10px black;
+                backdrop-filter: brightness(0.5);
+            }
+
+            .container {
+                text-align: left;
+                background: #333;
+                border-radius: 20px;
+                width: 100%;
+                max-width: 100%;
+                margin: 1%;
+                box-sizing: border-box;
+                background-size: cover;
+                transition: 0.2s;
+                cursor: pointer;
+            }
+
+            /* Large screens (e.g., tablets, desktops) */
+            @media (min-width: 768px) {
+                .container {
+                    width: 48%;
+                    max-width: 500px;
+                }
+            }
+
+            .container:hover {
+                scale: 1.02;
+            }
+
+            .container:active {
+                scale: 0.98;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div style="text-align: center;">
+            <h1 style="backdrop-filter: brightness(1);">選擇廣播類型。</h1>
+            <h2 style="backdrop-filter: brightness(1);">Select category to get started.</h2>
+        </div>
+        <div
+            style="width: 100%;max-width: 1200px;margin: auto;-webkit-tap-highlight-color: rgba(255, 255, 255, 0);display: flex;flex-wrap: wrap;justify-content: center;">
+
+            <div class="container" style="background-image: url('images/index/normal.jpg');" onclick="goto('newmain')">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <h1>一般廣播</h1>
+                <h2>Regular Announcements</h2>
+            </div>
+            <div class="container" style="background-image: url('images/index/transfer.jpg');"
+                onclick="goto('transfer')">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <h1>轉乘廣播</h1>
+                <h2>Transfer Announcements</h2>
+            </div>
+            <div class="container" style="background-image: url('images/index/publicity.jpg');"
+                onclick="goto('general')">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <h1>宣導廣播</h1>
+                <h2>Publicity Matters</h2>
+            </div>
+            <div class="container" style="background-image: url('images/index/escalator.jpg');"
+                onclick="goto('escalator')">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <h1>緊握扶手</h1>
+                <h2>Escalator Announcements</h2>
+            </div>
+        </div>
+        <script>
+            function goto(name) {
+                window.location.href = name + ".html";
+                parent.window.showBackButton();
+            }
+        </script>
+    </body>
+
+</html>

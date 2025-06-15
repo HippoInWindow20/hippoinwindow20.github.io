@@ -1,0 +1,78 @@
+{
+    "announcements": {
+        "in_use": [
+            {
+                "id": "p1_br10",
+                "title": "版本 1 Variant 1",
+                "ch": "請緊握扶手，站穩踏階。",
+                "en": "Please hold the handrail and stand firmly onto the escalator.",
+                "info_ch": "順序：華語-英語-台語-客語",
+                "info_en": "Order: Mandarin-English-Hokkien-Hakka",
+                "loc_ch": "BR10 木柵線 忠孝復興站",
+                "loc_en": "BR10 Muzha Line Zhongxiao Fuxing Station"
+            },
+            {
+                "id": "p2_o02",
+                "title": "版本 2 Variant 2",
+                "ch": "請緊握扶手，站穩踏階。",
+                "en": "Please hold the handrail and stand firmly on the escalator.",
+                "info_ch": "含觸發音效。\n順序：華語-英語-台語-客語",
+                "info_en": "Includes trigger sound.\nOrder: Mandarin-English-Hokkien-Hakka",
+                "loc_ch": "O02 中和線 景安站",
+                "loc_en": "O02 Zhonghe Line Jingan Station"
+            },
+            {
+                "id": "p3_br24",
+                "title": "版本 3 Variant 3",
+                "ch": "緊握扶手，站穩踏階。",
+                "en": "Please hold the handrail and step firmly on the escalator.",
+                "info_ch": "請 / 緊握扶手\n順序：華語-英語-台語-客語",
+                "info_en": "Mandarin:\nPlease hold the handrail / Hold the handrail\nOrder: Mandarin-English-Hokkien-Hakka",
+                "loc_ch": "BR24 內湖線 南港展覽館站",
+                "loc_en": "BR24 Neihu Line Taipei Nangang Exhibition Center Station"
+            },
+            {
+                "id": "p4_y16",
+                "title": "版本 4 Variant 4",
+                "ch": "緊握扶手，站穩踏階。",
+                "en": "Hold the handrail and stand firm.",
+                "info_ch": "順序：華語-台語-客語-英語",
+                "info_en": "Order: Mandarin-Hokkien-Hakka-English",
+                "loc_ch": "Y16 環狀線西環段 板橋站",
+                "loc_en": "Y16 Circular Line Western Section Banqiao Station"
+            },
+            {
+                "id": "p5_o07",
+                "title": "版本 5 Variant 5",
+                "ch": "請緊握扶手，站穩踏階。扶梯兩側皆可站立。",
+                "en": "Please hold the handrail and stand firmly on either side of the escalator.",
+                "info_ch": "揚長電扶梯適用。\n順序：華語-英語-台語-客語",
+                "info_en": "Applied to long-distance escalators.\nOrder: Mandarin-English-Hokkien-Hakka",
+                "loc_ch": "O07 新莊線 忠孝新生站",
+                "loc_en": "O07 Xinzhuang Line Zhongxiao Xinsheng Station"
+            }
+        ],
+        "others": [
+            {
+                "id": "a1",
+                "title": "機場捷運版 Airport MRT Version",
+                "ch": "請握扶手，站穩踏階，握緊行李。",
+                "en": "Please hold onto the handrail, mind your step, and do not let go of the luggage.",
+                "info_ch": "順序：華語-英語-台語-客語",
+                "info_en": "Order: Mandarin-English-Hokkien-Hakka",
+                "loc_ch": "A1 桃園機場捷運 台北車站",
+                "loc_en": "A1 Taoyuan Airport MRT Taipei Main Station"
+            },
+            {
+                "id": "tpe_t2",
+                "title": "桃園機場版 Taoyuan Airport Version",
+                "ch": "電坡道行進中，請勿按壓推車把手。離開電坡道時，請按壓握把推車。",
+                "en": "Do not press trolley handle while the walkway is moving. Press the handle to push trolley out of the walkway.",
+                "info_ch": "順序：華語-英語",
+                "info_en": "Order: Mandarin-English",
+                "loc_ch": "桃園國際機場 第二航廈",
+                "loc_en": "Taoyuan International Airport Terminal 2"
+            }
+        ]
+    }
+}

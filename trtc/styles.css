@@ -15,5 +15,11 @@ img:active {
 
 .stdStn {
     width: 49%;
-    max-width: 295px;
+    max-width: 350px;
+}
+
+@media (min-width: 768px) {
+    .stdStn {
+        width: 24%;
+    }
 }
