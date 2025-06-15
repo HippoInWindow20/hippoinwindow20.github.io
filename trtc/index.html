@@ -1,128 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-    <title>台北捷運廣播選播</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <style>
-        body {
-            text-decoration: none;
-            display: none;
-            font-family: '微軟正黑體', 'Roboto', -apple-system, sans-serif;
-            font-weight: bolder;
-            color: white;
-            background: #111;
-            overflow-x: hidden;
-            -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-        }
-
-        .categoryBtn {
-            background: none;
-            border: none;
-            padding: 0;
-            border-radius: 10px;
-            background-clip: border-box;
-            cursor: pointer;
-            transition: 0.2s;
-            width: 30vw;
-            max-width: 200px;
-        }
-
-        .doorBtn {
-            width: 45vw;
-            max-width: 200px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .doorBtn:active {
-            filter: brightness(0.5);
-            cursor: pointer;
-        }
-    </style>
-</head>
-
-<body>
-    <div style="text-align: center;overflow: hidden;">
-        <div style="background:#222;border-radius: 10px;">
-            <a href="https://www.metro.taipei/" style="text-decoration: none;" tabindex="0">
-                <img src="images/title.svg" style="max-width: 600px;width: 100%;"
-                    alt="台北捷運廣播選播 Taipei Metro Station Announcements" />
-            </a>
-
-            <br>
-            <!-- <img style="cursor: pointer;width: min(100%, 800px)" src="images/news.png" />
-            <br> -->
-            <button aria-label="一般廣播 Regular Announcements" id="newmainBtn" class="categoryBtn" onclick="switchCategory('newmain')">
-                <img alt="一般廣播 Regular Announcements" src="images/reg.svg" style="width: 30vw;max-width: 200px;" />
-            </button>
-            <button aria-label="轉乘、終點站廣播 Transfer and Terminal Announcements" id="transferBtn" class="categoryBtn"
-                style="background: none;border: none;padding: none;border-radius: 10px;background-clip: border-box;opacity: 0.3;"
-                onclick="switchCategory('transfer')">
-                <img alt="轉乘、終點站廣播 Transfer and Terminal Announcements" src="images/transfer.svg" style="width: 30vw;max-width: 200px;" />
-            </button>
-            <button aria-label="宣導事項 Publicity Matters" id="generalBtn" class="categoryBtn"
-                style="background: none;border: none;padding: none;border-radius: 10px;background-clip: border-box;opacity: 0.3;"
-                onclick="switchCategory('general')">
-                <img alt="宣導事項 Publicity Matters" src="images/general.svg" style="width: 30vw;max-width: 200px;" />
-            </button>
-            <br>
-        </div>
-        <br>
-        <div style="text-align: center;">
-            <img alt="左側開門 The doors open on the LEFT side" src="images/left.svg" class="doorBtn" onclick="playsp('left')" tabindex="0" />
-            <img alt="右側開門 The doors open on the RIGHT side" src="images/right.svg" class="doorBtn" onclick="playsp('right')" tabindex="0" />
-            <audio id="main" controls style="height: 50px;">
-        </div>
-        <br>
-        <iframe id="frame" src="newmain.html" style="width: 100%;height: 80vh;border: none;"></iframe>
-    </div>
-    <script>
-        setTimeout(function () {
-            $("body").fadeIn();
-        }, 1000);
-        function jump() {
-            $("body").fadeOut();
-            setTimeout(function () {
-                window.location.href = "transfer.html";
-            }, 1000);
-        }
-        function playsp(name) {
-            var audio = document.getElementById("main");
-            audio.src = "audio/" + name + ".mp3";
-            audio.play();
-        }
-        function switchCategory(name) {
-            try{
-                if (name !== "compare"){
-                    var x = document.getElementsByClassName("categoryBtn");
-                    for (var i = 0; i < x.length; i++) {
-                        x[i].style.opacity = "0.3";
-                    }
-                    document.getElementById(name + "Btn").style.opacity = "1";
-                    document.getElementById('frame').src = name + ".html";
-                }else{
-                    setTimeout(
-                        function (){
-                            window.location.href = "poll_closed.html";
-                        },1000
-                    )
-                }
-                    
-            }catch(e){
-                switchCategory("newmain")
+    <head>
+        <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+        <title>台北捷運廣播選播</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <style>
+            body {
+                text-decoration: none;
+                display: none;
+                font-family: '微軟正黑體', 'Roboto', -apple-system, sans-serif;
+                font-weight: bolder;
+                color: white;
+                background: #111;
+                overflow-x: hidden;
+                -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
             }
-        }
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        let tab = urlParams.get('tab');
-        if (tab !== "" || tab !== undefined){
-            switchCategory(tab);
-        }
-    </script>
-</body>
+
+            .categoryBtn {
+                background: none;
+                border: none;
+                padding: 0;
+                border-radius: 10px;
+                background-clip: border-box;
+                cursor: pointer;
+                transition: 0.2s;
+                width: 30vw;
+                max-width: 200px;
+            }
+
+            .doorBtn {
+                width: 45vw;
+                max-width: 200px;
+                cursor: pointer;
+                transition: 0.2s;
+            }
+
+            .doorBtn:active {
+                filter: brightness(0.5);
+                cursor: pointer;
+            }
+
+            .backBtn {
+                margin-top: 20px;
+                width: 80px;
+                height: 80px;
+                font-size: 20px;
+                background: #004e97;
+                color: white;
+                border: none;
+                border-radius: 100%;
+                cursor: pointer;
+                transition: 0.2s;
+                position: sticky;
+                bottom: 10px;
+                right: 10px;
+                float: right;
+                box-shadow: 5px 5px 14px 2px #1f1f1f;
+                scale: 0;
+            }
+
+            .backBtn:active {
+                background: #4ba8ff;
+                box-shadow: 6px 6px 10px 3px #1f1f1f;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div style="text-align: center;">
+            <div style="backdrop-filter: blur(5px) brightness(0.6);border-radius: 10px;position: sticky;top: 0;">
+                <a href="https://www.metro.taipei/" style="text-decoration: none;" tabindex="0">
+                    <img src="images/title.svg" style="max-width: 600px;width: 100%;"
+                        alt="台北捷運廣播選播 Taipei Metro Station Announcements" />
+                </a>
+
+                <br>
+                <div style="text-align: center;">
+                    <img alt="左側開門 The doors open on the LEFT side" src="images/left.svg" class="doorBtn"
+                        onclick="playsp('left')" tabindex="0" />
+                    <img alt="右側開門 The doors open on the RIGHT side" src="images/right.svg" class="doorBtn"
+                        onclick="playsp('right')" tabindex="0" />
+                    <audio id="main" controls style="height: 50px;">
+                </div>
+                <br>
+            </div>
+            <br>
+
+            <iframe id="frame" src="home.html" style="width: 100%;height: 80vh;border: none;"></iframe>
+            <button id="backBtn" class="backBtn" aria-label="首頁 Home" onclick="homeButton()">
+                <img src="images/home.svg" alt="首頁 Home" style="width: 50%;height: 50%;">
+            </button>
+        </div>
+        <script>
+            setTimeout(function () {
+                $("body").fadeIn();
+                resizeIframe();
+            }, 1000);
+
+            function jump() {
+                $("body").fadeOut();
+                setTimeout(function () {
+                    window.location.href = "transfer.html";
+                }, 1000);
+            }
+
+            function playsp(name) {
+                var audio = document.getElementById("main");
+                audio.src = "audio/" + name + ".mp3";
+                audio.play();
+            }
+
+            function switchCategory(name) {
+                try {
+                    document.getElementById('frame').src = name + ".html";
+                    resizeIframe();
+                } catch (e) {
+                    switchCategory("home")
+                }
+            }
+
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            let tab = urlParams.get('tab');
+            if (!((tab == "" && tab == undefined) || tab == null)) {
+                switchCategory(tab);
+            } else {
+                switchCategory("home");
+            }
+
+
+
+
+            var iframe = document.getElementById('frame');
+
+            function resizeIframe() {
+                try {
+                    const iframeDoc = iframe.contentWindow.document;
+                    const height = iframeDoc.body.scrollHeight;
+                    iframe.style.height = (height + 50) + 'px';
+                    // console.log('Iframe resized to:', height + 'px');
+                } catch (e) {
+                    console.warn('Resize failed:', e);
+                }
+            }
+
+            iframe.addEventListener('load', resizeIframe);
+
+
+            function showBackButton() {
+                const backBtn = document.getElementById('backBtn');
+                backBtn.style.scale = '1';
+            }
+
+            function hideBackButton() {
+                const backBtn = document.getElementById('backBtn');
+                backBtn.style.scale = '0';
+            }
+
+            function homeButton() {
+                switchCategory('home');
+                hideBackButton();
+            }
+
+            // Resize the iframe when the window is resized
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(resizeIframe, 100);
+            });
+
+            setInterval(() => {
+                try {
+                    resizeIframe();
+                } catch (e) {
+                    console.warn('Resize failed:', e);
+                }
+            }, 300);
+        </script>
+    </body>
 
 </html>

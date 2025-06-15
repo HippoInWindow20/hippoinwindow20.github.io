@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+		<title>電扶梯廣播</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<link rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search" />
+		<link rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=info" />
+
+		<link rel="stylesheet" href="styles.css">
+
+	</head>
+	<style>
+		.material-symbols-outlined {
+			font-variation-settings:
+				'FILL' 0,
+				'wght' 400,
+				'GRAD' 0,
+				'opsz' 40
+		}
+
+		body {
+			text-decoration: none;
+			font-family: '微軟正黑體', 'Roboto', -apple-system, sans-serif;
+			font-weight: bolder;
+			color: white;
+			background: #111;
+			overflow-x: hidden;
+			-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+		}
+
+		.standard {
+			background: #222;
+			padding: 5px;
+			padding-left: 20px;
+			padding-right: 20px;
+			margin: 10px;
+			border-radius: 10px;
+			transition: 0.2s;
+			cursor: pointer;
+		}
+
+		.standard:hover {
+			background: #333;
+		}
+
+		.standard:active {
+			background: #151515;
+		}
+
+		.search {
+			transition: 0.2s;
+			font-family: '微軟正黑體', 'Roboto', -apple-system, sans-serif;
+			font-weight: bold;
+			width: 100%;
+			font-size: 20px;
+			margin-top: 20px;
+			margin-bottom: 20px;
+			margin-left: 20px;
+			margin-right: 10px;
+			padding: 20px;
+			border-radius: 1000000px;
+			background: #222;
+			border: 2px solid #444;
+			color: white;
+			box-sizing: border-box;
+		}
+
+		.search:focus {
+			outline: none;
+			border: 2px solid #666;
+			background: #333;
+		}
+
+		.searchButton {
+			transition: 0.2s;
+			font-family: '微軟正黑體', 'Roboto', -apple-system, sans-serif;
+			font-weight: bold;
+			max-width: 300px;
+			min-width: 100px;
+			flex-grow: 1;
+			font-size: 30px;
+			margin-top: 20px;
+			margin-bottom: 20px;
+			margin-right: 20px;
+			padding: 10px;
+			border-radius: 1000000px;
+			background: #999;
+			border: 2px solid #999;
+			color: black;
+			cursor: pointer;
+			-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+		}
+
+		.searchButton:hover {
+			background: #ccc;
+			border: 2px solid #ccc;
+		}
+
+		.searchButton:active {
+			background: #555;
+			border: 2px solid #555;
+		}
+	</style>
+
+	<body>
+		<div id="redirect"
+			style="text-align: center;background:#222;border-radius: 10px;padding-top: 20px;padding-bottom: 20px;display: none;">
+			<h1>播放器已搬家！</h1>
+			<h2>The player has been moved!</h2>
+			<p>新網站在這：<a href="index.html">index.html</a></p>
+			<p>The new website is here：<a href="index.html">index.html</a></p>
+		</div>
+		<div id="content"
+			style="width: 100%;max-width: 1200px;margin: auto;-webkit-tap-highlight-color: rgba(255, 255, 255, 0)">
+		</div>
+	</body>
+	<script>
+		function play(name) {
+			var audio = window.parent.document.getElementById("main");
+			audio.src = "audio/escalator/" + name + ".mp3";
+			audio.play();
+		}
+		if (window.parent == window) {
+			document.getElementById("redirect").style.display = "block";
+		}
+
+		function pause() {
+			var audio = window.parent.document.getElementById("main");
+			audio.pause();
+		}
+
+
+		fetch("escalator.json")
+			.then(function (response) {
+				return response.json();
+			})
+			.then(function (myJson) {
+				//Process
+				var container = document.getElementById("content");
+				var in_use = myJson['announcements']['in_use'];
+				var others = myJson['announcements']['others'];
+				var title1_ch = document.createElement("h1");
+				title1_ch.innerHTML = "台北捷運 / 新北捷運";
+				container.appendChild(title1_ch);
+				var title1_en = document.createElement("h2");
+				title1_en.innerHTML = "Taipei Metro / New Taipei Metro";
+				container.appendChild(title1_en);
+				for (let i = 0; i < in_use.length; i++) {
+					const announcement = in_use[i];
+					var div = document.createElement("div");
+					div.className = "standard";
+					div.onclick = (function (name) {
+						return function () {
+							play(name);
+						};
+					})(announcement['id']);
+					// Create h1 with info icon and title
+					var h1 = document.createElement("h1");
+
+					var infoSpan = document.createElement("span");
+					infoSpan.className = "material-symbols-outlined";
+					infoSpan.style.fontSize = "30px";
+					infoSpan.textContent = "info";
+					infoSpan.onclick = function (e) {
+						e.stopPropagation(); 
+						alert(
+							announcement['info_ch'] + "\n\n" +
+							announcement['info_en'] + "\n\n" +
+							"錄製地點：" + announcement['loc_ch'] + "\n" +
+							"Recording location: " + announcement['loc_en']
+						);
+						pause();
+					};
+
+					h1.appendChild(infoSpan);
+					h1.appendChild(document.createTextNode("  " + announcement['title']));
+
+					var h2 = document.createElement("h2");
+					h2.textContent = announcement['ch'];
+
+					var h3 = document.createElement("h3");
+					h3.textContent = announcement['en'];
+
+					div.appendChild(h1);
+					div.appendChild(h2);
+					div.appendChild(h3);
+					container.appendChild(div);
+				}
+				var title2 = document.createElement("h1");
+				title2.innerHTML = "其他 Others";
+				container.appendChild(title2);
+				for (let i = 0; i < others.length; i++) {
+					const announcement = others[i];
+					var div = document.createElement("div");
+					div.className = "standard";
+					div.onclick = (function (name) {
+						return function () {
+							play(name);
+						};
+					})(announcement['id']);
+					// Create h1 with info icon and title
+					var h1 = document.createElement("h1");
+
+					var infoSpan = document.createElement("span");
+					infoSpan.className = "material-symbols-outlined";
+					infoSpan.style.fontSize = "30px";
+					infoSpan.textContent = "info";
+					infoSpan.onclick = function (e) {
+						e.stopPropagation(); 
+						alert(
+							announcement['info_ch'] + "\n\n" +
+							announcement['info_en'] + "\n\n" +
+							"錄製地點：" + announcement['loc_ch'] + "\n" +
+							"Recording location: " + announcement['loc_en']
+						);
+						pause();
+					};
+
+					h1.appendChild(infoSpan);
+					h1.appendChild(document.createTextNode("  " + announcement['title']));
+
+					var h2 = document.createElement("h2");
+					h2.textContent = announcement['ch'];
+
+					var h3 = document.createElement("h3");
+					h3.textContent = announcement['en'];
+
+					div.appendChild(h1);
+					div.appendChild(h2);
+					div.appendChild(h3);
+					container.appendChild(div);
+				}
+			});
+
+		// // Search function
+		// function search() {
+		// 	var input = document.getElementById("searchBar").value;
+		// 	var container = document.getElementById("content");
+		// 	container.innerHTML = "";
+
+		// 	fetch("general.json")
+		// 		.then(function (response) {
+		// 			return response.json();
+		// 		})
+		// 		.then(function (myJson) {
+		// 			var in_use = myJson['announcements']['in_use'];
+		// 			var unused = myJson['announcements']['not_used'];
+
+		// 			var in_use_count = 0;
+		// 			var not_used_count = 0;
+
+		// 			// First, build in_use items
+		// 			var inUseElements = [];
+		// 			for (var i = 0; i < in_use.length; i++) {
+		// 				var announcement = in_use[i];
+		// 				if (announcement['ch'].includes(input) || announcement['en'].includes(input)) {
+		// 					in_use_count++;
+		// 					var div = document.createElement("div");
+		// 					div.className = "standard";
+		// 					div.onclick = (function (name) {
+		// 						return function () {
+		// 							play(name);
+		// 						};
+		// 					})(announcement['id']);
+		// 					div.innerHTML = "<h2>" + announcement['ch'] + "</h2><h3>" + announcement['en'] + "</h3>";
+		// 					inUseElements.push(div);
+		// 				}
+		// 			}
+
+		// 			if (in_use_count > 0) {
+		// 				var title1 = document.createElement("h1");
+		// 				title1.innerHTML = "使用中 In Use";
+		// 				container.appendChild(title1);
+		// 				inUseElements.forEach(function (el) {
+		// 					container.appendChild(el);
+		// 				});
+		// 			}
+
+		// 			// Then, build not_used items
+		// 			var notUsedElements = [];
+		// 			for (var i = 0; i < unused.length; i++) {
+		// 				var announcement = unused[i];
+		// 				if (announcement['ch'].includes(input) || announcement['en'].includes(input)) {
+		// 					not_used_count++;
+		// 					var div = document.createElement("div");
+		// 					div.className = "standard";
+		// 					div.onclick = (function (name) {
+		// 						return function () {
+		// 							play(name);
+		// 						};
+		// 					})(announcement['id']);
+		// 					div.innerHTML = "<h2>" + announcement['ch'] + "</h2><h3>" + announcement['en'] + "</h3><h4>停止使用 Not used since：" + announcement['end'] + "</h4>";
+		// 					notUsedElements.push(div);
+		// 				}
+		// 			}
+
+		// 			if (not_used_count > 0) {
+		// 				var title2 = document.createElement("h1");
+		// 				title2.innerHTML = "停止使用 Not Used";
+		// 				container.appendChild(title2);
+		// 				notUsedElements.forEach(function (el) {
+		// 					container.appendChild(el);
+		// 				});
+		// 			}
+
+		// 			// No results case
+		// 			if (in_use_count === 0 && not_used_count === 0) {
+		// 				var noResult = document.createElement("h1");
+		// 				noResult.innerHTML = "沒有找到結果 No results found";
+		// 				container.appendChild(noResult);
+		// 			}
+		// 		});
+
+		// }
+		// //Setup trigger
+		// $(document).ready(function () {
+		// 	$("#searchBar").on("keyup", function (event) {
+		// 		if (event.key === "Enter") {
+		// 			event.preventDefault();
+		// 			search();
+		// 		}
+		// 	});
+		// });
+	</script>
+
+</html>
