@@ -82,6 +82,16 @@
                 "info_en": "Order: Mandarin-English",
                 "loc_ch": "桃園國際機場 第二航廈",
                 "loc_en": "Taoyuan International Airport Terminal 2"
+            },
+            {
+                "id": "lb08",
+                "title": "三鶯線版 Sanying Line Version",
+                "ch": "請緊握扶手，站穩踏階。",
+                "en": "Please stand firm on the stair, and hold the handrail.",
+                "info_ch": "順序：華語-英語",
+                "info_en": "Order: Mandarin-English",
+                "loc_ch": "LB08 三鶯線 鶯歌車站",
+                "loc_en": "LB08 Sanying Line Yingge Station"
             }
         ]
     }
