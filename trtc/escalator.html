@@ -187,17 +187,10 @@
 
 			function populateList(container, json, title_ch, title_en) {
 				var title1_ch = document.createElement("h1");
-<<<<<<< Updated upstream
-				title1_ch.innerHTML = "台北捷運 / 新北捷運";
-				container.appendChild(title1_ch);
-				var title1_en = document.createElement("h2");
-				title1_en.innerHTML = "Taipei Metro / New Taipei Metro";
-=======
 				title1_ch.innerHTML = title_ch;
 				container.appendChild(title1_ch);
 				var title1_en = document.createElement("h2");
 				title1_en.innerHTML = title_en;
->>>>>>> Stashed changes
 				container.appendChild(title1_en);
 				for (let i = 0; i < json.length; i++) {
 					const announcement = json[i];
