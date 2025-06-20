@@ -35,12 +35,12 @@
 		.standard {
 			background: #222;
 			padding: 5px;
-			padding-left: 20px;
-			padding-right: 20px;
-			margin: 10px;
+			padding-left: 10px;
+			padding-right: 10px;
 			border-radius: 10px;
 			transition: 0.2s;
 			cursor: pointer;
+			margin-bottom: 10px;
 		}
 
 		.standard:hover {
@@ -104,6 +104,11 @@
 			background: #555;
 			border: 2px solid #555;
 		}
+
+		.standard > h3, .standard > h4, .standard > h5 {
+			margin: 10px;
+			padding: 0;
+		}
 	</style>
 
 	<body>
@@ -159,7 +164,7 @@
 							play(name);
 						};
 					})(announcement['id']);
-					div.innerHTML = "<h2>" + announcement['ch'] + "</h2><h3>" + announcement['en'] + "</h3>";
+					div.innerHTML = "<h3>" + announcement['ch'] + "</h3><h4>" + announcement['en'] + "</h4>";
 					container.appendChild(div);
 				}
 				var title2 = document.createElement("h1");
@@ -174,7 +179,7 @@
 							play(name);
 						};
 					})(announcement['id']);
-					div.innerHTML = "<h2>" + announcement['ch'] + "</h2><h3>" + announcement['en'] + "</h3><h4>停止使用 Not used since：" + announcement['end'] + "</h4>";
+					div.innerHTML = "<h3>" + announcement['ch'] + "</h3><h4>" + announcement['en'] + "</h4><br><h5>停止使用 Not used since：" + announcement['end'] + "</h5>";
 					container.appendChild(div);
 				}
 			});
