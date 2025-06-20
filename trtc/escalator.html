@@ -21,7 +21,9 @@
 				'FILL' 0,
 				'wght' 400,
 				'GRAD' 0,
-				'opsz' 40
+				'opsz' 40;
+			/* padding-top: 10px;
+			padding-left: 10px; */
 		}
 
 		body {
@@ -36,13 +38,14 @@
 
 		.standard {
 			background: #222;
-			padding: 5px;
+			/* padding: 5px;
 			padding-left: 20px;
-			padding-right: 20px;
+			padding-right: 20px; */
 			margin: 10px;
 			border-radius: 10px;
 			transition: 0.2s;
 			cursor: pointer;
+			overflow: hidden;
 		}
 
 		.standard:hover {
@@ -106,6 +109,44 @@
 			background: #555;
 			border: 2px solid #555;
 		}
+
+
+		body > #content > h1 {
+			margin-bottom: 0
+		}
+		body > #content > h2 {
+			margin-top: 0;
+		}
+
+		.titleBar {
+			padding: 10px;
+			background: rgb(42, 181, 241);
+			color: black;
+		}
+
+		.titleBar > h4 {
+			color: inherit;
+			margin: 0;
+		}
+
+		.standard > h3 {
+			margin-bottom: 0;
+			margin-left: 10px;
+		}
+
+		.standard > h4 {
+			margin-top: 5px;
+			margin-left: 10px;
+			color: #eee;
+		}
+		
+
+		.titleBar > .material-symbols-outlined {
+			color: inherit;
+			cursor: pointer;
+			margin-right: 10px;
+		}
+
 	</style>
 
 	<body>
@@ -140,14 +181,26 @@
 				var container = document.getElementById("content");
 				var in_use = myJson['announcements']['in_use'];
 				var others = myJson['announcements']['others'];
+				populateList(container, in_use, "台北捷運 / 新北捷運（營運中）", "TRTC / NTMC (Operating)");
+				populateList(container, others, "其他", "Others");
+			});
+
+			function populateList(container, json, title_ch, title_en) {
 				var title1_ch = document.createElement("h1");
+<<<<<<< Updated upstream
 				title1_ch.innerHTML = "台北捷運 / 新北捷運";
 				container.appendChild(title1_ch);
 				var title1_en = document.createElement("h2");
 				title1_en.innerHTML = "Taipei Metro / New Taipei Metro";
+=======
+				title1_ch.innerHTML = title_ch;
+				container.appendChild(title1_ch);
+				var title1_en = document.createElement("h2");
+				title1_en.innerHTML = title_en;
+>>>>>>> Stashed changes
 				container.appendChild(title1_en);
-				for (let i = 0; i < in_use.length; i++) {
-					const announcement = in_use[i];
+				for (let i = 0; i < json.length; i++) {
+					const announcement = json[i];
 					var div = document.createElement("div");
 					div.className = "standard";
 					div.onclick = (function (name) {
@@ -155,12 +208,17 @@
 							play(name);
 						};
 					})(announcement['id']);
-					// Create h1 with info icon and title
-					var h1 = document.createElement("h1");
+					// Create div to hold the title
+					var titleDiv = document.createElement("div");
+					titleDiv.style.display = "flex";
+					titleDiv.style.alignItems = "center";
+					titleDiv.className = "titleBar";
+					// Create h2 with info icon and title
+					var h1 = document.createElement("h4");
 
 					var infoSpan = document.createElement("span");
 					infoSpan.className = "material-symbols-outlined";
-					infoSpan.style.fontSize = "30px";
+					infoSpan.style.fontSize = "20px";
 					infoSpan.textContent = "info";
 					infoSpan.onclick = function (e) {
 						e.stopPropagation(); 
@@ -171,65 +229,23 @@
 							"Recording location: " + announcement['loc_en']
 						);
 					};
+					h1.textContent = announcement['title'];
+					titleDiv.appendChild(infoSpan);
+					titleDiv.appendChild(h1);
 
-					h1.appendChild(infoSpan);
-					h1.appendChild(document.createTextNode("  " + announcement['title']));
-
-					var h2 = document.createElement("h2");
+					// Append end
+					var h2 = document.createElement("h3");
 					h2.textContent = announcement['ch'];
 
-					var h3 = document.createElement("h3");
+					var h3 = document.createElement("h4");
 					h3.textContent = announcement['en'];
 
-					div.appendChild(h1);
+					div.appendChild(titleDiv);
 					div.appendChild(h2);
 					div.appendChild(h3);
 					container.appendChild(div);
 				}
-				var title2 = document.createElement("h1");
-				title2.innerHTML = "其他 Others";
-				container.appendChild(title2);
-				for (let i = 0; i < others.length; i++) {
-					const announcement = others[i];
-					var div = document.createElement("div");
-					div.className = "standard";
-					div.onclick = (function (name) {
-						return function () {
-							play(name);
-						};
-					})(announcement['id']);
-					// Create h1 with info icon and title
-					var h1 = document.createElement("h1");
-
-					var infoSpan = document.createElement("span");
-					infoSpan.className = "material-symbols-outlined";
-					infoSpan.style.fontSize = "30px";
-					infoSpan.textContent = "info";
-					infoSpan.onclick = function (e) {
-						e.stopPropagation(); 
-						alert(
-							announcement['info_ch'] + "\n\n" +
-							announcement['info_en'] + "\n\n" +
-							"錄製地點：" + announcement['loc_ch'] + "\n" +
-							"Recording location: " + announcement['loc_en']
-						);
-					};
-
-					h1.appendChild(infoSpan);
-					h1.appendChild(document.createTextNode("  " + announcement['title']));
-
-					var h2 = document.createElement("h2");
-					h2.textContent = announcement['ch'];
-
-					var h3 = document.createElement("h3");
-					h3.textContent = announcement['en'];
-
-					div.appendChild(h1);
-					div.appendChild(h2);
-					div.appendChild(h3);
-					container.appendChild(div);
-				}
-			});
+			}
 	</script>
 
 </html>

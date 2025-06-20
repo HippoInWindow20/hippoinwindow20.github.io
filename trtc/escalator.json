@@ -42,8 +42,18 @@
                 "loc_en": "Y16 Circular Line Western Section Banqiao Station"
             },
             {
-                "id": "p5_o07",
+                "id": "p5_r03",
                 "title": "版本 5 Variant 5",
+                "ch": "緊握扶手，站穩踏階。",
+                "en": "Please hold the handrail and stand firmly.",
+                "info_ch": "順序：華語-英語-台語-客語",
+                "info_en": "Order: Mandarin-English-Hokkien-Hakka",
+                "loc_ch": "R03 信義線 台北101/世貿站",
+                "loc_en": "R03 Xinyi Line Taipei 101/World Trade Center Station"
+            },
+            {
+                "id": "dual_o07",
+                "title": "兩側站立版 Stand on Both Sides Variant",
                 "ch": "請緊握扶手，站穩踏階。扶梯兩側皆可站立。",
                 "en": "Please hold the handrail and stand firmly on either side of the escalator.",
                 "info_ch": "揚長電扶梯適用。\n順序：華語-英語-台語-客語",
