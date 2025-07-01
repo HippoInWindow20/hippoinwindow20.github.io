@@ -21,7 +21,7 @@ This page was created as an index to search for answers that were supposed to be
 <br>
 
 ## 106 Class Website (Unhinged)
-[Link here](../../{{site.baseurl}}/www/index.html)   
+[Link here](../../{{site.baseurl}}/class_web/index.html)   
 ![106 Class Website](../../{{site.baseurl}}/assets/images/school_shit/106.png)  
 **Service Period:** 2022  
 It's our class website, and we wanted to make it the flashiest it's ever been, being inspired by a lot of excellent demonstrations ever since 2018.  
@@ -49,18 +49,22 @@ It's clock, what more do you want from it?
 [Link here](../../{{site.baseurl}}/recording/index.html)  
 ![錄影檔瀏覽 Online Class Recordings](../../{{site.baseurl}}/assets/images/school_shit/recording.png)   
 **Service Period:** 2022  
-This is set up as an index to browse online class recordings during the COVID-19 pandemic. The recordings were hosted on Google Drive, but removed in 2024 due to updated storage constraints to 20 GB (f*ck G Suite).  
+This is set up as an index to browse online class recordings during the COVID-19 pandemic. The recordings were hosted on Google Drive, but removed in 2024 due to updated storage constraints to 20 GB (f\*ck G Suite).  
 - Based on the [Answer Search project](../../{{site.baseurl}}/answer/index.html)  
 - Light/Dark Mode support
-- Very poor password protection because everything is f*cking front-end
+- Very poor password protection because everything is f\*cking front-end
 - Password lock after 5 incorrect attempts until cleared Cookies
 - **Password:** yphs106
 <br> 
 <br>
 
+# 課表查詢 & 電子班牌 Schedule Query & ITKiosk  
+This particular project has a very important influence on me as I'm exploring my interest in technology. After making *Taipei Metro Station Announcments* in 2019 as my first Web project, I went and started this new project that I would continue to work on for 5 years.
+<!-- [Read the full story here](../../{{site.baseurl}}/itkiosk.html)  -->
+
 ## 課表查詢 Schedule Query
 [Link here](../../{{site.baseurl}}/schedule/index.html)  
-![Taichung Metro Station Announcements](../../{{site.baseurl}}/assets/images/school_shit/schedule.png)  
+![課表查詢 Schedule Query](../../{{site.baseurl}}/assets/images/school_shit/schedule.png)  
 **Service Period:** 2021  
 This is the one with the most story. I will continue to elaborate on this in the future. Stay tuned.
 <br>
