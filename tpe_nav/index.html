@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .highlighted {
+                fill: yellow !important;
+                /* Highlight color */
+                box-shadow: 0 0 10px rgba(255, 230, 0, 0.489);
+                /* Optional shadow for better visibility */
+            }
+
+            .actionBtn {
+                aspect-ratio: 1;
+                width: 70%;
+                background-color: #111;
+                border: 0;
+            }
+
+            
+
+            .buttonDiv {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 28%;
+                margin: 3%;
+            }
+
+            .buttonDiv:active {
+                filter: brightness(0.8);
+            }
+
+            h1, h2, h3, h4 {
+                color: white;
+                font-family: "Noto Sans TC", sans-serif;
+                margin: 0;
+            }
+        </style>
+    </head>
+
+    <body style="margin: 0;background: #111;overflow-y: hidden;">
+        <div id="map"></div>
+        <div id="interact" style="width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div class="buttonDiv">
+                <button class="actionBtn" style="background-image: url(bus.svg);background-size: cover;"></button>
+                <h2>找公車</h2>
+                <h3>Find buses</h3>
+            </div>
+            <div class="buttonDiv">
+                <button class="actionBtn" style="background-image: url(exit.svg);background-size: cover;"></button>
+                <h2>找出口</h2>
+                <h3>Find exit</h3>
+            </div>
+            <div class="buttonDiv">
+                <button class="actionBtn" style="background-image: url(search.svg);background-size: cover;"></button>
+                <h2>找地標</h2>
+                <h3>Find landmark</h3>
+            </div>
+        </div>
+        <script>
+            //fetch the svg
+            fetch('title.svg')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('map').innerHTML = data;
+                }).then(() => {
+                    // Get the SVG element
+                    const svg = document.getElementById('svg62690');
+
+                    // Set the viewBox to fit the SVG content
+                    const bbox = svg.getBBox();
+                    svg.setAttribute('viewBox', `${bbox.x} ${bbox.y} ${bbox.width} ${bbox.height}`);
+
+                    // Set the width and height of the SVG
+                    svg.style.width = '100%';
+                    svg.style.height = '100%';
+                }).then(
+                    () => {
+                        fetch('building.svg')
+                            .then(response => response.text())
+                            .then(data => {
+                                document.getElementById('map').innerHTML += data;
+                            }).then(() => {
+                                // Get the SVG element
+                                const svg = document.getElementById('svg5');
+
+                                // Set the viewBox to fit the SVG content
+                                const bbox = svg.getBBox();
+                                svg.setAttribute('viewBox', `${bbox.x} ${bbox.y} ${bbox.width} ${bbox.height}`);
+
+                                // Set the width and height of the SVG
+                                svg.style.width = '100%';
+                                svg.style.height = '100%';
+                            });
+                    }
+                );
+
+            function clearHighlights() {
+                // Remove highlight from all paths in the SVG
+                const allPaths = document.getElementsByClassName('highlighted');
+                while (allPaths.length > 0) {
+                    allPaths[0].classList.remove('highlighted');
+                }
+            }
+
+            function highlightBlock(pathId) {
+                const path = document.getElementById(pathId);
+                if (path) {
+                    // Remove highlight from all paths in the SVG
+                    clearHighlights();
+                    if (path.hasChildNodes()) {
+                        // If the path has child nodes, add the highlight to all child nodes
+                        const childPaths = path.getElementsByTagName('path');
+                        for (let i = 0; i < childPaths.length; i++) {
+                            childPaths[i].classList.add('highlighted');
+                        }
+                    } else {
+                        // If the path does not have child nodes, add the highlight
+                        path.classList.add('highlighted');
+                    }
+                }
+            }
+
+            const filler = document.getElementById("interact");
+            function resizeFiller() {
+                const remaining = window.innerHeight - filler.getBoundingClientRect().top;
+                filler.style.height = remaining + "px";
+            }
+
+            setInterval(() => {
+                resizeFiller();
+            }, 100);
+
+
+            // Load the match.json file
+            function highlightLoc(name) {
+                fetch('match.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        // load highlightList
+                        const highlightList = data.highlightList;
+                        if (highlightList && highlightList[name]) {
+                            const paths = highlightList[name];
+                            paths.forEach(pathId => {
+                                highlightBlock(pathId);
+                            });
+                        } else {
+                            console.warn(`No highlights found for ${name}`);
+                        }
+                    })
+                    .catch(error => console.error('Error loading match.json:', error));
+            }
+        </script>
+    </body>
+
+</html>
