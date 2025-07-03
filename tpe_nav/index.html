@@ -35,10 +35,16 @@
                 filter: brightness(0.8);
             }
 
-            h1, h2, h3, h4 {
+            .ch {
+                font-size: 6vw;
+                font-family: 'Noto Sans TC', sans-serif;
                 color: white;
-                font-family: "Noto Sans TC", sans-serif;
-                margin: 0;
+            }
+
+            .en {
+                font-size: 3vw;
+                font-family: 'Noto Sans TC', sans-serif;
+                color: white;
             }
         </style>
     </head>
@@ -48,18 +54,18 @@
         <div id="interact" style="width: 100%;display: flex;justify-content: center;align-items: center;">
             <div class="buttonDiv">
                 <button class="actionBtn" style="background-image: url(bus.svg);background-size: cover;"></button>
-                <h2>找公車</h2>
-                <h3>Find buses</h3>
+                <span class="ch">找公車</span>
+                <span class="en">Find buses</span>
             </div>
             <div class="buttonDiv">
                 <button class="actionBtn" style="background-image: url(exit.svg);background-size: cover;"></button>
-                <h2>找出口</h2>
-                <h3>Find exit</h3>
+                <span class="ch">找出口</span>
+                <span class="en">Find exit</span>
             </div>
             <div class="buttonDiv">
                 <button class="actionBtn" style="background-image: url(search.svg);background-size: cover;"></button>
-                <h2>找地標</h2>
-                <h3>Find landmark</h3>
+                <span class="ch">找地標</span>
+                <span class="en">Find landmark</span>
             </div>
         </div>
         <script>
@@ -132,8 +138,20 @@
                 filler.style.height = remaining + "px";
             }
 
+            function resizeButton () {
+                const buttons = document.getElementsByClassName("buttonDiv");
+                // Get the height of the filler
+                const remaining = window.innerHeight - filler.getBoundingClientRect().top;
+                //Set scale based on filler height
+                const scale = Math.min(remaining / 100, 1);
+                for (let i = 0; i < buttons.length; i++) {
+                    buttons[i].style.transform = `scale(${scale})`;
+                }
+            }
+
             setInterval(() => {
                 resizeFiller();
+                resizeButton();
             }, 100);
 
 
