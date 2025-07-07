@@ -172,7 +172,7 @@
 
             // Do not append to HTML visit counter if url is localhost or 127.0.0.1
             let isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
-            isLocalhost = false; // Set to true for testing purposes
+            // isLocalhost = false; // Set to true for testing purposes
             if (!isLocalhost) {
                 document.getElementById('label_counter').style.display = 'block';
                 document.getElementById('counter_frame').src = "counter.html";

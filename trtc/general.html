@@ -140,48 +140,6 @@
 			document.getElementById("redirect").style.display = "block";
 		}
 
-
-		fetch("general.json")
-			.then(function (response) {
-				return response.json();
-			})
-			.then(function (myJson) {
-				//Process
-				var container = document.getElementById("content");
-				var in_use = myJson['announcements']['in_use'];
-				var unused = myJson['announcements']['not_used'];
-				var title1 = document.createElement("h1");
-				title1.innerHTML = "使用中 In Use";
-				container.appendChild(title1);
-				for (var i = 0; i < in_use.length; i++) {
-					var announcement = in_use[i];
-					var div = document.createElement("div");
-					div.className = "standard";
-					div.onclick = (function (name) {
-						return function () {
-							play(name);
-						};
-					})(announcement['id']);
-					div.innerHTML = "<h3>" + announcement['ch'] + "</h3><h4>" + announcement['en'] + "</h4>";
-					container.appendChild(div);
-				}
-				var title2 = document.createElement("h1");
-				title2.innerHTML = "停止使用 Not Used";
-				container.appendChild(title2);
-				for (var i = 0; i < unused.length; i++) {
-					var announcement = unused[i];
-					var div = document.createElement("div");
-					div.className = "standard";
-					div.onclick = (function (name) {
-						return function () {
-							play(name);
-						};
-					})(announcement['id']);
-					div.innerHTML = "<h3>" + announcement['ch'] + "</h3><h4>" + announcement['en'] + "</h4><br><h5>停止使用 Not used since：" + announcement['end'] + "</h5>";
-					container.appendChild(div);
-				}
-			});
-
 		// Search function
 		function search() {
 			var input = document.getElementById("searchBar").value;
@@ -212,7 +170,7 @@
 									play(name);
 								};
 							})(announcement['id']);
-							div.innerHTML = "<h2>" + announcement['ch'] + "</h2><h3>" + announcement['en'] + "</h3>";
+							div.innerHTML = "<h3>" + announcement['ch'] + "</h3><h4>" + announcement['en'] + "</h4>";
 							inUseElements.push(div);
 						}
 					}
@@ -239,7 +197,7 @@
 									play(name);
 								};
 							})(announcement['id']);
-							div.innerHTML = "<h2>" + announcement['ch'] + "</h2><h3>" + announcement['en'] + "</h3><h4>停止使用 Not used since：" + announcement['end'] + "</h4>";
+							div.innerHTML = "<h3>" + announcement['ch'] + "</h3><h4>" + announcement['en'] + "</h4><h5>停止使用 Not used since：" + announcement['end'] + "</h5>";
 							notUsedElements.push(div);
 						}
 					}
@@ -256,7 +214,7 @@
 					// No results case
 					if (in_use_count === 0 && not_used_count === 0) {
 						var noResult = document.createElement("h1");
-						noResult.innerHTML = "沒有找到結果 No results found";
+						noResult.innerHTML = "沒有找到結果 No results";
 						container.appendChild(noResult);
 					}
 				});
@@ -271,6 +229,12 @@
 				}
 			});
 		});
+
+
+		//When on load, list using search blank
+		window.onload = function () {
+			search();
+		};
 	</script>
 
 </html>

@@ -1,0 +1,3 @@
+@echo off
+echo Starting Jekyll Server...
+bundle exec jekyll serve --livereload
