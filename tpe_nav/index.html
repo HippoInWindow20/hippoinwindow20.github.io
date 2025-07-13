@@ -7,7 +7,7 @@
         <title>Document</title>
         <style>
             .highlighted {
-                fill: yellow !important;
+                fill: rgb(196, 150, 0) !important;
                 /* Highlight color */
                 box-shadow: 0 0 10px rgba(255, 230, 0, 0.489);
                 /* Optional shadow for better visibility */
@@ -20,7 +20,7 @@
                 border: 0;
             }
 
-            
+
 
             .buttonDiv {
                 display: flex;
@@ -32,7 +32,7 @@
             }
 
             .buttonDiv:active {
-                filter: brightness(0.8);
+                filter: brightness(0.6);
             }
 
             .ch {
@@ -45,6 +45,30 @@
                 font-size: 3vw;
                 font-family: 'Noto Sans TC', sans-serif;
                 color: white;
+            }
+
+            #modal {
+                transition: 0.5s;
+                position: absolute;
+                width: 100vw;
+                height: 90vh;
+                top: 100vh;
+                left: 0;
+                background: #333;
+                border-top-left-radius: 20px;
+                border-top-right-radius: 20px;
+            }
+
+            #overlay {
+                transition: 0.5s;
+                display: none;
+                opacity: 0;
+                position: absolute;
+                width: 100vw;
+                height: 100vh;
+                bottom: 0;
+                left: 0;
+                background: rgba(0, 0, 0, 0.5);
             }
         </style>
     </head>
@@ -63,9 +87,14 @@
                 <span class="en">Find exit</span>
             </div>
             <div class="buttonDiv">
-                <button class="actionBtn" style="background-image: url(search.svg);background-size: cover;"></button>
+                <button class="actionBtn" style="background-image: url(search.svg);background-size: cover;" onclick="showModal()"></button>
                 <span class="ch">找地標</span>
                 <span class="en">Find landmark</span>
+            </div>
+            <!-- <div id="overlay"></div> -->
+            <div id="modal" onclick="hideModal()">
+                
+
             </div>
         </div>
         <script>
@@ -138,7 +167,7 @@
                 filler.style.height = remaining + "px";
             }
 
-            function resizeButton () {
+            function resizeButton() {
                 const buttons = document.getElementsByClassName("buttonDiv");
                 // Get the height of the filler
                 const remaining = window.innerHeight - filler.getBoundingClientRect().top;
@@ -155,23 +184,90 @@
             }, 100);
 
 
-            // Load the match.json file
-            function highlightLoc(name) {
-                fetch('match.json')
-                    .then(response => response.json())
-                    .then(data => {
-                        // load highlightList
-                        const highlightList = data.highlightList;
-                        if (highlightList && highlightList[name]) {
-                            const paths = highlightList[name];
-                            paths.forEach(pathId => {
-                                highlightBlock(pathId);
-                            });
-                        } else {
-                            console.warn(`No highlights found for ${name}`);
+            async function searchIndex(category, id) {
+                try {
+                    const response = await fetch('match.json');
+                    const data = await response.json();
+
+                    const highlightList = data.highlightList;
+                    if (highlightList && highlightList[category]) {
+                        for (let i = 0; i < highlightList[category].length; i++) {
+                            const item = highlightList[category][i];
+                            if (item.id === id) {
+                                return i;
+                            }
                         }
-                    })
-                    .catch(error => console.error('Error loading match.json:', error));
+                        return -1; // Not found
+                    } else {
+                        console.log("highlightList: ", highlightList, " && highlightList[category]: ", highlightList[category]);
+                        console.warn(`No highlights found for ${category}`);
+                        return -1;
+                    }
+                } catch (error) {
+                    console.error('Error loading match.json:', error);
+                    return -1;
+                }
+            }
+
+
+            // Load the match.json file
+            async function highlightLoc(category, name) {
+                const response = await fetch('match.json');
+                const data = await response.json();
+                // load highlightList
+                const highlightList = data.highlightList;
+                if (highlightList && highlightList[category]) {
+                    var index = await searchIndex(category, name);
+                    if (index !== -1) {
+                        var paths = highlightList[category][index].objects;
+                        paths.forEach(pathId => {
+                            highlightBlock(pathId);
+                        });
+                    }
+                } else {
+                    console.warn(`No highlights found for ${name}`);
+                }
+
+            }
+
+            // Timer
+            let timer = null;
+            function flashHighlight(category, id) {
+                if (timer) {
+                    clearInterval(timer);
+                }
+                timer = setInterval(() => {
+                    clearHighlights();
+                    setTimeout(async () => {
+                        await highlightLoc(category, id);
+                    }, 500);
+                }, 1000);
+            }
+
+            function stopFlash() {
+                if (timer) {
+                    clearInterval(timer);
+                    timer = null;
+                }
+                setTimeout(() => {
+                    clearHighlights();
+                }, 500);
+            }
+
+            function showModal() {
+                const modal = document.getElementById("modal");
+                modal.style.top = "10vh";
+                // document.getElementById("overlay").style.display = "block";
+                // document.getElementById("overlay").style.opacity = "1";
+            }
+
+            function hideModal() {
+                const modal = document.getElementById("modal");
+                modal.style.top = "100vh";
+                // document.getElementById("overlay").style.opacity = "0";
+                // setTimeout(() => {
+                //     document.getElementById("overlay").style.display = "none";
+                // }, 500);
             }
         </script>
     </body>

@@ -7,10 +7,11 @@
    viewBox="0 0 12.12 12.120001"
    version="1.1"
    id="svg5"
-   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
-   sodipodi:docname="D12-出口.svg"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   sodipodi:docname="exit.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
@@ -25,17 +26,31 @@
      showgrid="false"
      units="cm"
      width="1.2cm"
-     inkscape:zoom="8"
-     inkscape:cx="3.125"
-     inkscape:cy="15.5"
+     inkscape:zoom="11.313708"
+     inkscape:cx="10.562408"
+     inkscape:cy="17.89864"
      inkscape:window-width="1920"
-     inkscape:window-height="1009"
-     inkscape:window-x="1912"
-     inkscape:window-y="-8"
+     inkscape:window-height="1094"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="layer1"
+     inkscape:showpageshadow="0"
+     inkscape:deskcolor="#d1d1d1" />
   <defs
      id="defs2">
+    <linearGradient
+       id="linearGradient1"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#f2f2f2;stop-opacity:1;"
+         offset="0"
+         id="stop1" />
+      <stop
+         style="stop-color:#fecd00;stop-opacity:1;"
+         offset="1"
+         id="stop2" />
+    </linearGradient>
     <clipPath
        id="clip_1791">
       <path
@@ -295,6 +310,15 @@
          d="m -69.189,-0.001 h 841.89 v 595.276 h -841.89 z"
          id="path85" />
     </clipPath>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1"
+       id="linearGradient2"
+       x1="6.0000443"
+       y1="0"
+       x2="6.0000443"
+       y2="12.000089"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <g
      inkscape:label="Layer 1"
@@ -304,7 +328,7 @@
        d="M 9.6001414,12.000089 H 2.4002999 C 1.0745611,12.000089 0,10.925528 0,9.6001414 V 2.3999472 C 0,1.0745611 1.0745611,0 2.4002999,0 h 7.1998415 c 1.3253866,0 2.3999476,1.0745611 2.3999476,2.3999472 v 7.2001942 c 0,1.3253856 -1.074562,2.3999476 -2.3999476,2.3999476"
        fill="#fecd00"
        id="path611"
-       style="stroke-width:0.352778" />
+       style="stroke-width:0.352778;fill:url(#linearGradient2)" />
     <path
        d="M 7.0098036,3.1205663 H 9.0813147 V 5.0749551 H 7.0098036 Z m 0,2.5195388 H 9.0813147 V 5.9350274 H 9.6588119 V 2.551183 H 6.4280731 v 3.3838444 h 0.5817305 z"
        id="path613"

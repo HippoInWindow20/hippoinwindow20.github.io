@@ -1,5 +1,10 @@
 {
     "highlightList":{
-        "Test Building 1": ["path10515"]
+        "landmark_standard": [
+            {"id": "welfare_disabilities","name_zh": "北市身障服務中心","name_en": "Taipei Welfare Service Center for People with Disabilities","objects": ["path12800"]},
+            {"id": "police_agency","name_zh": "警政署","name_en": "National Police Agency","objects": ["path7802"]},
+            {"id": "nhia","name_zh": "健保署臺北業務組","name_en": "NHIA-Taipei Division","objects": ["path9439"]}
+            
+        ]
     }
 }

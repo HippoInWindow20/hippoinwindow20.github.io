@@ -7,10 +7,11 @@
    viewBox="0 0 12.12 12.120001"
    version="1.1"
    id="svg5"
-   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
    sodipodi:docname="search.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
@@ -27,7 +28,7 @@
      width="1.2cm"
      inkscape:zoom="11.313708"
      inkscape:cx="20.815457"
-     inkscape:cy="26.781671"
+     inkscape:cy="26.737476"
      inkscape:window-width="1920"
      inkscape:window-height="1094"
      inkscape:window-x="-11"
@@ -38,6 +39,18 @@
      inkscape:deskcolor="#d1d1d1" />
   <defs
      id="defs2">
+    <linearGradient
+       id="linearGradient1"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#97ff97;stop-opacity:1;"
+         offset="0.16068053"
+         id="stop1" />
+      <stop
+         style="stop-color:#00a209;stop-opacity:1;"
+         offset="1"
+         id="stop2" />
+    </linearGradient>
     <clipPath
        id="clip_1791">
       <path
@@ -465,6 +478,15 @@
          d="M 0,-0.001 H 841.89 V 595.275 H 0 Z"
          id="path125-1" />
     </clipPath>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1"
+       id="linearGradient2"
+       x1="471.5"
+       y1="-840"
+       x2="471.5"
+       y2="-137"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <g
      inkscape:label="Layer 1"
@@ -489,12 +511,13 @@
        id="path649"
        style="stroke-width:0.352778" />
     <g
-       style="fill:#000000"
+       style="fill:url(#linearGradient2)"
        id="g1041"
        transform="matrix(0.00927587,0,0,0.00927587,1.6864292,10.591261)">
       <path
          d="M 380,-320 Q 271,-320 195.5,-395.5 120,-471 120,-580 120,-689 195.5,-764.5 271,-840 380,-840 q 109,0 184.5,75.5 75.5,75.5 75.5,184.5 0,44 -14,83 -14,39 -38,69 l 224,224 q 11,11 11,28 0,17 -11,28 -11,11 -28,11 -17,0 -28,-11 L 532,-372 q -30,24 -69,38 -39,14 -83,14 z m 0,-80 q 75,0 127.5,-52.5 Q 560,-505 560,-580 560,-655 507.5,-707.5 455,-760 380,-760 305,-760 252.5,-707.5 200,-655 200,-580 q 0,75 52.5,127.5 Q 305,-400 380,-400 Z"
-         id="path1032" />
+         id="path1032"
+         style="fill:url(#linearGradient2)" />
     </g>
   </g>
 </svg>
