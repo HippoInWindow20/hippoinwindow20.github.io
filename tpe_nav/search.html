@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <style>
+            .material-symbols-outlined {
+                font-variation-settings:
+                    'FILL' 0,
+                    'wght' 400,
+                    'GRAD' 0,
+                    'opsz' 24;
+                font-size: var(--text-size);
+                color: white;
+            }
+
+            :root {
+                --action-button-width: 10vw;
+                --text-size: 5vw;
+                --button-margin: 1vw;
+            }
+
+            .searchBar {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: calc(100vw - ((var(--action-button-width) + var(--button-margin) * 2) * 4) - (var(--button-margin) * 6));
+                height: var(--action-button-width);
+                border-radius: 100000px;
+                padding-left: 3vw;
+                font-size: var(--text-size);
+                margin: var(--button-margin);
+                border: none;
+                background: #555;
+                color: white;
+                box-shadow: 2px 2px 14px 0px black;
+                font-family: 'Noto Sans TC', sans-serif;
+            }
+
+            .actionButton {
+                border-radius: 100%;
+                width: var(--action-button-width);
+                height: var(--action-button-width);
+                font-size: var(--text-size);
+                margin: var(--button-margin);
+                aspect-ratio: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: none;
+                background: #555;
+                transition: 0.2s;
+                box-shadow: 2px 2px 14px 0px black;
+            }
+
+            .actionButton:active {
+                background: #777;
+                transform: scale(0.9);
+                box-shadow: none;
+            }
+
+            .locZh {
+                font-size: 7vw;
+                font-family: "Noto Sans TC", sans-serif;
+                color: white;
+            }
+
+            .locEn {
+                font-size: 4vw;
+                font-family: "Noto Sans TC", sans-serif;
+                color: white;
+            }
+
+            .locationItem.selected {
+                background: rgba(255, 255, 255, 0.2);
+            }
+
+            .selected > div > .locZh {
+                color: orange;
+            }
+
+            .selected > div > .locEn {
+                color: orange;
+            }
+
+            .locationItem {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                flex-direction: row;
+                font-size: var(--text-size);
+                margin-bottom: 3vw;
+                transition: 0.3s;
+            }
+        </style>
+    </head>
+
+    <body style="margin: 0;background: #333;font-family: 'Noto Sans TC', sans-serif;">
+        <div id="searchContainer"
+            style="margin: 0;width: 100%;height: 100vh;display: flex;align-items: flex-start;flex-direction: column;justify-content: flex-end;">
+            <div id="locationList"
+                style="width: 100%;overflow-y: auto;overflow-x: hidden;display: flex;flex-direction: column;max-height: calc(100vh - var(--action-button-width));">
+                <!-- Location items will be dynamically added here -->
+            </div>
+            <div style="display: flex;">
+                <button class="actionButton" id="backButton" onclick="goBack()">
+                    <span class="material-symbols-outlined">
+                        arrow_back
+                    </span>
+                </button>
+                <input class="searchBar" type="text" id="search-input" placeholder="搜尋 Search" />
+                <button class="actionButton" id="search-button">
+                    <span class="material-symbols-outlined">
+                        search
+                    </span>
+                </button>
+                <button class="actionButton" id="index-">
+                    <span class="material-symbols-outlined">
+                        keyboard_arrow_down
+                    </span>
+                </button>
+                <button class="actionButton" id="index+">
+                    <span class="material-symbols-outlined">
+                        keyboard_arrow_up
+                    </span>
+                </button>
+            </div>
+        </div>
+        <script>
+            function goBack() {
+                window.parent.hideModal();
+            }
+
+            function createLocationItem(iconSrc, zhText, enText, locId) {
+                const item = document.createElement('div');
+                item.className = 'locationItem';
+                item.setAttribute('data-loc-id', locId);
+
+                const img = document.createElement('img');
+                img.src = 'icons/' + iconSrc + '.svg';
+                img.style.width = '13vw';
+                img.style.height = '13vw';
+                img.style.marginLeft = '2vw';
+                img.style.marginRight = '2vw';
+
+                const textContainer = document.createElement('div');
+                textContainer.style.display = 'flex';
+                textContainer.style.flexDirection = 'column';
+
+                const locZh = document.createElement('span');
+                locZh.className = 'locZh';
+                locZh.textContent = zhText;
+
+                const locEn = document.createElement('span');
+                locEn.className = 'locEn';
+                locEn.textContent = enText;
+
+                textContainer.appendChild(locZh);
+                textContainer.appendChild(locEn);
+                item.appendChild(img);
+                item.appendChild(textContainer);
+
+                return item;
+            }
+
+            function addLocationItem(iconSrc, zhText, enText, locId) {
+                const item = createLocationItem(iconSrc, zhText, enText, locId);
+                document.getElementById('locationList').appendChild(item);
+                document.getElementById('locationList').scrollTo(0, document.getElementById('locationList').scrollHeight);
+            }
+
+            addLocationItem('parking_lot', '停車場', 'Parking Lot', 'loc1');
+            addLocationItem('exit', '出口', 'Exit', 'loc2');
+            addLocationItem('hospital', '醫院', 'Hospital', 'loc3');
+            addLocationItem('emergency_exit', '緊急出口', 'Emergency Exit', 'loc4');
+        </script>
+    </body>
+
+</html>
