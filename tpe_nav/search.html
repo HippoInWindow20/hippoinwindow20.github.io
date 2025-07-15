@@ -28,7 +28,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                width: calc(100vw - ((var(--action-button-width) + var(--button-margin) * 2) * 4) - (var(--button-margin) * 6));
+                width: calc(100vw - ((var(--action-button-width) + var(--button-margin) * 2) * 5) - (var(--button-margin) * 6));
                 height: var(--action-button-width);
                 border-radius: 100000px;
                 padding-left: 3vw;
@@ -76,15 +76,17 @@
             }
 
             .locationItem.selected {
-                background: rgba(255, 255, 255, 0.2);
+                background: rgba(255, 255, 255, 0.8);
             }
 
-            .selected > div > .locZh {
-                color: orange;
+            .selected>div>.locZh {
+                color: rgb(209, 38, 0);
+                font-weight: bold;
             }
 
-            .selected > div > .locEn {
-                color: orange;
+            .selected>div>.locEn {
+                color: rgb(209, 38, 0);
+                font-weight: bold;
             }
 
             .locationItem {
@@ -119,14 +121,19 @@
                         search
                     </span>
                 </button>
-                <button class="actionButton" id="index-">
+                <button class="actionButton" id="index-" onclick="indexUp(true)">
                     <span class="material-symbols-outlined">
                         keyboard_arrow_down
                     </span>
                 </button>
-                <button class="actionButton" id="index+">
+                <button class="actionButton" id="index+" onclick="indexUp(false)">
                     <span class="material-symbols-outlined">
                         keyboard_arrow_up
+                    </span>
+                </button>
+                <button class="actionButton" id="index+" onclick="confirmLocation()">
+                    <span class="material-symbols-outlined">
+                        check
                     </span>
                 </button>
             </div>
@@ -136,10 +143,11 @@
                 window.parent.hideModal();
             }
 
-            function createLocationItem(iconSrc, zhText, enText, locId) {
+            function createLocationItem(iconSrc, zhText, enText, locId, category) {
                 const item = document.createElement('div');
                 item.className = 'locationItem';
                 item.setAttribute('data-loc-id', locId);
+                item.setAttribute('data-loc-category', category);
 
                 const img = document.createElement('img');
                 img.src = 'icons/' + iconSrc + '.svg';
@@ -168,16 +176,104 @@
                 return item;
             }
 
-            function addLocationItem(iconSrc, zhText, enText, locId) {
+            function addLocationItem(iconSrc, zhText, enText, locId, category) {
                 const item = createLocationItem(iconSrc, zhText, enText, locId);
                 document.getElementById('locationList').appendChild(item);
-                document.getElementById('locationList').scrollTo(0, document.getElementById('locationList').scrollHeight);
+                document.getElementById('locationList').scrollTo(0, 0);
+                // add click event listener to the item
+                item.addEventListener('click', function () {
+                    clearHighlights();
+                    item.classList.add('selected');
+                    parent.window.flashHighlight(category, locId);
+                    setTimeout(async function () {
+                        parent.window.hideModal();
+                        setTimeout(function () {
+                            item.classList.remove('selected');
+                        }, 200);
+                    }, 300);
+                });
             }
 
-            addLocationItem('parking_lot', '停車場', 'Parking Lot', 'loc1');
-            addLocationItem('exit', '出口', 'Exit', 'loc2');
-            addLocationItem('hospital', '醫院', 'Hospital', 'loc3');
-            addLocationItem('emergency_exit', '緊急出口', 'Emergency Exit', 'loc4');
+            function clearLocationList() {
+                const locationList = document.getElementById('locationList');
+                while (locationList.firstChild) {
+                    locationList.removeChild(locationList.firstChild);
+                }
+            }
+
+            // addLocationItem('parking_lot', '停車場', 'Parking Lot', 'loc1');
+            // addLocationItem('exit', '出口', 'Exit', 'loc2');
+            // addLocationItem('hospital', '醫院', 'Hospital', 'loc3');
+            // addLocationItem('emergency_exit', '緊急出口', 'Emergency Exit', 'loc4');
+
+            async function listLocationsforCategory(category) {
+                const response = await fetch('match.json');
+                const data = await response.json();
+
+                const highlightList = data.highlightList;
+                const categoryIcon = data.legendMapping.find(cat => cat.code === category)?.icon;
+
+                clearLocationList();
+                const locations = highlightList[category];
+                if (locations) {
+                    locations.forEach(loc => {
+                        addLocationItem(categoryIcon, loc.name_zh, loc.name_en, loc.id, category);
+                    });
+                }
+                highlightLocationAtIndex(currentIndex);
+            }
+
+            listLocationsforCategory('landmark_school');
+            var currentIndex = 0;
+
+            function highlightLocationAtIndex (index) {
+                const items = document.querySelectorAll('.locationItem');
+                if (items.length === 0) return;
+
+                // Remove highlight from all items
+                items.forEach(item => item.classList.remove('selected'));
+
+                // Highlight the current item
+                if (index >= 0 && index < items.length) {
+                    const item = items[index];
+                    item.classList.add('selected');
+                }
+            }
+
+            function clearHighlights () {
+                const items = document.querySelectorAll('.locationItem');
+                items.forEach(item => item.classList.remove('selected'));
+            }
+
+            function indexUp (direction) {
+                const items = document.querySelectorAll('.locationItem');
+                if (items.length === 0) return;
+
+                currentIndex = (currentIndex + (direction === true ? 1 : -1)) % items.length;
+                if (currentIndex < 0) {
+                    currentIndex = items.length - 1; // Wrap around to the last item
+                }
+                highlightLocationAtIndex(currentIndex);
+
+                // If the highlighted item is not in view, scroll it into view
+                const item = items[currentIndex];
+                if (item) {
+                    item.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'nearest'
+                    });
+                }
+            }
+            
+            function confirmLocation () {
+                const items = document.querySelectorAll('.locationItem');
+                if (items.length === 0) return;
+
+                const item = items[currentIndex];
+                if (item) {
+                    item.click();
+                }
+            }
         </script>
     </body>
 

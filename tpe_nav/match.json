@@ -1,9 +1,31 @@
 {
+    "legendMapping":[
+        {"code":"landmark_standard","icon":"none","catZh":"一般地標","catEn":"Standard Locations"} ,   
+        {"code":"landmark_exit","icon":"exit","catZh":"出口","catEn":"Exits"},
+        {"code":"landmark_school","icon":"school","catZh":"學校","catEn":"School"}    
+    ],
     "highlightList":{
         "landmark_standard": [
             {"id": "welfare_disabilities","name_zh": "北市身障服務中心","name_en": "Taipei Welfare Service Center for People with Disabilities","objects": ["path12800"]},
             {"id": "police_agency","name_zh": "警政署","name_en": "National Police Agency","objects": ["path7802"]},
             {"id": "nhia","name_zh": "健保署臺北業務組","name_en": "NHIA-Taipei Division","objects": ["path9439"]}
+            
+        ],
+        "landmark_exit": [
+            {"id": "exit_m1","name_zh": "出口 M1","name_en": "Exit M1","objects": []},
+            {"id": "exit_m2","name_zh": "出口 M2","name_en": "Exit M2","objects": []},
+            {"id": "exit_m3","name_zh": "出口 M3","name_en": "Exit M3","objects": []},
+            {"id": "exit_m4","name_zh": "出口 M4","name_en": "Exit M4","objects": []},
+            {"id": "exit_m5","name_zh": "出口 M5","name_en": "Exit M5","objects": []},
+            {"id": "exit_m6","name_zh": "出口 M6","name_en": "Exit M6","objects": []},
+            {"id": "exit_m7","name_zh": "出口 M7","name_en": "Exit M7","objects": []},
+            {"id": "exit_m8","name_zh": "出口 M8","name_en": "Exit M8","objects": []}
+            
+        ],
+        "landmark_school": [
+            {"id": "zhiren_sen","name_zh": "志仁高中","name_en": "Zhiren Senior High School","objects": ["path12608"]},
+            {"id": "chenggong_sen","name_zh": "成功高中","name_en": "Chenggong Senior High School","objects": ["path9453"]},
+            {"id": "dongmen_elem","name_zh": "東門國小","name_en": "Dongmen Elementary School","objects": ["path13041"]}
             
         ]
     }
