@@ -83,31 +83,45 @@
     </head>
 
     <body style="margin: 0;background: #111;overflow-y: hidden;">
-        <div id="map"></div>
-        <div id="interact" style="width: 100%;display: flex;justify-content: center;align-items: center;">
-            <div class="buttonDiv">
-                <button class="actionBtn" style="background-image: url(bus.svg);background-size: cover;"></button>
-                <span class="ch">找公車</span>
-                <span class="en">Find buses</span>
-            </div>
-            <div class="buttonDiv">
-                <button class="actionBtn" style="background-image: url(exit.svg);background-size: cover;"></button>
-                <span class="ch">找出口</span>
-                <span class="en">Find exit</span>
-            </div>
-            <div class="buttonDiv">
-                <button class="actionBtn" style="background-image: url(search.svg);background-size: cover;"
-                    onclick="showModal()"></button>
-                <span class="ch">找地標</span>
-                <span class="en">Find landmark</span>
-            </div>
-            <!-- <div id="overlay"></div> -->
-            <div id="modal" onclick="hideModal()">
+        <div id="sized" style="aspect-ratio: 9/16;margin: auto;">
+            <div id="map"></div>
+            <div id="interact" style="width: 100%;display: flex;justify-content: center;align-items: center;">
+                <div class="buttonDiv">
+                    <button class="actionBtn" style="background-image: url(bus.svg);background-size: cover;"></button>
+                    <span class="ch">找公車</span>
+                    <span class="en">Find buses</span>
+                </div>
+                <div class="buttonDiv">
+                    <button class="actionBtn" style="background-image: url(exit.svg);background-size: cover;"></button>
+                    <span class="ch">找出口</span>
+                    <span class="en">Find exit</span>
+                </div>
+                <div class="buttonDiv">
+                    <button class="actionBtn" style="background-image: url(search.svg);background-size: cover;"
+                        onclick="showModal()"></button>
+                    <span class="ch">找地標</span>
+                    <span class="en">Find landmark</span>
+                </div>
+                <!-- <div id="overlay"></div> -->
+                <div id="modal" onclick="hideModal()">
 
-                <iframe src="search.html" id="iframe"></iframe>
+                    <iframe src="search.html" id="iframe"></iframe>
+                </div>
             </div>
         </div>
         <script>
+            // Set the size of the map container, if width / height < 9/16 , set width to 100% and height to auto, else set width to auto and height to 100%
+            setInterval(() => {
+                const sized = document.getElementById("sized");
+                if (window.innerWidth / window.innerHeight < 9 / 16) {
+                    sized.style.width = "100vw";
+                    sized.style.height = "calc(100vw * 16 / 9)";
+                } else {
+                    sized.style.width = "calc(100vh * 9 / 16)";
+                    sized.style.height = "100vh";
+                }
+            }, 100);
+
             //fetch the svg
             fetch('title.svg')
                 .then(response => response.text())
@@ -188,10 +202,10 @@
                 }
             }
 
-            setInterval(() => {
-                resizeFiller();
-                // resizeButton();
-            }, 100);
+            // setInterval(() => {
+            //     resizeFiller();
+            //     // resizeButton();
+            // }, 100);
 
 
             async function searchIndex(category, id) {
