@@ -6,6 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <style>
+            :root {
+                --main-text-size: 6dvw;
+            }
+
             .highlighted {
                 fill: rgb(196, 150, 0) !important;
                 /* Highlight color */
@@ -36,13 +40,13 @@
             }
 
             .ch {
-                font-size: 6vw;
+                font-size: var(--main-text-size);
                 font-family: 'Noto Sans TC', sans-serif;
                 color: white;
             }
 
             .en {
-                font-size: 3vw;
+                font-size: calc(var(--main-text-size) * 0.5);
                 font-family: 'Noto Sans TC', sans-serif;
                 color: white;
             }
@@ -50,9 +54,9 @@
             #modal {
                 transition: 0.3s;
                 position: absolute;
-                width: 100vw;
-                height: 90vh;
-                top: 100vh;
+                width: 100dvw;
+                height: 90dvh;
+                top: 100dvh;
                 left: 0;
                 background: #333;
                 border-top-left-radius: 20px;
@@ -64,15 +68,15 @@
                 display: none;
                 opacity: 0;
                 position: absolute;
-                width: 100vw;
-                height: 100vh;
+                width: 100dvw;
+                height: 100dvh;
                 bottom: 0;
                 left: 0;
                 background: rgba(0, 0, 0, 0.5);
             }
 
             #iframe {
-                --iframe-margin: 3vw;
+                --iframe-margin: 3dvw;
                 width: calc(100% - var(--iframe-margin) * 2);
                 height: calc(100% - var(--iframe-margin) * 2);
                 border: none;
@@ -113,12 +117,15 @@
             // Set the size of the map container, if width / height < 9/16 , set width to 100% and height to auto, else set width to auto and height to 100%
             setInterval(() => {
                 const sized = document.getElementById("sized");
+                const rootElement = document.documentElement;
                 if (window.innerWidth / window.innerHeight < 9 / 16) {
-                    sized.style.width = "100vw";
-                    sized.style.height = "calc(100vw * 16 / 9)";
+                    sized.style.width = "100dvw";
+                    sized.style.height = "calc(100dvw * 16 / 9)";
+                    rootElement.style.setProperty('--main-text-size', '6dvw');
                 } else {
-                    sized.style.width = "calc(100vh * 9 / 16)";
-                    sized.style.height = "100vh";
+                    sized.style.width = "calc(100dvh * 9 / 16)";
+                    sized.style.height = "100dvh";
+                    rootElement.style.setProperty('--main-text-size', '4dvh');
                 }
             }, 100);
 
@@ -280,7 +287,7 @@
 
             function showModal() {
                 const modal = document.getElementById("modal");
-                modal.style.top = "10vh";
+                modal.style.top = "10dvh";
                 // document.getElementById("overlay").style.display = "block";
                 // document.getElementById("overlay").style.opacity = "1";
                 document.getElementById("iframe").contentWindow.location.reload();
@@ -288,7 +295,7 @@
 
             function hideModal() {
                 const modal = document.getElementById("modal");
-                modal.style.top = "100vh";
+                modal.style.top = "100dvh";
                 // document.getElementById("overlay").style.opacity = "0";
                 // setTimeout(() => {
                 //     document.getElementById("overlay").style.display = "none";
