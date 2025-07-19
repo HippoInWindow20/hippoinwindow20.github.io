@@ -4,10 +4,12 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#111">
         <title>Document</title>
         <style>
             :root {
                 --main-text-size: 6dvw;
+                --iframe-margin: 3dvw;
             }
 
             .highlighted {
@@ -57,7 +59,6 @@
                 width: 100dvw;
                 height: 90dvh;
                 top: 100dvh;
-                left: 0;
                 background: #333;
                 border-top-left-radius: 20px;
                 border-top-right-radius: 20px;
@@ -76,7 +77,6 @@
             }
 
             #iframe {
-                --iframe-margin: 3dvw;
                 width: calc(100% - var(--iframe-margin) * 2);
                 height: calc(100% - var(--iframe-margin) * 2);
                 border: none;
@@ -117,15 +117,21 @@
             // Set the size of the map container, if width / height < 9/16 , set width to 100% and height to auto, else set width to auto and height to 100%
             setInterval(() => {
                 const sized = document.getElementById("sized");
+                const modal = document.getElementById("modal");
                 const rootElement = document.documentElement;
                 if (window.innerWidth / window.innerHeight < 9 / 16) {
                     sized.style.width = "100dvw";
+                    modal.style.width = "100dvw";
                     sized.style.height = "calc(100dvw * 16 / 9)";
+                    modal.style.height = "calc(100dvw * 16 / 9)";
                     rootElement.style.setProperty('--main-text-size', '6dvw');
+                    rootElement.style.setProperty('--iframe-margin', '3vw');
                 } else {
                     sized.style.width = "calc(100dvh * 9 / 16)";
+                    modal.style.width = "calc(100dvh * 9 / 16)";
                     sized.style.height = "100dvh";
                     rootElement.style.setProperty('--main-text-size', '4dvh');
+                    rootElement.style.setProperty('--iframe-margin', '2vh');
                 }
             }, 100);
 

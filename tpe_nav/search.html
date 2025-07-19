@@ -34,10 +34,10 @@
                 padding-left: 3vw;
                 font-size: var(--text-size);
                 margin: var(--button-margin);
-                border: none;
-                background: #555;
+                border: 1px solid #dadada;
+                background: none;
                 color: white;
-                box-shadow: 2px 2px 14px 0px black;
+                /* box-shadow: 2px 2px 14px 0px black; */
                 font-family: 'Noto Sans TC', sans-serif;
             }
 
@@ -51,14 +51,14 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                border: none;
-                background: #555;
+                border: 1px solid #dadada;
+                background: none;
                 transition: 0.2s;
-                box-shadow: 2px 2px 14px 0px black;
+                /* box-shadow: 2px 2px 14px 0px black; */
             }
 
             .actionButton:active {
-                background: #777;
+                background: #666;
                 transform: scale(0.9);
                 box-shadow: none;
             }
@@ -109,14 +109,14 @@
                 style="width: 100%;overflow-y: auto;overflow-x: hidden;display: flex;flex-direction: column;max-height: calc(100vh - var(--action-button-width));">
                 <!-- Location items will be dynamically added here -->
             </div>
-            <div style="display: flex;">
+            <div style="display: flex;align-items: center;">
                 <button class="actionButton" id="backButton" onclick="goBack()">
                     <span class="material-symbols-outlined">
                         arrow_back
                     </span>
                 </button>
                 <input class="searchBar" type="text" id="search-input" placeholder="搜尋 Search" />
-                <button class="actionButton" id="search-button">
+                <button class="actionButton" id="search-button" onclick="searchLocations()">
                     <span class="material-symbols-outlined">
                         search
                     </span>
@@ -272,6 +272,32 @@
                 const item = items[currentIndex];
                 if (item) {
                     item.click();
+                }
+            }
+
+            async function searchLocations(categoryFilter = null) {
+                const searchInput = document.getElementById('search-input').value.toLowerCase();
+                 const response = await fetch('match.json');
+                const data = await response.json();
+
+                const legend = data.legendMapping;
+                var categories = []
+                for (const cat of legend) {
+                    categories.push(cat.code);
+                }
+                clearLocationList();
+                for (const cat of categories) {
+                    const icon = legend.find(c => c.code === cat)?.icon || 'default_icon';
+                    const highlightList = data.highlightList[cat];
+                    if (highlightList) {
+                        for (const loc of highlightList) {
+                            if (loc.name_zh.toLowerCase().includes(searchInput) || loc.name_en.toLowerCase().includes(searchInput)) {
+                                if (!categoryFilter || categoryFilter === cat) {
+                                    addLocationItem(icon, loc.name_zh, loc.name_en, loc.id, cat);
+                                }
+                            }
+                        }
+                    }
                 }
             }
         </script>
