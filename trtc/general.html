@@ -110,13 +110,6 @@
 	</style>
 
 	<body>
-		<div id="redirect"
-			style="text-align: center;background:#222;border-radius: 10px;padding-top: 20px;padding-bottom: 20px;display: none;">
-			<h1>播放器已搬家！</h1>
-			<h2>The player has been moved!</h2>
-			<p>新網站在這：<a href="index.html">index.html</a></p>
-			<p>The new website is here：<a href="index.html">index.html</a></p>
-		</div>
 		<!-- search bar-->
 		<div style="display: flex;flex-direction: row;width: 100%;max-width: 1200px;margin: auto;">
 			<input id="searchBar" type="text" class="search" id="search" placeholder="搜尋廣播 Search Announcements">
@@ -137,7 +130,7 @@
 			audio.play();
 		}
 		if (window.parent == window) {
-			document.getElementById("redirect").style.display = "block";
+			window.location.href = "index.html?tab=general";
 		}
 
 		// Search function
@@ -235,6 +228,8 @@
 		window.onload = function () {
 			search();
 		};
+
+		
 	</script>
 
 </html>
