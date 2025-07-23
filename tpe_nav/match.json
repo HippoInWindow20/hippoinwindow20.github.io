@@ -8,7 +8,35 @@
         "landmark_standard": [
             {"id": "welfare_disabilities","name_zh": "北市身障服務中心","name_en": "Taipei Welfare Service Center for People with Disabilities","objects": ["path12800"]},
             {"id": "police_agency","name_zh": "警政署","name_en": "National Police Agency","objects": ["path7802"]},
-            {"id": "nhia","name_zh": "健保署臺北業務組","name_en": "NHIA-Taipei Division","objects": ["path9439"]}
+            {"id": "nhia","name_zh": "健保署臺北業務組","name_en": "NHIA-Taipei Division","objects": ["path9439"]},
+            {"id": "customs_finance","name_zh": "財政部關務署","name_en": "Customs Administration, Ministry of Finance","objects": ["path1661"]},
+            {"id": "comic_base","name_zh": "臺灣動漫基地","name_en": "Taiwan Comic Base","objects": ["path3439"]},
+            {"id": "revenue_service","name_zh": "台北市稅捐稽徵處","name_en": "Taipei Revenue Service","objects": ["path7000"]},
+            {"id": "travel_plaza","name_zh": "台北行旅廣場","name_en": "Taipei Travel Plaza","objects": ["path6756"]},
+            {"id": "pu_tian_sheng","name_zh": "蒲添生雕塑紀念館","name_en": "Pu Tian-Sheng Sculpture Museum","objects": ["path7810"]},
+            {"id": "beimen_square","name_zh": "北門廣場","name_en": "Beimen Square","objects": ["path8794"]},
+            {"id": "asia_plaza","name_zh": "亞洲廣場大樓","name_en": "Asia Plaza Building","objects": ["path8806"]},
+            {"id": "mcd1","name_zh": "麥當勞（林森二店）","name_en": "McDonald's (Linsen 2nd)","objects": ["path8868"]},
+            {"id": "zz_admin","name_zh": "中正區行政中心","name_en": "Zhongzheng District Administration Center","objects": ["path8962"]},
+            {"id": "huashan_market","name_zh": "華山市場","name_en": "Huashan Market","objects": ["path8962"]},
+            {"id": "mcd2","name_zh": "麥當勞（台北公園店）","name_en": "McDonald's (Taipei Park)","objects": ["path8978"]},
+            {"id": "youth_assoc","name_zh": "青年服務社","name_en": "China Youth Service Association","objects": ["path8980"]},
+            {"id": "ymca","name_zh": "基督教青年會","name_en": "YMCA","objects": ["path8808"]},
+            {"id": "cdc","name_zh": "衛生福利部疾病管制署","name_en": "Taiwan Centers for Disease Control","objects": ["path9443"]},
+            {"id": "china_times","name_zh": "中國時報","name_en": "China Times","objects": ["path9243"]},
+            {"id": "metro_cafe","name_zh": "Metro Cafe","name_en": "Metro Cafe","objects": ["path9635"]},
+            {"id": "moe","name_zh": "教育部","name_en": "Ministry of Education","objects": ["path9737"]},
+            {"id": "joint_central","name_zh": "中央聯合辦公大樓","name_en": "Joint Central Government Office Building","objects": ["path9737"]},
+            {"id": "consular_affairs","name_zh": "外交部領事事務局","name_en": "Bureau of Consular Affairs, MOFA","objects": ["path9737"]},
+            {"id": "standards","name_zh": "經濟部標準檢驗局","name_en": "Bureau of Standards, Metrology and Inspection. M.O.E.A.","objects": ["path9737"]},
+            {"id": "open_lab","name_zh": "多媒體創業實驗中心","name_en": "Open Lab","objects": ["path10333"]},
+            {"id": "partyworld","name_zh": "錢櫃KTV","name_en": "Cashbox Partyworld","objects": ["path10333"]},
+            {"id": "228_museum","name_zh": "二二八紀念館","name_en": "228 Memorial Museum","objects": ["path9735"]},
+            {"id": "ntuh_conv","name_zh": "台大醫院國際會議中心","name_en": "NTUH International Convention Center","objects": ["path10515"]},
+            {"id": "dept_youth","name_zh": "青年局","name_en": "Department for Youth","objects": ["path11135"]},
+            {"id": "military","name_zh": "臺北憲兵隊","name_en": "Military Police Station","objects": ["path11997"]},
+            {"id": "mofa","name_zh": "外交部","name_en": "Ministry of Foreign Affairs","objects": ["path12511"]},
+            {"id": "cyf_foundation","name_zh": "張榮發基金會","name_en": "Chang Yung-Fa Foundation","objects": ["path13041"]}
             
         ],
         "landmark_exit": [
@@ -25,7 +53,13 @@
         "landmark_school": [
             {"id": "zhiren_sen","name_zh": "志仁高中","name_en": "Zhiren Senior High School","objects": ["path12608"]},
             {"id": "chenggong_sen","name_zh": "成功高中","name_en": "Chenggong Senior High School","objects": ["path9453"]},
-            {"id": "dongmen_elem","name_zh": "東門國小","name_en": "Dongmen Elementary School","objects": ["path13041"]}
+            {"id": "dongmen_elem","name_zh": "東門國小","name_en": "Dongmen Elementary School","objects": ["path13041"]},
+            {"id": "rixin_elem","name_zh": "日新國小","name_en": "Taipei Municipal Rixin Elementary School","objects": ["path9658"]},
+            {"id": "jiancheng_jr","name_zh": "建成國中（大同社區大學）","name_en": "Jiancheng Jr. High School (Datong Community College)","objects": ["path12608"]},
+            {"id": "nycu_tp","name_zh": "陽明交通大學 北門校區","name_en": "National Yangming Chiao Tung University Taipei Campus","objects": ["path8800"]},
+            {"id": "kainan_hs","name_zh": "開南中學（中正社區大學）","name_en": "Taipei KaiNan High School (Zhongzheng Community College)","objects": ["path9737"]},
+            {"id": "ntu_phar","name_zh": "台大藥學院","name_en": "School of Pharmacy, NTU","objects": ["path9739"]},
+            {"id": "ntu_health","name_zh": "台大公共衛生學院","name_en": "NTU College of Public Health","objects": ["path9739"]}
             
         ]
     }

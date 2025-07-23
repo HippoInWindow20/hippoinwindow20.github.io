@@ -25,9 +25,9 @@
      showgrid="false"
      units="cm"
      width="1.2cm"
-     inkscape:zoom="4"
-     inkscape:cx="8.875"
-     inkscape:cy="62.125"
+     inkscape:zoom="11.313708"
+     inkscape:cx="16.396039"
+     inkscape:cy="27.400388"
      inkscape:window-width="1920"
      inkscape:window-height="1094"
      inkscape:window-x="-11"
@@ -406,5 +406,10 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1" />
+     id="layer1">
+    <path
+       id="path1"
+       style="fill:#ffffff;stroke-width:0.846"
+       d="M 7.6268675,6.0599999 A 1.5668676,1.5668676 0 0 1 6.0599999,7.6268675 1.5668676,1.5668676 0 0 1 4.4931324,6.0599999 1.5668676,1.5668676 0 0 1 6.0599999,4.4931324 1.5668676,1.5668676 0 0 1 7.6268675,6.0599999 Z" />
+  </g>
 </svg>
