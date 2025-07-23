@@ -74,9 +74,10 @@
 			<br>
 			<br>
 			<br>
-			<img src="images/R_logo.svg" alt="R 淡水信義線 Tamsui-Xinyi Line" style="width: 100%;max-width: 400px;" />
+			<img id="r_logo" src="images/R_logo.svg" alt="R 淡水信義線 Tamsui-Xinyi Line" style="width: 100%;max-width: 400px;" />
 			<hr style="border: 3px solid rgb(208,0,43);">
 			<br>
+			<img id="r01" alt="R01 廣慈/奉天宮 Guangci/Fengtian Temple" src="images/R/r01_old_path.svg" class="stdStn" style="display: none;" onclick="dismissR01()" tabindex="0" />
 			<img alt="R02 象山 Xiangshan" src="images/R/r02.svg" class="stdStn" onclick="play('r02')" tabindex="0" />
 			<img alt="R03 台北101/世貿 Taipei 101/World Trade Center" src="images/R/r03.svg" class="stdStn"
 				onclick="play('r03')" tabindex="0" />
@@ -274,6 +275,26 @@
 		</div>
 	</body>
 	<script>
+		var click = 0;
+		document.getElementById("r_logo").addEventListener("click", function () {
+			click++;
+			if (click == 25) {
+				showR01();
+			}
+		});
+
+		//Temp
+		function showR01() {
+			document.getElementById("r01").style.display = "inline";
+		}
+
+		function dismissR01() {
+			alert('敬請期待 Stay tuned')
+			document.getElementById("r01").style.display = "none";
+			click = 0;
+		}
+
+
 		function play(name) {
 			var audio = window.parent.document.getElementById("main");
 			audio.src = "audio/standard/" + name + ".mp3";
