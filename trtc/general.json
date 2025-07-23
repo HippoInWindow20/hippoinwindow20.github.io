@@ -2,6 +2,11 @@
     "announcements": {
         "in_use": [
             {
+                "id": "family",
+                "ch": "「親子友善區」請優先禮讓座位給親子、孕婦、及推嬰兒車旅客。",
+                "en": "Please yield seats in \"Family Areas\" to families, expectant mothers, and passengers with strollers."
+            },
+            {
                 "id": "cold",
                 "ch": "您好，有感冒症狀或身體不適的旅客，請戴口罩。",
                 "en": "Please wear a surgical mask if you have a cold."
