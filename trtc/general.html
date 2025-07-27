@@ -91,6 +91,9 @@
 			color: black;
 			cursor: pointer;
 			-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
 
 		.searchButton:hover {
@@ -154,7 +157,7 @@
 					var inUseElements = [];
 					for (var i = 0; i < in_use.length; i++) {
 						var announcement = in_use[i];
-						if (announcement['ch'].includes(input) || announcement['en'].includes(input)) {
+						if (announcement['ch'].includes(input) || announcement['en'].toLowerCase().includes(input.toLowerCase())) {
 							in_use_count++;
 							var div = document.createElement("div");
 							div.className = "standard";
@@ -181,7 +184,7 @@
 					var notUsedElements = [];
 					for (var i = 0; i < unused.length; i++) {
 						var announcement = unused[i];
-						if (announcement['ch'].includes(input) || announcement['en'].includes(input)) {
+						if (announcement['ch'].includes(input) || announcement['en'].toLowerCase().includes(input.toLowerCase())) {
 							not_used_count++;
 							var div = document.createElement("div");
 							div.className = "standard";

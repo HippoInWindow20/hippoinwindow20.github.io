@@ -2,6 +2,11 @@
     "announcements": {
         "in_use": [
             {
+                "id": "close",
+                "ch": "車門即將關閉。",
+                "en": "Doors closing."
+            },
+            {
                 "id": "family",
                 "ch": "「親子友善區」請優先禮讓座位給親子、孕婦、及推嬰兒車旅客。",
                 "en": "Please yield seats in \"Family Areas\" to families, expectant mothers, and passengers with strollers."
