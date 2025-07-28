@@ -106,8 +106,10 @@
     <body style="margin: 0;background: #333;font-family: 'Noto Sans TC', sans-serif;">
         <div id="searchContainer"
             style="margin: 0;width: 100%;height: 100vh;display: flex;align-items: flex-start;flex-direction: column;justify-content: flex-end;">
+            <span id="categoryTitleZh" style="font-size: calc(var(--text-size) *2 );font-weight: 600 ;color: white; margin: calc(var(--text-size));margin-bottom: 0;">選擇類別</span>
+            <span id="categoryTitleEn" style="font-size: var(--text-size);font-weight: 600 ;color: white; margin: calc(var(--text-size));margin-top: 0;margin-bottom: var(--text-size);">Select category</span>
             <div id="locationList"
-                style="width: 100%;overflow-y: auto;overflow-x: hidden;display: flex;flex-direction: column;max-height: calc(100vh - var(--action-button-width));">
+                style="width: 100%;overflow-y: auto;overflow-x: hidden;display: flex;flex-direction: column;max-height: calc(100vh - var(--action-button-width) - (var(--text-size) * 2));">
                 <!-- Location items will be dynamically added here -->
             </div>
             <div style="display: flex;align-items: center;">
@@ -117,7 +119,7 @@
                     </span>
                 </button>
                 <input class="searchBar" type="text" id="search-input" placeholder="搜尋 Search" />
-                <button class="actionButton" id="search-button" onclick="searchLocations()">
+                <button class="actionButton" id="search-button" onclick="searchLocations(currentCategory)">
                     <span class="material-symbols-outlined">
                         search
                     </span>
@@ -140,8 +142,15 @@
             </div>
         </div>
         <script>
+            var isCategoryList = true;
+            var currentCategory = null;
+
             function goBack() {
-                window.parent.hideModal();
+                if (isCategoryList) {
+                    window.parent.hideModal();
+                }else {
+                    window.location.reload();
+                }
             }
 
             function createLocationItem(iconSrc, zhText, enText, locId, category) {
@@ -190,7 +199,7 @@
                         parent.window.hideModal();
                         setTimeout(function () {
                             item.classList.remove('selected');
-                        }, 200);
+                        }, 100);
                     }, 300);
                 });
             }
@@ -224,7 +233,7 @@
                 highlightLocationAtIndex(currentIndex);
             }
 
-            listLocationsforCategory('landmark_school');
+            listCategories();
             var currentIndex = 0;
 
             function highlightLocationAtIndex (index) {
@@ -302,6 +311,74 @@
                 }
                 currentIndex = 0;
                 highlightLocationAtIndex(currentIndex);
+            }
+
+
+
+            // Create category List
+
+            function createCategoryItem(iconSrc, zhText, enText, category) {
+                const item = document.createElement('div');
+                item.className = 'locationItem';
+                item.setAttribute('data-loc-category', category);
+
+                const img = document.createElement('img');
+                img.src = 'icons/' + iconSrc + '.svg';
+                img.style.width = '13vw';
+                img.style.height = '13vw';
+                img.style.marginLeft = '2vw';
+                img.style.marginRight = '2vw';
+
+                const textContainer = document.createElement('div');
+                textContainer.style.display = 'flex';
+                textContainer.style.flexDirection = 'column';
+
+                const locZh = document.createElement('span');
+                locZh.className = 'locZh';
+                locZh.textContent = zhText;
+
+                const locEn = document.createElement('span');
+                locEn.className = 'locEn';
+                locEn.textContent = enText;
+
+                textContainer.appendChild(locZh);
+                textContainer.appendChild(locEn);
+                item.appendChild(img);
+                item.appendChild(textContainer);
+
+                return item;
+            }
+
+            function addCategoryItem(iconSrc, zhText, enText, category) {
+                const item = createCategoryItem(iconSrc, zhText, enText, category);
+                document.getElementById('locationList').appendChild(item);
+                document.getElementById('locationList').scrollTo(0, 0);
+                // add click event listener to the item
+                item.addEventListener('click', function () {
+                    clearHighlights();
+                    item.classList.add('selected');
+                    listLocationsforCategory(category);
+                    setCategoryTitle(zhText, enText);
+                    isCategoryList = false;
+                    currentCategory = category;
+                    currentIndex = 0;
+                });
+            }
+
+            async function listCategories () {
+                const response = await fetch('match.json');
+                const data = await response.json();
+
+                const legendMapping = data.legendMapping;
+                for (const cat of legendMapping) {
+                    addCategoryItem(cat.icon, cat.catZh, cat.catEn, cat.code);
+                }
+                highlightLocationAtIndex(currentIndex);
+            }
+
+            function setCategoryTitle (zh, en) {
+                document.getElementById('categoryTitleZh').innerHTML = zh;
+                document.getElementById('categoryTitleEn').innerHTML = en;
             }
         </script>
     </body>

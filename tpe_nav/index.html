@@ -292,10 +292,10 @@
 
             function showModal() {
                 const modal = document.getElementById("modal");
+                document.getElementById("iframe").contentWindow.location.reload();
                 modal.style.top = "10dvh";
                 // document.getElementById("overlay").style.display = "block";
                 // document.getElementById("overlay").style.opacity = "1";
-                document.getElementById("iframe").contentWindow.location.reload();
             }
 
             function hideModal() {
