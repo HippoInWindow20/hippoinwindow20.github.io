@@ -183,7 +183,7 @@
                 const path = document.getElementById(pathId);
                 if (path) {
                     // Remove highlight from all paths in the SVG
-                    clearHighlights();
+                    // clearHighlights();
                     if (path.hasChildNodes()) {
                         // If the path has child nodes, add the highlight to all child nodes
                         const childPaths = path.getElementsByTagName('path');
@@ -255,6 +255,7 @@
                 if (highlightList && highlightList[category]) {
                     var index = await searchIndex(category, name);
                     if (index !== -1) {
+                        clearHighlights();
                         var paths = highlightList[category][index].objects;
                         paths.forEach(pathId => {
                             highlightBlock(pathId);
