@@ -53,7 +53,14 @@
             {"id": "cyf_foundation","name_zh": "張榮發基金會","name_en": "Chang Yung-Fa Foundation","objects": ["path13041"]}
             
         ],
-        "landmark_park":[],
+        "landmark_park":[
+            {"id": "jiancheng_park","name_zh": "建成公園","name_en": "Jiancheng Park","objects": ["path9660"]},
+            {"id": "tacheng_park","name_zh": "塔城公園","name_en": "Tacheng Park","objects": ["path1663"]},
+            {"id": "yatsen_park","name_zh": "逸仙公園","name_en": "Yat-sen Park","objects": ["path6854"]},
+            {"id": "huashan_park","name_zh": "華山公園","name_en": "Huashan Park","objects": ["path5118","path6129","path6133"]},
+            {"id": "central_park","name_zh": "中央藝文公園","name_en": "Central Culture Park","objects": ["path7798"]},
+            {"id": "228_park","name_zh": "二二八和平公園","name_en": "228 Peace Park","objects": ["path9735","path12099"]}
+        ],
         "landmark_police":[],
         "landmark_fire_brigade":[],
         "landmark_post_office":[],
