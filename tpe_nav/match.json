@@ -61,9 +61,18 @@
             {"id": "central_park","name_zh": "中央藝文公園","name_en": "Central Culture Park","objects": ["path7798"]},
             {"id": "228_park","name_zh": "二二八和平公園","name_en": "228 Peace Park","objects": ["path9735","path12099"]}
         ],
-        "landmark_police":[],
-        "landmark_fire_brigade":[],
-        "landmark_post_office":[],
+        "landmark_police":[
+            {"id": "zhongshan_precinct","name_zh": "中山分局","name_en": "Zhongshan Precinct","objects": ["path10652"]},
+            {"id": "tppd","name_zh": "臺北市警察局","name_en": "Taipei City Police Dept.","objects": ["path9461"]},
+            {"id": "zz_first","name_zh": "中正第一分局","name_en": "Zhongzheng First Precinct","objects": ["path8984"]},
+            {"id": "other_police","name_zh": "其他警察局（未列出）","name_en": "Other Police Stations (Not listed)","objects": ["path11620","path12802","path10658","path9735","path11135"]}
+        ],
+        "landmark_fire_brigade":[
+            {"id": "other_fire_brigade","name_zh": "其他消防隊（未列出）","name_en": "Other Fire Brigades (Not listed)","objects": ["path1661","path6870","path8802"]}
+        ],
+        "landmark_post_office":[
+            {"id": "other_post_office","name_zh": "其他郵局（未列出）","name_en": "Other Post Offices (Not listed)","objects": ["path9104","path12702","path6866","path7800","path9307","path9441","path9743"]}
+        ],
         "landmark_hospital":[],
         "landmark_bank":[],
         "landmark_historic_site":[],
