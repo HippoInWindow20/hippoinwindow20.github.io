@@ -2,6 +2,11 @@
     "announcements": {
         "in_use": [
             {
+                "id": "lean_new",
+                "ch": "您好，請勿坐在車廂地板上、佔用無障礙空間，或倚靠車門或立柱。",
+                "en": "Please do not sit on the floor or occupy accessible areas.<br>Do not lean against the central pole or handrails."
+            },
+            {
                 "id": "close",
                 "ch": "車門即將關閉。",
                 "en": "Doors closing."
@@ -57,11 +62,6 @@
                 "en": "Do not rush onto the train once the door closing buzzer has sounded."
             },
             {
-                "id": "lean",
-                "ch": "您好，搭車時請勿倚靠車門，上下車時留意車門與月台間隙，並請記得隨身攜帶物品，謝謝。",
-                "en": "Attention. When taking the MRT, please do not lean on the doors. When getting on or off the train, please don't forget your belongings, and mind the gap between the train and the platform. Thank you."
-            },
-            {
                 "id": "move",
                 "ch": "您好，請往車廂內部移動，將後背包提於手上或置於前方，並勿倚靠車門。",
                 "en": "Please move to the center of the car, and hold your backpack by hand or place it in front of you."
@@ -103,6 +103,12 @@
             }
         ],
         "not_used": [
+            {
+                "id": "lean",
+                "ch": "您好，搭車時請勿倚靠車門，上下車時留意車門與月台間隙，並請記得隨身攜帶物品，謝謝。",
+                "en": "Attention. When taking the MRT, please do not lean on the doors. When getting on or off the train, please don't forget your belongings, and mind the gap between the train and the platform. Thank you.",
+                "end":"2025（重新錄製 / Re-recording）"
+            },
             {
                 "id": "alert",
                 "ch": "提高警覺，注意身旁人、事、物。遇異常狀況，冷靜勿驚慌、不推擠，立即撥打110，及通報站車人員。",
