@@ -73,8 +73,16 @@
         "landmark_post_office":[
             {"id": "other_post_office","name_zh": "其他郵局（未列出）","name_en": "Other Post Offices (Not listed)","objects": ["path9104","path12702","path6866","path7800","path9307","path9441","path9743"]}
         ],
-        "landmark_hospital":[],
-        "landmark_bank":[],
+        "landmark_hospital":[
+            {"id": "ntuh_child","name_zh": "台大兒童醫院","name_en": "National Taiwan University Children's Hospital","objects": ["building15720"]},
+            {"id": "ntuh","name_zh": "台大醫院","name_en": "NTU Hospital","objects": ["path15722","building16477"]},
+            {"id": "ntuh_er","name_zh": "台大醫院急診室","name_en": "Department of Emergency Medicine in NTU Hospital","objects": ["path10515"]}
+        ],
+        "landmark_bank":[
+            {"id": "esun_jc","name_zh": "玉山銀行（建成分行）","name_en": "E.Sun Bank (Jiancheng Branch)","objects": ["path11528"]},
+            {"id": "esun_zs","name_zh": "玉山銀行（中山分行）","name_en": "E.Sun Bank (Zhongshan Branch)","objects": ["path12804"]}
+
+        ],
         "landmark_historic_site":[],
         "landmark_temple":[],
         "landmark_church":[],
